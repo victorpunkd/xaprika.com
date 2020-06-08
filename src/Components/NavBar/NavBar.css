@@ -1,0 +1,37 @@
+.navBarContainer {
+  width: 100%;
+  background-color: #dde3e9;
+  height: 70px;
+  padding: 0% 5%;
+  font-size: 20px;
+  position: relative;
+  box-shadow: 0px 5px 10px gray;
+}
+
+.navBarItems {
+  margin: 0;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+}
+
+.navBarItem {
+  cursor: pointer;
+}
+
+.barIconSection {
+  text-align: left;
+}
+
+.logoSection {
+}
+
+.logoImage {
+  width: 100px;
+  height: 34px;
+}
+
+.userIconSection {
+  text-align: right;
+}

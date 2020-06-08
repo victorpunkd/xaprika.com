@@ -1,0 +1,41 @@
+.footerContainer {
+  width: 100%;
+  background-color: #148ea4;
+  height: 70px;
+  padding: 0% 0%;
+  font-size: 20px;
+  position: fixed;
+  bottom: 0;
+  box-shadow: 0px -5px 5px gray;
+}
+
+.footerItemsContainer {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.footerItems {
+  width: 100%;
+  margin: 0;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+}
+
+.footerItemSection {
+  text-align: center;
+  font-family: "Nunito", sans-serif;
+  font-weight: 800;
+  color: white;
+  line-height: 20px;
+}
+
+.footerItemIcon {
+  font-size: 25px;
+}
+
+.footerItemText {
+  font-size: 15px;
+}

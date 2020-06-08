@@ -1,0 +1,23 @@
+.categoryCard {
+  width: 100%;
+  padding: 2% 1%;
+  border-radius: 20px;
+}
+
+.categoryContainer {
+  margin-top: 5%;
+}
+
+.categoryImageContainer {
+  width: 100%;
+}
+
+.primaryCategoryImage {
+  width: 100px;
+}
+
+.categoryName {
+  font-family: "Nunito", sans-serif;
+  font-size: 15px;
+  color: #4c586e;
+}

@@ -1,0 +1,29 @@
+.serchBoxContainer {
+  width: 100%;
+}
+
+.searchBoxCard {
+  color: #4c586e;
+  width: 100%;
+  border-radius: 20px;
+  background-color: white;
+  height: 40px;
+  padding: 8px 15px;
+}
+
+.searchIconSection {
+  text-align: left;
+}
+
+.searchInputBoxSection {
+  width: 100%;
+}
+
+.searchInput {
+  border: none;
+  width: 100%;
+}
+
+.searchInput:focus {
+  outline: none;
+}

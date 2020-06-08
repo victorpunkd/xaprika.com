@@ -1,0 +1,11 @@
+.bannerConatiner {
+  width: 100%;
+  border-radius: 20px;
+}
+
+.bannerImage {
+  /* width: 320px;
+  height: 180px; */
+  width: 100%;
+  border-radius: 20px;
+}
