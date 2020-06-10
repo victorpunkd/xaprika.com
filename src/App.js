@@ -1,21 +1,32 @@
 import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 import { NavBar } from "./Components/NavBar/NavBar";
 import { Home } from "./Components/Home/Home";
+import ProductsUnderCategory from "./Components/ProductsUnderCategory/ProductsUnderCategory";
 import { Footer } from "./Components/Footer/Footer";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <div className="appContainer">
-        <NavBar />
-        <div className="pages">
-          <Home />
+    <Router>
+      <div className="App">
+        <div className="appContainer">
+          <NavBar />
+          <div className="pages">
+            <Switch>
+              <Route path="/" exact component={Home} />
+              <Route path="/Home" component={Home} />
+              <Route
+                path="/Products-Under-Category/:categoryID/:categoryName"
+                component={ProductsUnderCategory}
+              />
+            </Switch>
+          </div>
+          <Footer />
         </div>
-        <Footer />
       </div>
-    </div>
+    </Router>
   );
-}
+};
 
 export default App;

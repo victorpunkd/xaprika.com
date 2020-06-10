@@ -12,7 +12,10 @@ export class Home extends Component {
         <div className="secondaryText">
           While Xaprika is working hard to take care of your everyday needs, you
           can use that time to do something else instead. Like, pampering
-          yourself
+          yourself - maybe{" "}
+          <span role="img" aria-label="winking">
+            &#128540;
+          </span>
         </div>
         <div className="searchBox">
           <SearchBoxComponent />

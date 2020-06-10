@@ -1,7 +1,8 @@
 .App {
   text-align: center;
   height: 100vh;
-  min-height: 100vh;
+  max-height: 100vh;
+  min-height: 100vh; /*ToDo min height where keyboard on mobile screen qont break the design*/
 }
 
 .appContainer {
@@ -11,6 +12,8 @@
 
 .pages {
   padding-top: 5%;
+  padding-left: 5%;
+  padding-right: 5%;
   max-height: 85vh;
   height: 85vh;
   overflow: scroll;

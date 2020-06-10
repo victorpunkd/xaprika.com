@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./PrimaryCategories.css";
-import { CategoryCard } from "../CategoryCard/CategoryCard";
+import CategoryCard from "../CategoryCard/CategoryCard";
 
 export class PrimaryCategories extends Component {
   constructor() {
@@ -49,12 +49,15 @@ export class PrimaryCategories extends Component {
   render() {
     return (
       <div className="primaryCategoryContanier w3-row-padding">
+        <div className="primaryCategoryHeading">Shop by Category</div>
         {this.state.data.map((data) => (
           <div className="s6 w3-col categoryContainer">
             <CategoryCard
+              key={data.id}
               categoryName={data.name}
               categoryImage={data.picture}
               categoryId={data.id}
+              isPrimaryCategory={true}
             />
           </div>
         ))}

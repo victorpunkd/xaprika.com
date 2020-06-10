@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import "./Footer.css";
 
 export class Footer extends Component {
@@ -9,19 +10,21 @@ export class Footer extends Component {
           <div className="w3-row footerItems">
             <div className="s4 w3-col footerItemSection">
               <div className="footerItemIcon">
-                <i class="fa fa-list-alt" aria-hidden="true"></i>
+                <i className="fa fa-list-alt" aria-hidden="true"></i>
               </div>
               <div className="footerItemText">Categories</div>
             </div>
-            <div className="s4 w3-col footerItemSection">
-              <div className="footerItemIcon">
-                <i class="fa fa-home" aria-hidden="true"></i>
+            <Link to="/">
+              <div className="s4 w3-col footerItemSection">
+                <div className="footerItemIcon">
+                  <i className="fa fa-home" aria-hidden="true"></i>
+                </div>
+                <div className="footerItemText">Home</div>
               </div>
-              <div className="footerItemText">Home</div>
-            </div>
+            </Link>
             <div className="s4 w3-col footerItemSection">
               <div className="footerItemIcon">
-                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                <i className="fa fa-shopping-cart" aria-hidden="true"></i>
               </div>
               <div className="footerItemText">Cart</div>
             </div>

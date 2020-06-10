@@ -1,0 +1,78 @@
+.productCardContainer {
+  width: 100%;
+  border-radius: 20px;
+  background-color: white;
+  padding: 10px 15px;
+  position: relative;
+}
+
+.productInfoContainer {
+  height: 100%;
+}
+
+.productImageContainer {
+  text-align: left;
+  width: 80px;
+  height: 80px;
+}
+
+.productImage {
+  width: 100%;
+  height: 100%;
+}
+
+.productInfo {
+  margin-top: 10px;
+  width: 100%;
+  text-align: left;
+  padding-left: 10px;
+  line-height: 18px;
+  font-family: "Nunito", sans-serif;
+  padding-right: 5px;
+}
+
+.productBrand {
+  color: gray;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.productName {
+  font-size: 15px;
+  font-weight: 400;
+  white-space: nowrap;
+  width: 100%;
+  overflow: hidden;
+  o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
+
+.productPrice {
+  font-weight: 800;
+  font-weight: 20px;
+}
+
+.productControls {
+  text-align: right;
+  margin-top: 5px;
+}
+
+.totalPrice {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.controlButtons {
+  margin-top: 0px;
+}
+
+.addSubtractButton {
+  border: 2px solid #148ea4;
+  border-radius: 5px;
+  background-color: white;
+  color: #148ea4;
+  cursor: pointer;
+  font-size: 15px;
+  padding: 0 10;
+  /* border: none; */
+}

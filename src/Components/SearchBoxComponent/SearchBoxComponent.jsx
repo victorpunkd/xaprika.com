@@ -8,7 +8,7 @@ export class SearchBoxComponent extends Component {
         <div className="searchBoxCard w3-card">
           <div className="w3-row">
             <div className="s1 w3-col searchIconSection">
-              <i class="fa fa-search" aria-hidden="true"></i>
+              <i className="fa fa-search" aria-hidden="true"></i>
             </div>
             <div className="s11 w3-col searchInputBoxSection w3-green">
               <input

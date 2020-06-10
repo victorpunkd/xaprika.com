@@ -1,5 +1,5 @@
 .footerContainer {
-  width: 100%;
+  width: 370px;
   background-color: #148ea4;
   height: 70px;
   padding: 0% 0%;
@@ -38,4 +38,12 @@
 
 .footerItemText {
   font-size: 15px;
+}
+
+/* For all size of mobile screens, screen width 600px or smaller */
+
+@media screen and (max-width: 600px) {
+  .footerContainer {
+    width: 100%;
+  }
 }
