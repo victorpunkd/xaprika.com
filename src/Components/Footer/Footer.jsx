@@ -22,12 +22,14 @@ export class Footer extends Component {
                 <div className="footerItemText">Home</div>
               </div>
             </Link>
-            <div className="s4 w3-col footerItemSection">
-              <div className="footerItemIcon">
-                <i className="fa fa-shopping-cart" aria-hidden="true"></i>
+            <Link to="/Cart">
+              <div className="s4 w3-col footerItemSection">
+                <div className="footerItemIcon">
+                  <i className="fa fa-shopping-cart" aria-hidden="true"></i>
+                </div>
+                <div className="footerItemText">Cart</div>
               </div>
-              <div className="footerItemText">Cart</div>
-            </div>
+            </Link>
           </div>
         </div>
       </div>

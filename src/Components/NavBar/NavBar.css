@@ -6,6 +6,7 @@
   font-size: 20px;
   position: relative;
   box-shadow: 0px 5px 5px gray;
+  z-index: 10;
 }
 
 .navBarItems {

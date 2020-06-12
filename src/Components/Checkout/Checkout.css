@@ -1,0 +1,169 @@
+.checkoutContainer {
+  width: 100%;
+  height: 70vh;
+  position: relative;
+}
+
+.checkoutData {
+  margin: 0;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+}
+
+.priceBreakup {
+  margin-top: 10%;
+  width: 90%;
+  margin: auto;
+}
+
+.priceType {
+  text-align: left;
+  font-family: "Nunito", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: gray;
+}
+
+.priceAmount {
+  text-align: right;
+  font-family: "Nunito", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: #148ea4;
+}
+
+.totalType {
+  text-align: left;
+  font-family: "Nunito", sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  color: gray;
+}
+
+.totalAmount {
+  text-align: right;
+  font-family: "Nunito", sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  color: #148ea4;
+}
+
+.totalAmountContainer {
+  border-top: 1px solid gray;
+}
+
+.deliveryAddressCard {
+  margin-top: 10%;
+  width: 100%;
+  border-radius: 20px;
+  background-color: white;
+  padding: 10px 10px;
+}
+
+.deliveryAddressCardheading {
+  font-family: "Nunito", sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  color: gray;
+}
+
+.deliveryAddress {
+  font-family: "Nunito", sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  color: black;
+  padding: 10px 10px;
+}
+
+.linkButton {
+  border: none;
+  background-color: white;
+  color: #148ea4;
+  font-size: 15px;
+  font-weight: 800;
+  text-decoration: underline;
+}
+
+.paymentOption {
+  margin-top: 10%;
+}
+
+.paymentTypeRadioButtons {
+  margin: auto;
+  width: 50%;
+}
+
+/*Checkbox Style Start*/
+
+/* The container */
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-top: 5%;
+  cursor: pointer;
+  /* font-size: 20px; */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.radioButtonName {
+  font-size: 16px;
+  color: gray;
+}
+
+/* Hide the browser's default radio button */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #148ea4;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+  top: 9px;
+  left: 9px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+}
+
+/*Checkbox Style End*/
