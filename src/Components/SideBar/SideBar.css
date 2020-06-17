@@ -1,0 +1,49 @@
+.sideBarContainer {
+  width: 240px;
+  height: 85vh;
+  background-color: white;
+  position: absolute;
+  left: 0%;
+  box-shadow: 10px 0px 20px gray;
+  z-index: 5;
+  text-align: left;
+  font-family: "Nunito", sans-serif;
+}
+
+.sideBarHeadingContainer {
+  padding: 10px 10px;
+}
+
+.sideBarHeading {
+  color: #148ea4;
+  margin-top: 20px;
+  font-size: 15px;
+  font-weight: 800;
+  padding-left: 10px;
+  border-bottom: 0.5px solid gray;
+}
+
+.primaryCategoryItemInSideBar {
+  margin-top: 5px;
+  width: 100%;
+  border-left: 5px solid #148ea4;
+  padding-left: 20px;
+  color: rgb(88, 88, 88);
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.primaryTextColor {
+  color: #148ea4;
+  font-weight: 800;
+}
+
+.subCategoryListInSideBar {
+  padding: 10px 10px;
+  padding-left: 35px;
+}
+
+.subCategoryItem {
+  width: 80%;
+  border-bottom: 0.5px solid #bdbdbd;
+}

@@ -5,7 +5,7 @@ const CurrentPageNameHeader = (props) => {
   return (
     <div className="currentPageNameHeaderContainer">
       <div className="backButton">
-        <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>{" "}
+        <i className="fa fa-arrow-circle-left" aria-hidden="true"></i>{" "}
         {props.categoryName}
       </div>
     </div>

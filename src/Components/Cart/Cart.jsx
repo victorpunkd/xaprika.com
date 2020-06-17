@@ -6,13 +6,13 @@ import ProductList from "../ProductList/ProductList";
 
 const Cart = () => {
   return (
-    <div className="cartContainer">
+    <div className="cartContainer w3-animate-opacity">
       <CurrentPageNameHeader categoryName="Cart" />
       <div>
         <ProductList />
       </div>
       <div className="cartFooter w3-card w3-row">
-        <div className="s9 w3-col totalAmount">
+        <div className="s9 w3-col totalAmountInCart">
           <div className="totalAmountText">
             Total Amount - <spam className="cartAmount">290</spam>
           </div>

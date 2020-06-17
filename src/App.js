@@ -1,7 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import "./App.css";
-import { NavBar } from "./Components/NavBar/NavBar";
+import { hideSideBar } from "./Actions/SideBarVisibleAction";
+import { hideUserOptionSideBar } from "./Actions/UserOptionSideBarVisibleAction";
+import NavBar from "./Components/NavBar/NavBar";
+import SideBar from "./Components/SideBar/SideBar";
+import UserOptionSideBar from "./Components/UserOptionsSideBar/UserOptionSidebar";
 import Home from "./Components/Home/Home";
 import ProductsUnderCategory from "./Components/ProductsUnderCategory/ProductsUnderCategory";
 import Cart from "./Components/Cart/Cart";
@@ -9,12 +14,27 @@ import Checkout from "./Components/Checkout/Checkout";
 import { Footer } from "./Components/Footer/Footer";
 
 const App = () => {
+  const { isSideBarVisible, isUerOptionSideBarVisible } = useSelector(
+    (state) => state
+  );
+  const dispatched = useDispatch();
   return (
     <Router>
       <div className="App">
         <div className="appContainer">
           <NavBar />
-          <div className="pages">
+          {isSideBarVisible && <SideBar />}
+          {isUerOptionSideBarVisible && <UserOptionSideBar />}
+          <div
+            className={`pages ${
+              (isSideBarVisible || isUerOptionSideBarVisible) &&
+              "backgroundOpacityLow"
+            }`}
+            onClick={() => {
+              dispatched(hideSideBar());
+              dispatched(hideUserOptionSideBar());
+            }}
+          >
             <Switch>
               <Route path="/" exact component={Home} />
               <Route path="/Home" component={Home} />
