@@ -1,0 +1,24 @@
+.userInformationContainer {
+  width: 100%;
+  /* height: 100%; */
+  height: 70vh;
+  position: relative;
+}
+
+.userInformationForm {
+  margin: 0;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+}
+
+.textBoxContainer {
+  margin-top: 0px;
+  text-align: left;
+}
+
+.updateButtonContainer {
+  width: 100%;
+  /* margin-top: 10px; */
+}

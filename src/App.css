@@ -19,7 +19,7 @@
   max-height: 85vh;
   height: 85vh;
   overflow: scroll;
-  padding-bottom: 18vw;
+  padding-bottom: 10vh;
   transition: opacity 0.3s;
 }
 
@@ -34,6 +34,32 @@
   font-family: "Nunito", sans-serif;
   font-size: 15px;
   padding: 5px 5px;
+  font-weight: 800;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.primaryButtonSmall {
+  border: none;
+  background-color: #1d32c4;
+  color: white;
+  font-family: "Nunito", sans-serif;
+  font-size: 12px;
+  padding: 5px 5px;
+  /* box-shadow: 0px 2px 5px gray; */
+  font-weight: 800;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.secondaryButton {
+  border: 1px solid gray;
+  background-color: white;
+  color: gray;
+  font-family: "Nunito", sans-serif;
+  font-size: 12px;
+  padding: 5px 5px;
+  box-shadow: 0px 2px 5px gray;
   font-weight: 800;
   border-radius: 5px;
   cursor: pointer;

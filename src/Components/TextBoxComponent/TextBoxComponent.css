@@ -1,0 +1,19 @@
+.textBoxDiv {
+  margin-bottom: 0%;
+}
+
+.label {
+  font-size: 12px;
+  color: gray;
+}
+
+.labelHide {
+  opacity: 0;
+}
+
+.textBox {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid black;
+  padding: 0% 0%;
+}

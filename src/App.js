@@ -7,6 +7,9 @@ import { hideUserOptionSideBar } from "./Actions/UserOptionSideBarVisibleAction"
 import NavBar from "./Components/NavBar/NavBar";
 import SideBar from "./Components/SideBar/SideBar";
 import UserOptionSideBar from "./Components/UserOptionsSideBar/UserOptionSidebar";
+import UserInformation from "./Components/UserInformation/UserInformation";
+import AddressManagement from "./Components/AddressManagement/AddressManagement";
+import OrderHistory from "./Components/OrderHistory/OrderHistory";
 import Home from "./Components/Home/Home";
 import ProductsUnderCategory from "./Components/ProductsUnderCategory/ProductsUnderCategory";
 import Cart from "./Components/Cart/Cart";
@@ -44,6 +47,9 @@ const App = () => {
               />
               <Route path="/Cart" component={Cart} />
               <Route path="/Checkout" component={Checkout} />
+              <Route path="/UserInformation" component={UserInformation} />
+              <Route path="/AddressManagement" component={AddressManagement} />
+              <Route path="/OrderHistory" component={OrderHistory} />
             </Switch>
           </div>
           <Footer />
