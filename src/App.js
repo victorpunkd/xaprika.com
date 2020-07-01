@@ -42,7 +42,7 @@ const App = () => {
               <Route path="/" exact component={Home} />
               <Route path="/Home" component={Home} />
               <Route
-                path="/Products-Under-Category/:categoryID/:categoryName"
+                path="/Products-Category/:categoryID/:categoryName"
                 component={ProductsUnderCategory}
               />
               <Route path="/Cart" component={Cart} />

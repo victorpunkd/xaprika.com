@@ -1,3 +1,9 @@
+.loadingBanner {
+  width: 100%;
+  border-radius: 20px;
+  border: 1px solid gray;
+}
+
 .bannerConatiner {
   width: 100%;
   border-radius: 20px;

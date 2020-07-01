@@ -1,8 +1,8 @@
 import React from "react";
 import "./Home.css";
 import { SearchBoxComponent } from "../SearchBoxComponent/SearchBoxComponent";
-import { Banner } from "../Banner/Banner";
-import { PrimaryCategories } from "../PrimaryCategories/PrimaryCategories";
+import Banner from "../Banner/Banner";
+import PrimaryCategories from "../PrimaryCategories/PrimaryCategories";
 
 const Home = () => {
   return (

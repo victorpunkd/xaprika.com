@@ -3,10 +3,14 @@ import activePage from "./ActivePageReducer";
 import isUerOptionSideBarVisible from "./UserOptionSideBarShowReducer";
 import isSideBarVisible from "./SideBarShowReducer";
 import isUserOptionSideBarVisible from "./UserOptionSideBarShowReducer";
+import bannerData from "./BannerDataReducer";
+import primaryCategoryData from "./PrimaryCategoryDataReducer";
 
 export default combineReducers({
   activePage,
   isUerOptionSideBarVisible,
   isSideBarVisible,
   isUserOptionSideBarVisible,
+  bannerData,
+  primaryCategoryData,
 });

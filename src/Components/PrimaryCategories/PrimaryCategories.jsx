@@ -1,62 +1,30 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import "./PrimaryCategories.css";
+import Loader from "../Loader/Loader";
 import CategoryCard from "../CategoryCard/CategoryCard";
+import { fetchPrimarycategoryData } from "../../Actions/FetchPrimaryCategoryData";
 
-export class PrimaryCategories extends Component {
-  constructor() {
-    super();
-    this.state = {
-      data: [
-        {
-          id: 1,
-          name: "Breakfast Items",
-          picture:
-            "https://xaprika-file-storage.s3.us-east-2.amazonaws.com/staticImages/primaryCategoryImages/breakfast.jpg",
-        },
-        {
-          id: 2,
-          name: "Beverages",
-          picture:
-            "https://xaprika-file-storage.s3.us-east-2.amazonaws.com/staticImages/primaryCategoryImages/beverages.jpg",
-        },
-        {
-          id: 3,
-          name: "Pulses",
-          picture:
-            "https://xaprika-file-storage.s3.us-east-2.amazonaws.com/staticImages/primaryCategoryImages/rice.jpg",
-        },
-        {
-          id: 4,
-          name: "Fish & Meat",
-          picture:
-            "https://xaprika-file-storage.s3.us-east-2.amazonaws.com/staticImages/primaryCategoryImages/fish.jpeg",
-        },
-        {
-          id: 5,
-          name: "Butter & Cheese",
-          picture:
-            "https://xaprika-file-storage.s3.us-east-2.amazonaws.com/staticImages/primaryCategoryImages/butter.jpg",
-        },
-        {
-          id: 6,
-          name: "Vegetables",
-          picture:
-            "https://xaprika-file-storage.s3.us-east-2.amazonaws.com/staticImages/primaryCategoryImages/veg.jpg",
-        },
-      ],
-    };
-  }
-  render() {
+const PrimaryCategories = () => {
+  const dispatched = useDispatch();
+  const { primaryCategoryData } = useSelector((state) => state);
+  useEffect(() => {
+    dispatched(fetchPrimarycategoryData());
+  }, [dispatched]);
+
+  if (!primaryCategoryData.isLoaded) {
+    return <Loader />;
+  } else {
     return (
       <div className="primaryCategoryContanier w3-row-padding">
         <div className="primaryCategoryHeading">Shop by Category</div>
-        {this.state.data.map((data) => (
+        {primaryCategoryData.data.map((data) => (
           <div className="s6 w3-col categoryContainer">
             <CategoryCard
-              key={data.id}
-              categoryName={data.name}
-              categoryImage={data.picture}
-              categoryId={data.id}
+              key={data.category_id}
+              categoryName={data.category_name}
+              categoryImage={data.category_image}
+              categoryId={data.category_id}
               isPrimaryCategory={true}
             />
           </div>
@@ -64,6 +32,6 @@ export class PrimaryCategories extends Component {
       </div>
     );
   }
-}
+};
 
 export default PrimaryCategories;
