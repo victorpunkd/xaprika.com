@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { Redirect } from "react-router";
 import "./UserInformation.css";
 import CurrentPageNameHeader from "../CurrentPageNameHeader/CurrentPageNameHeader";
 import { TextBoxComponent } from "../TextBoxComponent/TextBoxComponent";
 
 const UserInformation = () => {
+  useEffect(() => {}, []);
   const handleTextBoxCompoenetOnBlur = (name, text) => {
     console.log(name, text);
   };
@@ -12,6 +14,9 @@ const UserInformation = () => {
   const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   const nameRegex = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/;
 
+  if (localStorage.getItem("userPhoneNo") === null) {
+    return <Redirect push to="/" />;
+  }
   return (
     <div className="userInformationContainer">
       <CurrentPageNameHeader categoryName="Manage Account" />

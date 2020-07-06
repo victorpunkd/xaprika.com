@@ -2,6 +2,12 @@ import React from "react";
 import "./ProductCard.css";
 
 const ProductCard = (props) => {
+  const handleProductAddClick = () => {
+    alert("added");
+  };
+  const handleProductRemoveClick = () => {
+    alert("removesd");
+  };
   return (
     <div className="productCardContainer w3-card w3-row">
       <div className="productInfoContainer">
@@ -20,14 +26,24 @@ const ProductCard = (props) => {
         <div className="s3 w3-col productControls">
           <div className="totalPrice">0</div>
           <div className="controlButtons w3-row">
-            <button className="addSubtractButton s4 w3-col">-</button>
+            <button
+              onClick={handleProductRemoveClick}
+              className="addSubtractButton s4 w3-col"
+            >
+              -
+            </button>
             <div
               className="s4 w3-col"
               style={{ textAlign: "center", color: "#148ea4" }}
             >
               0
             </div>
-            <button className="addSubtractButton s4 w3-col">+</button>
+            <button
+              onClick={handleProductAddClick}
+              className="addSubtractButton s4 w3-col"
+            >
+              +
+            </button>
           </div>
         </div>
       </div>

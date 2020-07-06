@@ -6,7 +6,7 @@ const CategoryCard = (props) => {
   return (
     <Link
       style={{ textDecoration: "none" }}
-      to={`/Products-Category/${props.categoryId}/${props.categoryName}`}
+      to={`/Products-Category/${props.categoryLink}`}
     >
       <div className="categoryCard w3-card">
         <div className="categoryImageContainer">

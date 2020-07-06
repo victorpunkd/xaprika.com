@@ -1,64 +1,39 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import "./SubCategoryList.css";
+import Loader from "../Loader/Loader";
 import CategoryCard from "../CategoryCard/CategoryCard";
+import { fetchSecondaryCategoryData } from "../../Actions/FetchSecondaryCategoryData";
 
-const SubCategoryList = () => {
-  const subCategories = [
-    {
-      id: 1,
-      name: "Milk",
-      picture:
-        "https://xaprika-file-storage.s3.us-east-2.amazonaws.com/staticImages/subCategoryImages/milk.jpg",
-    },
-    {
-      id: 2,
-      name: "Bread",
-      picture:
-        "https://xaprika-file-storage.s3.us-east-2.amazonaws.com/staticImages/subCategoryImages/bread.jpg",
-    },
-    {
-      id: 3,
-      name: "Butter",
-      picture:
-        "https://xaprika-file-storage.s3.us-east-2.amazonaws.com/staticImages/subCategoryImages/butter.jpg",
-    },
-    {
-      id: 4,
-      name: "Biscuit",
-      picture:
-        "https://xaprika-file-storage.s3.us-east-2.amazonaws.com/staticImages/subCategoryImages/biscuit.jpg",
-    },
-    {
-      id: 5,
-      name: "Cake",
-      picture:
-        "https://xaprika-file-storage.s3.us-east-2.amazonaws.com/staticImages/subCategoryImages/cake.jpg",
-    },
-    {
-      id: 6,
-      name: "Paneer",
-      picture:
-        "https://xaprika-file-storage.s3.us-east-2.amazonaws.com/staticImages/subCategoryImages/paneer.jpg",
-    },
-  ];
-  return (
-    <div className="subCategoryListContainer">
-      <div className="subCategoryListHeading">Shop by Sub Category</div>
-      <div className="subCategories w3-row-padding">
-        {subCategories.map((data) => (
-          <div className="w3-col s4 categoryContainer">
-            <CategoryCard
-              key={data.id}
-              categoryName={data.name}
-              categoryImage={data.picture}
-              categoryId={data.id}
-              isPrimaryCategory={false}
-            />
-          </div>
-        ))}
+const SubCategoryList = (props) => {
+  const dispatched = useDispatch();
+  const { subCategoryData } = useSelector((state) => state);
+  useEffect(() => {
+    dispatched(fetchSecondaryCategoryData(props.categoryLink));
+  }, [props.categoryLink, dispatched]);
+
+  if (!subCategoryData.isLoaded) {
+    return <Loader />;
+  } else {
+    return (
+      <div className="subCategoryListContainer">
+        <div className="subCategoryListHeading">Shop by Sub Category</div>
+        <div className="subCategories w3-row-padding">
+          {subCategoryData.data.map((data) => (
+            <div className="w3-col s4 categoryContainer">
+              <CategoryCard
+                key={data.sec_category_id}
+                categoryName={data.sec_category_name}
+                categoryImage={data.sec_category_image}
+                categoryId={data.sec_category_id}
+                isPrimaryCategory={false}
+              />
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 };
 
 export default SubCategoryList;

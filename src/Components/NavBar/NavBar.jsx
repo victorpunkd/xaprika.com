@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import "./NavBar.css";
 import logo from "../../Assets/tm.png";
@@ -9,6 +10,12 @@ import { hideUserOptionSideBar } from "../../Actions/UserOptionSideBarVisibleAct
 
 const NavBar = () => {
   const dispatched = useDispatch();
+  const handleUserOptionClick = () => {
+    if (localStorage.getItem("userPhoneNo")) {
+      dispatched(hideSideBar());
+      dispatched(toggleUserOptionSideBarVisibility());
+    }
+  };
   return (
     <div className="navBarContainer">
       <div className="navBarItems">
@@ -27,14 +34,17 @@ const NavBar = () => {
             <img src={logo} alt="xaprika-logo-png" className="logoImage" />
           </div>
           <div className="s4 w3-col w3-third userIconSection navBarItem">
-            <i
-              className="fa fa-user-circle"
-              aria-hidden="true"
-              onClick={() => {
-                dispatched(hideSideBar());
-                dispatched(toggleUserOptionSideBarVisibility());
-              }}
-            ></i>
+            {localStorage.getItem("userPhoneNo") === null ? (
+              <Link to="UserLogin">
+                <i className="fa fa-user-circle" aria-hidden="true"></i>
+              </Link>
+            ) : (
+              <i
+                className="fa fa-user-circle"
+                aria-hidden="true"
+                onClick={handleUserOptionClick}
+              ></i>
+            )}
           </div>
         </div>
       </div>

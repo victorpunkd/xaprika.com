@@ -25,6 +25,7 @@ const PrimaryCategories = () => {
               categoryName={data.category_name}
               categoryImage={data.category_image}
               categoryId={data.category_id}
+              categoryLink={data.category_link}
               isPrimaryCategory={true}
             />
           </div>

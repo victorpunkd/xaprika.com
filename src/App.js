@@ -8,10 +8,11 @@ import NavBar from "./Components/NavBar/NavBar";
 import SideBar from "./Components/SideBar/SideBar";
 import UserOptionSideBar from "./Components/UserOptionsSideBar/UserOptionSidebar";
 import UserInformation from "./Components/UserInformation/UserInformation";
+import UserLogin from "./Components/UserLogin/UserLogin";
 import AddressManagement from "./Components/AddressManagement/AddressManagement";
 import OrderHistory from "./Components/OrderHistory/OrderHistory";
 import Home from "./Components/Home/Home";
-import ProductsUnderCategory from "./Components/ProductsUnderCategory/ProductsUnderCategory";
+import ProductsUnderPrimaryCategory from "./Components/ProductsUnderPrimaryCategory/ProductsUnderPrimaryCategory";
 import Cart from "./Components/Cart/Cart";
 import Checkout from "./Components/Checkout/Checkout";
 import { Footer } from "./Components/Footer/Footer";
@@ -42,11 +43,12 @@ const App = () => {
               <Route path="/" exact component={Home} />
               <Route path="/Home" component={Home} />
               <Route
-                path="/Products-Category/:categoryID/:categoryName"
-                component={ProductsUnderCategory}
+                path="/Products-Category/:categoryLink"
+                component={ProductsUnderPrimaryCategory}
               />
               <Route path="/Cart" component={Cart} />
               <Route path="/Checkout" component={Checkout} />
+              <Route path="/UserLogin" component={UserLogin} />
               <Route path="/UserInformation" component={UserInformation} />
               <Route path="/AddressManagement" component={AddressManagement} />
               <Route path="/OrderHistory" component={OrderHistory} />

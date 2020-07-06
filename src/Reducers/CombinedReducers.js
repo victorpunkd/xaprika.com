@@ -5,6 +5,8 @@ import isSideBarVisible from "./SideBarShowReducer";
 import isUserOptionSideBarVisible from "./UserOptionSideBarShowReducer";
 import bannerData from "./BannerDataReducer";
 import primaryCategoryData from "./PrimaryCategoryDataReducer";
+import subCategoryData from "./SubCategoriesUnderPrimaryCategoryReducer";
+import productData from "./ProductDataReducer";
 
 export default combineReducers({
   activePage,
@@ -13,4 +15,6 @@ export default combineReducers({
   isUserOptionSideBarVisible,
   bannerData,
   primaryCategoryData,
+  subCategoryData,
+  productData,
 });
