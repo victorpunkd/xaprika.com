@@ -1,13 +1,33 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 import "./ProductCard.css";
+import {
+  addProductToCart,
+  removeProductFromCart,
+} from "../../Actions/CartAddRemoveProductAction";
 
 const ProductCard = (props) => {
+  const { cartData } = useSelector((state) => state);
+
+  const getDuplicateCount = (array, element) => {
+    let i = array.length;
+    let totalCount = 0;
+    while (i) {
+      if (array[i - 1] === element) totalCount++;
+      i--;
+    }
+    return totalCount;
+  };
+  const dispatched = useDispatch();
+
   const handleProductAddClick = () => {
-    alert("added");
+    dispatched(addProductToCart(props.id));
   };
+
   const handleProductRemoveClick = () => {
-    alert("removesd");
+    dispatched(removeProductFromCart(props.id));
   };
+
   return (
     <div className="productCardContainer w3-card w3-row">
       <div className="productInfoContainer">
@@ -24,7 +44,9 @@ const ProductCard = (props) => {
           <div className="productPrice">Price RS : {props.price}</div>
         </div>
         <div className="s3 w3-col productControls">
-          <div className="totalPrice">0</div>
+          <div className="totalPrice">
+            {getDuplicateCount(cartData, props.id) * props.price}
+          </div>
           <div className="controlButtons w3-row">
             <button
               onClick={handleProductRemoveClick}
@@ -36,7 +58,7 @@ const ProductCard = (props) => {
               className="s4 w3-col"
               style={{ textAlign: "center", color: "#148ea4" }}
             >
-              0
+              {getDuplicateCount(cartData, props.id)}
             </div>
             <button
               onClick={handleProductAddClick}

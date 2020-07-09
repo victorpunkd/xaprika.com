@@ -7,6 +7,8 @@ import bannerData from "./BannerDataReducer";
 import primaryCategoryData from "./PrimaryCategoryDataReducer";
 import subCategoryData from "./SubCategoriesUnderPrimaryCategoryReducer";
 import productData from "./ProductDataReducer";
+import cartData from "./CartDataReducer";
+import productsUnderCart from "./ProductsInCartReducer";
 
 export default combineReducers({
   activePage,
@@ -17,4 +19,6 @@ export default combineReducers({
   primaryCategoryData,
   subCategoryData,
   productData,
+  cartData,
+  productsUnderCart,
 });

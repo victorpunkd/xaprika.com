@@ -15,7 +15,7 @@ import Home from "./Components/Home/Home";
 import ProductsUnderPrimaryCategory from "./Components/ProductsUnderPrimaryCategory/ProductsUnderPrimaryCategory";
 import Cart from "./Components/Cart/Cart";
 import Checkout from "./Components/Checkout/Checkout";
-import { Footer } from "./Components/Footer/Footer";
+import Footer from "./Components/Footer/Footer";
 
 const App = () => {
   const { isSideBarVisible, isUerOptionSideBarVisible } = useSelector(

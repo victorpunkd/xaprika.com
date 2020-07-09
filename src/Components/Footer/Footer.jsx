@@ -1,40 +1,41 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import "./Footer.css";
 
-export class Footer extends Component {
-  render() {
-    return (
-      <div className="footerContainer">
-        <div className="footerItemsContainer">
-          <div className="w3-row footerItems">
+const Footer = () => {
+  const { cartData } = useSelector((state) => state);
+
+  return (
+    <div className="footerContainer">
+      <div className="footerItemsContainer">
+        <div className="w3-row footerItems">
+          <div className="s4 w3-col footerItemSection">
+            <div className="footerItemIcon">
+              <i className="fa fa-list-alt" aria-hidden="true"></i>
+            </div>
+            <div className="footerItemText">Categories</div>
+          </div>
+          <Link to="/">
             <div className="s4 w3-col footerItemSection">
               <div className="footerItemIcon">
-                <i className="fa fa-list-alt" aria-hidden="true"></i>
+                <i className="fa fa-home" aria-hidden="true"></i>
               </div>
-              <div className="footerItemText">Categories</div>
+              <div className="footerItemText">Home</div>
             </div>
-            <Link to="/">
-              <div className="s4 w3-col footerItemSection">
-                <div className="footerItemIcon">
-                  <i className="fa fa-home" aria-hidden="true"></i>
-                </div>
-                <div className="footerItemText">Home</div>
+          </Link>
+          <Link to="/Cart">
+            <div className="s4 w3-col footerItemSection">
+              <div className="footerItemIcon">
+                <i className="fa fa-shopping-cart" aria-hidden="true"></i>
               </div>
-            </Link>
-            <Link to="/Cart">
-              <div className="s4 w3-col footerItemSection">
-                <div className="footerItemIcon">
-                  <i className="fa fa-shopping-cart" aria-hidden="true"></i>
-                </div>
-                <div className="footerItemText">Cart</div>
-              </div>
-            </Link>
-          </div>
+              <div className="footerItemText">Cart ({cartData.length})</div>
+            </div>
+          </Link>
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default Footer;

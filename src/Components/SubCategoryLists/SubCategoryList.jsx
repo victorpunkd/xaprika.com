@@ -12,12 +12,10 @@ const SubCategoryList = (props) => {
     dispatched(fetchSecondaryCategoryData(props.categoryLink));
   }, [props.categoryLink, dispatched]);
 
-  if (!subCategoryData.isLoaded) {
-    return <Loader />;
-  } else {
-    return (
-      <div className="subCategoryListContainer">
-        <div className="subCategoryListHeading">Shop by Sub Category</div>
+  return (
+    <div className="subCategoryListContainer">
+      <div className="subCategoryListHeading">Shop by Sub Category</div>
+      {subCategoryData.isLoaded ? (
         <div className="subCategories w3-row-padding">
           {subCategoryData.data.map((data) => (
             <div className="w3-col s4 categoryContainer">
@@ -31,9 +29,11 @@ const SubCategoryList = (props) => {
             </div>
           ))}
         </div>
-      </div>
-    );
-  }
+      ) : (
+        <Loader />
+      )}
+    </div>
+  );
 };
 
 export default SubCategoryList;
