@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "./ProductsUnderPrimaryCategory.css";
-import Loader from "../Loader/Loader";
 import CurrentPageNameHeader from "../CurrentPageNameHeader/CurrentPageNameHeader";
 import SubCategoryList from "../SubCategoryLists/SubCategoryList";
 import ProductList from "../ProductList/ProductList";
@@ -20,11 +19,7 @@ const ProductsUnderPrimaryCategory = ({ match }) => {
         <SubCategoryList categoryLink={match.params.categoryLink} />
       </div>
       <div className="primaryCategoryProducts">
-        {productData.isLoaded ? (
-          <ProductList products={productData.data} />
-        ) : (
-          <Loader />
-        )}
+        <ProductList products={productData} />
       </div>
     </div>
   );

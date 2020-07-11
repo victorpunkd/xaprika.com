@@ -5,10 +5,18 @@ export const fetchProductData = (categoryLink) => (dispatch) => {
     `${getApiEndpoint()}/api/getAllProductUnderPrimaryCategory/${categoryLink}`
   )
     .then((res) => res.json())
-    .then((posts) =>
-      dispatch({
-        type: "fetchProductData",
-        payLoad: posts,
-      })
+    .then(
+      (posts) => {
+        dispatch({
+          type: "fetchProductData",
+          payLoad: posts,
+        });
+      },
+      (error) => {
+        dispatch({
+          type: "fetchProductDataError",
+          payLoad: error,
+        });
+      }
     );
 };

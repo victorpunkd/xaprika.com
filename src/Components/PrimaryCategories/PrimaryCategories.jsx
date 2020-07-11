@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "./PrimaryCategories.css";
 import Loader from "../Loader/Loader";
+import Error from "../Error/Error";
+import NoDataFound from "../NoDataFound/NoDataFound";
 import CategoryCard from "../CategoryCard/CategoryCard";
 import { fetchPrimarycategoryData } from "../../Actions/FetchPrimaryCategoryData";
 
@@ -12,27 +14,32 @@ const PrimaryCategories = () => {
     dispatched(fetchPrimarycategoryData());
   }, [dispatched]);
 
-  if (!primaryCategoryData.isLoaded) {
-    return <Loader />;
-  } else {
-    return (
-      <div className="primaryCategoryContanier w3-row-padding">
-        <div className="primaryCategoryHeading">Shop by Category</div>
-        {primaryCategoryData.data.map((data) => (
-          <div className="s6 w3-col categoryContainer">
-            <CategoryCard
-              key={data.category_id}
-              categoryName={data.category_name}
-              categoryImage={data.category_image}
-              categoryId={data.category_id}
-              categoryLink={data.category_link}
-              isPrimaryCategory={true}
-            />
-          </div>
-        ))}
-      </div>
-    );
-  }
+  return (
+    <div className="primaryCategoryContanier w3-row-padding">
+      <div className="primaryCategoryHeading">Shop by Category</div>
+      {primaryCategoryData.isLoaded ? (
+        primaryCategoryData.error ? (
+          <Error errorMessage={primaryCategoryData.errorMessage} />
+        ) : primaryCategoryData.data.length ? (
+          primaryCategoryData.data.map((data) => (
+            <div key={data.category_id} className="s6 w3-col categoryContainer">
+              <CategoryCard
+                categoryName={data.category_name}
+                categoryImage={data.category_image}
+                categoryId={data.category_id}
+                categoryLink={data.category_link}
+                isPrimaryCategory={true}
+              />
+            </div>
+          ))
+        ) : (
+          <NoDataFound />
+        )
+      ) : (
+        <Loader />
+      )}
+    </div>
+  );
 };
 
 export default PrimaryCategories;

@@ -17,8 +17,9 @@ const Cart = () => {
     <div className="cartContainer w3-animate-opacity">
       <CurrentPageNameHeader categoryName="Cart" />
       <div>
-        {console.log(productsUnderCart.data)}
-        {productsUnderCart.isLoaded ? (
+        {console.log(productsUnderCart)}
+        {productsUnderCart.error && "Sorry we faced some error"}
+        {productsUnderCart.isLoaded && !productsUnderCart.error ? (
           <ProductList products={productsUnderCart.data} />
         ) : (
           <Loader />

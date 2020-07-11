@@ -1,6 +1,8 @@
 .sideBarContainer {
   width: 240px;
   height: 85vh;
+  max-height: 85vh;
+  overflow-y: scroll;
   background-color: white;
   position: absolute;
   left: 0%;
@@ -31,6 +33,14 @@
   color: rgb(88, 88, 88);
   font-size: 15px;
   cursor: pointer;
+}
+
+.primaryCategoryNameInSideBar {
+  white-space: nowrap;
+  width: 100%;
+  overflow: hidden;
+  o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
 }
 
 .primaryTextColor {

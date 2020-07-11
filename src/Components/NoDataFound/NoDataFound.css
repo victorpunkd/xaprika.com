@@ -1,0 +1,9 @@
+.noDataFoundContainer {
+  width: 100%;
+}
+
+.noDataFoundImage {
+  margin: 0;
+  width: 150px;
+  height: 150px;
+}

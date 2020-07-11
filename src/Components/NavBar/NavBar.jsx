@@ -35,7 +35,7 @@ const NavBar = () => {
           </div>
           <div className="s4 w3-col w3-third userIconSection navBarItem">
             {localStorage.getItem("userPhoneNo") === null ? (
-              <Link to="UserLogin">
+              <Link to="/UserLogin">
                 <i className="fa fa-user-circle" aria-hidden="true"></i>
               </Link>
             ) : (
