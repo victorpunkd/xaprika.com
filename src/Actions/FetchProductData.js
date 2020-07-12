@@ -20,3 +20,26 @@ export const fetchProductData = (categoryLink) => (dispatch) => {
       }
     );
 };
+
+export const fetchProductDataUnderSecondaryCategory = (
+  secondaryCategoryLink
+) => (dispatch) => {
+  fetch(
+    `${getApiEndpoint()}/api/getAllProductUnderSecondaryCategory/${secondaryCategoryLink}`
+  )
+    .then((res) => res.json())
+    .then(
+      (posts) => {
+        dispatch({
+          type: "fetchProductData",
+          payLoad: posts,
+        });
+      },
+      (error) => {
+        dispatch({
+          type: "fetchProductDataError",
+          payLoad: error,
+        });
+      }
+    );
+};

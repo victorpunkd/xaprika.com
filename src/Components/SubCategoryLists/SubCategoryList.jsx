@@ -32,6 +32,8 @@ const SubCategoryList = (props) => {
                     categoryName={data.sec_category_name}
                     categoryImage={data.sec_category_image}
                     categoryId={data.sec_category_id}
+                    categoryLink={data.category_link}
+                    subCategoryLink={data.sec_category_link}
                     isPrimaryCategory={false}
                   />
                 </div>

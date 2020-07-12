@@ -56,4 +56,9 @@
 .subCategoryItem {
   width: 80%;
   border-bottom: 0.5px solid #bdbdbd;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
 }

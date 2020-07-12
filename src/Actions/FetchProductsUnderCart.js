@@ -13,6 +13,7 @@ export const fetchProductsUnderCart = (productIds) => (dispatch) => {
       (error) => {
         dispatch({
           type: "fetchProductsUnderCartError",
+          payLoad: error,
         });
       }
     );

@@ -6,7 +6,11 @@ const CategoryCard = (props) => {
   return (
     <Link
       style={{ textDecoration: "none" }}
-      to={`/Products-Category/${props.categoryLink}`}
+      to={
+        props.isPrimaryCategory
+          ? `/Products-Category/${props.categoryLink}`
+          : `/Products-SubCategory/${props.categoryLink}/${props.subCategoryLink}`
+      }
     >
       <div className="categoryCard w3-card">
         <div className="categoryImageContainer">

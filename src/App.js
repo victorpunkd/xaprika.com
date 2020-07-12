@@ -13,6 +13,7 @@ import AddressManagement from "./Components/AddressManagement/AddressManagement"
 import OrderHistory from "./Components/OrderHistory/OrderHistory";
 import Home from "./Components/Home/Home";
 import ProductsUnderPrimaryCategory from "./Components/ProductsUnderPrimaryCategory/ProductsUnderPrimaryCategory";
+import ProductsUnderSubCategory from "./Components/ProductsUnderSubCategory/ProductsUnderSubCategory";
 import Cart from "./Components/Cart/Cart";
 import Checkout from "./Components/Checkout/Checkout";
 import Footer from "./Components/Footer/Footer";
@@ -45,6 +46,10 @@ const App = () => {
               <Route
                 path="/Products-Category/:categoryLink"
                 component={ProductsUnderPrimaryCategory}
+              />
+              <Route
+                path="/Products-SubCategory/:primaryCategoryLink/:categoryLink"
+                component={ProductsUnderSubCategory}
               />
               <Route path="/Cart" component={Cart} />
               <Route path="/Checkout" component={Checkout} />
