@@ -1,0 +1,19 @@
+.alertMessageContainer {
+  position: fixed;
+  top: 80px;
+  width: 370px;
+  z-index: 20;
+  background-color: #148ea4;
+  color: white;
+  padding: 10px 10px;
+  text-align: left;
+  font-size: 20px;
+}
+
+/* For all size of mobile screens, screen width 600px or smaller */
+
+@media screen and (max-width: 600px) {
+  .alertMessageContainer {
+    width: 100%;
+  }
+}

@@ -17,16 +17,20 @@ import ProductsUnderSubCategory from "./Components/ProductsUnderSubCategory/Prod
 import Cart from "./Components/Cart/Cart";
 import Checkout from "./Components/Checkout/Checkout";
 import Footer from "./Components/Footer/Footer";
+import AlertMessage from "./Components/AlertMessage/AlertMessage";
 
 const App = () => {
-  const { isSideBarVisible, isUerOptionSideBarVisible } = useSelector(
-    (state) => state
-  );
+  const {
+    isSideBarVisible,
+    isUerOptionSideBarVisible,
+    alertMessage,
+  } = useSelector((state) => state);
   const dispatched = useDispatch();
   return (
     <Router>
       <div className="App">
         <div className="appContainer">
+          {alertMessage.isVisible && <AlertMessage />}
           <NavBar />
           {isSideBarVisible && <SideBar />}
           {isUerOptionSideBarVisible && <UserOptionSideBar />}

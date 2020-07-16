@@ -9,6 +9,7 @@ import subCategoryData from "./SubCategoriesUnderPrimaryCategoryReducer";
 import productData from "./ProductDataReducer";
 import cartData from "./CartDataReducer";
 import productsUnderCart from "./ProductsInCartReducer";
+import alertMessage from "./AlertMessageReducer";
 
 export default combineReducers({
   activePage,
@@ -21,4 +22,5 @@ export default combineReducers({
   productData,
   cartData,
   productsUnderCart,
+  alertMessage,
 });

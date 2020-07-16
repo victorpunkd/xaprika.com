@@ -1,16 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import "./UserLogin.css";
 import CurrentPageNameHeader from "../CurrentPageNameHeader/CurrentPageNameHeader";
 import { TextBoxComponent } from "../TextBoxComponent/TextBoxComponent";
+import { showAlertMessage } from "../../Actions/AlertMessageAction";
 
 const UserLogin = () => {
+  const [phoneNo, setPhoneNo] = useState("");
+  const dispatched = useDispatch();
   const handleTextBoxCompoenetOnBlur = (name, text) => {
-    console.log(name, text);
+    setPhoneNo(text);
   };
 
   const handleLoginSignupClick = () => {
-    alert("you are logged in");
-    localStorage.setItem("userPhoneNo", "9832634856");
+    if (phoneNo === "") {
+      dispatched(showAlertMessage("The phone no is not valid"));
+    } else {
+      //do loginb
+    }
   };
 
   const phoneNoRegex = /^\d{10}$/;
@@ -32,7 +39,7 @@ const UserLogin = () => {
         <div className="updateButtonContainer">
           <button
             onClick={handleLoginSignupClick}
-            className="primaryButton w3-block"
+            className={`primaryButton w3-block`}
           >
             Login/Signup
           </button>

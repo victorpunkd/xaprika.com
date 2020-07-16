@@ -10,6 +10,9 @@ const Cart = () => {
   const dispatched = useDispatch();
   const { productsUnderCart, cartData } = useSelector((state) => state);
   useEffect(() => {
+    if (!cartData.length) {
+      dispatched(fetchProductsUnderCart([0, 0]));
+    }
     dispatched(fetchProductsUnderCart(cartData));
   }, [cartData, dispatched]);
   let getTotalAmount = (productsUnderCart) => {
@@ -53,7 +56,14 @@ const Cart = () => {
         </div>
         <div className="s3 w3-col">
           <Link to="/Checkout">
-            <button className="primaryButton">Checkout</button>
+            <button
+              disabled={getTotalAmount(productsUnderCart) <= 0 ? true : false}
+              className={`primaryButton ${
+                getTotalAmount(productsUnderCart) <= 0 && "disabledButton"
+              }`}
+            >
+              Checkout
+            </button>
           </Link>
         </div>
       </div>
