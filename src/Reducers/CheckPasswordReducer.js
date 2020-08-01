@@ -1,26 +1,27 @@
-let subCategoryState = {
+let checkPassword = {
   isLoaded: false,
   data: [],
   error: false,
   errorMessage: [],
 };
-const subCategoryData = (state = subCategoryState, action) => {
+
+const checkPasswordReducer = (state = checkPassword, action) => {
   switch (action.type) {
-    case "fetchSecondaryCategoryData":
+    case "checkPassword":
       return {
         isLoaded: true,
         data: action.payLoad,
         error: false,
         errorMessage: [],
       };
-    case "fetchSecondaryCategoryDataError":
+    case "checkPasswordError":
       return {
         isLoaded: true,
         data: [],
         error: true,
         errorMessage: action.payLoad,
       };
-    case "clearSecondaryCategoryData":
+    case "clearcheckPassword":
       return {
         isLoaded: false,
         data: [],
@@ -32,4 +33,4 @@ const subCategoryData = (state = subCategoryState, action) => {
   }
 };
 
-export default subCategoryData;
+export default checkPasswordReducer;

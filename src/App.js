@@ -9,6 +9,8 @@ import SideBar from "./Components/SideBar/SideBar";
 import UserOptionSideBar from "./Components/UserOptionsSideBar/UserOptionSidebar";
 import UserInformation from "./Components/UserInformation/UserInformation";
 import UserLogin from "./Components/UserLogin/UserLogin";
+import PasswordOrOTP from "./Components/PasswordOrOTP/PasswordOrOTP";
+import UserRegister from "./Components/UserRegister/UserRegister";
 import AddressManagement from "./Components/AddressManagement/AddressManagement";
 import OrderHistory from "./Components/OrderHistory/OrderHistory";
 import Home from "./Components/Home/Home";
@@ -58,6 +60,11 @@ const App = () => {
               <Route path="/Cart" component={Cart} />
               <Route path="/Checkout" component={Checkout} />
               <Route path="/UserLogin" component={UserLogin} />
+              <Route path="/Password-OTP/:phoneNo" component={PasswordOrOTP} />
+              <Route
+                path="/User-Registration/:phoneNo/:otp"
+                component={UserRegister}
+              />
               <Route path="/UserInformation" component={UserInformation} />
               <Route path="/AddressManagement" component={AddressManagement} />
               <Route path="/OrderHistory" component={OrderHistory} />

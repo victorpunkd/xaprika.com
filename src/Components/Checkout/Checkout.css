@@ -77,16 +77,6 @@
   padding: 10px 10px;
 }
 
-.linkButton {
-  border: none;
-  background-color: white;
-  color: #148ea4;
-  font-size: 15px;
-  font-weight: 800;
-  text-decoration: underline;
-  cursor: pointer;
-}
-
 .paymentOption {
   margin-top: 10%;
 }

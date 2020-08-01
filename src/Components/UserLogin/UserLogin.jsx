@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import "./UserLogin.css";
 import CurrentPageNameHeader from "../CurrentPageNameHeader/CurrentPageNameHeader";
 import { TextBoxComponent } from "../TextBoxComponent/TextBoxComponent";
 import { showAlertMessage } from "../../Actions/AlertMessageAction";
 
 const UserLogin = () => {
+  const history = useHistory();
   const [phoneNo, setPhoneNo] = useState("");
   const dispatched = useDispatch();
   const handleTextBoxCompoenetOnBlur = (name, text) => {
@@ -16,7 +18,7 @@ const UserLogin = () => {
     if (phoneNo === "") {
       dispatched(showAlertMessage("The phone no is not valid"));
     } else {
-      //do loginb
+      history.push(`/Password-OTP/${phoneNo}`);
     }
   };
 

@@ -1,26 +1,27 @@
-let subCategoryState = {
+let isPhoneNoExistState = {
   isLoaded: false,
   data: [],
   error: false,
   errorMessage: [],
 };
-const subCategoryData = (state = subCategoryState, action) => {
+
+const isPhoneNoExist = (state = isPhoneNoExistState, action) => {
   switch (action.type) {
-    case "fetchSecondaryCategoryData":
+    case "checkPhoneNoExistence":
       return {
         isLoaded: true,
         data: action.payLoad,
         error: false,
         errorMessage: [],
       };
-    case "fetchSecondaryCategoryDataError":
+    case "checkPhoneNoExistenceError":
       return {
         isLoaded: true,
         data: [],
         error: true,
         errorMessage: action.payLoad,
       };
-    case "clearSecondaryCategoryData":
+    case "clearPhoneNoExistState":
       return {
         isLoaded: false,
         data: [],
@@ -32,4 +33,4 @@ const subCategoryData = (state = subCategoryState, action) => {
   }
 };
 
-export default subCategoryData;
+export default isPhoneNoExist;

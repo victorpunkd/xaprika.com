@@ -71,6 +71,16 @@
   cursor: pointer;
 }
 
+.linkButton {
+  border: none;
+  background-color: white;
+  color: #148ea4;
+  font-size: 15px;
+  font-weight: 800;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 /* For all size of mobile screens, screen width 600px or smaller */
 
 @media screen and (max-width: 600px) {

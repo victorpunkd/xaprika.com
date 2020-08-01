@@ -5,6 +5,7 @@ import Loader from "../Loader/Loader";
 import Error from "../Error/Error";
 import "./SideBar.css";
 import { fetchPrimarycategoryData } from "../../Actions/FetchPrimaryCategoryData";
+import { clearSecondaryCategoryData } from "../../Actions/FetchSecondaryCategoryData";
 import { fetchSecondaryCategoryData } from "../../Actions/FetchSecondaryCategoryData";
 
 const SideBar = () => {
@@ -20,6 +21,7 @@ const SideBar = () => {
 
   const handlePrimaryCategoryClick = (category_id, category_link) => {
     openPrimarycategorySection(category_link);
+    dispatched(clearSecondaryCategoryData());
     dispatched(fetchSecondaryCategoryData(category_link));
   };
 
@@ -91,13 +93,13 @@ const SideBar = () => {
                 </div>
               ))
             ) : (
-              <div style={{ marginLeft: 30 }}>
-                {" "}
-                <Loader />
-              </div>
+              "No data found"
             )
           ) : (
-            "No Data Found"
+            <div style={{ marginLeft: 30 }}>
+              {" "}
+              <Loader />
+            </div>
           )}
         </div>
       </div>

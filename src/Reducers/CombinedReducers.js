@@ -10,6 +10,10 @@ import productData from "./ProductDataReducer";
 import cartData from "./CartDataReducer";
 import productsUnderCart from "./ProductsInCartReducer";
 import alertMessage from "./AlertMessageReducer";
+import isPhoneNoExist from "./IsPhoneNoExistReducer";
+import isOTPSent from "./IsOTPSentReducer";
+import isOTPMatching from "./CheckOTPReducer";
+import checkPasswordReducer from "./CheckPasswordReducer";
 
 export default combineReducers({
   activePage,
@@ -23,4 +27,8 @@ export default combineReducers({
   cartData,
   productsUnderCart,
   alertMessage,
+  isPhoneNoExist,
+  isOTPSent,
+  isOTPMatching,
+  checkPasswordReducer,
 });

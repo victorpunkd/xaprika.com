@@ -18,3 +18,9 @@ export const fetchSecondaryCategoryData = (categoryLink) => (dispatch) => {
       }
     );
 };
+
+export const clearSecondaryCategoryData = () => {
+  return {
+    type: "clearSecondaryCategoryData",
+  };
+};

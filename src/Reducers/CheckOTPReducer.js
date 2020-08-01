@@ -1,26 +1,27 @@
-let subCategoryState = {
+let checkOTP = {
   isLoaded: false,
   data: [],
   error: false,
   errorMessage: [],
 };
-const subCategoryData = (state = subCategoryState, action) => {
+
+const isOTPMatching = (state = checkOTP, action) => {
   switch (action.type) {
-    case "fetchSecondaryCategoryData":
+    case "checkOTP":
       return {
         isLoaded: true,
         data: action.payLoad,
         error: false,
         errorMessage: [],
       };
-    case "fetchSecondaryCategoryDataError":
+    case "checkOTPError":
       return {
         isLoaded: true,
         data: [],
         error: true,
         errorMessage: action.payLoad,
       };
-    case "clearSecondaryCategoryData":
+    case "clearcheckOTP":
       return {
         isLoaded: false,
         data: [],
@@ -32,4 +33,4 @@ const subCategoryData = (state = subCategoryState, action) => {
   }
 };
 
-export default subCategoryData;
+export default isOTPMatching;
