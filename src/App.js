@@ -18,6 +18,7 @@ import ProductsUnderPrimaryCategory from "./Components/ProductsUnderPrimaryCateg
 import ProductsUnderSubCategory from "./Components/ProductsUnderSubCategory/ProductsUnderSubCategory";
 import Cart from "./Components/Cart/Cart";
 import Checkout from "./Components/Checkout/Checkout";
+import OrderConfirmed from "./Components/OrderConfirmed/OrderConfirmed";
 import Footer from "./Components/Footer/Footer";
 import AlertMessage from "./Components/AlertMessage/AlertMessage";
 
@@ -59,6 +60,7 @@ const App = () => {
               />
               <Route path="/Cart" component={Cart} />
               <Route path="/Checkout" component={Checkout} />
+              <Route path="/Confirm-Order" component={OrderConfirmed} />
               <Route path="/UserLogin" component={UserLogin} />
               <Route path="/Password-OTP/:phoneNo" component={PasswordOrOTP} />
               <Route

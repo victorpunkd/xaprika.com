@@ -5,6 +5,7 @@ import "./UserLogin.css";
 import CurrentPageNameHeader from "../CurrentPageNameHeader/CurrentPageNameHeader";
 import { TextBoxComponent } from "../TextBoxComponent/TextBoxComponent";
 import { showAlertMessage } from "../../Actions/AlertMessageAction";
+import { useEffect } from "react";
 
 const UserLogin = () => {
   const history = useHistory();
@@ -21,6 +22,14 @@ const UserLogin = () => {
       history.push(`/Password-OTP/${phoneNo}`);
     }
   };
+
+  useEffect(() => {
+    if (sessionStorage.getItem("loginFromCheckout") !== null) {
+      dispatched(
+        showAlertMessage("You need to login/signup to place an order")
+      );
+    }
+  }, [dispatched]);
 
   const phoneNoRegex = /^\d{10}$/;
   return (

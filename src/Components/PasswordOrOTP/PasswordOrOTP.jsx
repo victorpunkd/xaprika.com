@@ -33,9 +33,16 @@ const PasswordOROTP = ({ match }) => {
   const [password, setPassword] = useState("");
   const [otp, setotp] = useState("");
 
+  // main use effect
   useEffect(() => {
     dispatched(clearCheckPhoneNoExistData());
     dispatched(checkIfPhoneNoExist(match.params.phoneNo));
+    return function cleanup() {
+      dispatched(clearSendOTP());
+      dispatched(clearCheckPasswordAction());
+      dispatched(clearcheckOTP());
+      dispatched(clearCheckPhoneNoExistData());
+    };
   }, [match.params.phoneNo, dispatched]);
 
   const startAndEndTimer = useCallback(() => {
@@ -100,7 +107,11 @@ const PasswordOROTP = ({ match }) => {
     if (checkPasswordReducer.isLoaded && !checkPasswordReducer.error) {
       if (checkPasswordReducer.data.length) {
         localStorage.setItem("userPhoneNo", match.params.phoneNo);
-        history.push(`/`);
+        if (sessionStorage.getItem("loginFromCheckout") !== null) {
+          history.push(`/checkout`);
+        } else {
+          history.push(`/`);
+        }
       } else {
         dispatched(showAlertMessage("Password is not matching"));
       }
@@ -171,6 +182,12 @@ const PasswordOROTP = ({ match }) => {
                     type="password"
                     onBlur={handleTextBoxCompoenetOnBlur}
                   />
+                  <span
+                    className="linkButton"
+                    onClick={() => alert("Feature coming soon")}
+                  >
+                    Forgot Password?
+                  </span>
                 </div>
               ) : (
                 <div>

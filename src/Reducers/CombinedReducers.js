@@ -14,6 +14,9 @@ import isPhoneNoExist from "./IsPhoneNoExistReducer";
 import isOTPSent from "./IsOTPSentReducer";
 import isOTPMatching from "./CheckOTPReducer";
 import checkPasswordReducer from "./CheckPasswordReducer";
+import isInsertUserSuccessfullReducer from "./InsertUserDataReducer";
+import finalCheckoutCalculationReducer from "./FinalCheckoutCalculationReducer";
+import deliveryAddressReducer from "./DeliveryAddressReducer";
 
 export default combineReducers({
   activePage,
@@ -31,4 +34,7 @@ export default combineReducers({
   isOTPSent,
   isOTPMatching,
   checkPasswordReducer,
+  isInsertUserSuccessfullReducer,
+  finalCheckoutCalculationReducer,
+  deliveryAddressReducer,
 });
