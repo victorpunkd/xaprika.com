@@ -17,6 +17,9 @@ import checkPasswordReducer from "./CheckPasswordReducer";
 import isInsertUserSuccessfullReducer from "./InsertUserDataReducer";
 import finalCheckoutCalculationReducer from "./FinalCheckoutCalculationReducer";
 import deliveryAddressReducer from "./DeliveryAddressReducer";
+import confirmOrderReducer from "./ConfirmOrderReducer";
+import ordersInfoReducer from "./OrdersInfoReducer";
+import addressInfoReducer from "./AddressInfoReducer";
 
 export default combineReducers({
   activePage,
@@ -37,4 +40,7 @@ export default combineReducers({
   isInsertUserSuccessfullReducer,
   finalCheckoutCalculationReducer,
   deliveryAddressReducer,
+  confirmOrderReducer,
+  ordersInfoReducer,
+  addressInfoReducer,
 });

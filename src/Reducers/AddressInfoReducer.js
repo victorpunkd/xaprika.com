@@ -1,26 +1,26 @@
-let productsUnderCartState = {
+let addressState = {
   isLoaded: false,
   data: [],
   error: false,
   errorMessage: [],
 };
-const productsUnderCart = (state = productsUnderCartState, action) => {
+const addressInfoReducer = (state = addressState, action) => {
   switch (action.type) {
-    case "fetchProductsUnderCart":
+    case "fetchAddressInfo":
       return {
         isLoaded: true,
         data: action.payLoad,
         error: false,
         errorMessage: [],
       };
-    case "fetchProductsUnderCartError":
+    case "fetchAddressInfoError":
       return {
         isLoaded: true,
         data: [],
         error: true,
         errorMessage: action.payLoad,
       };
-    case "clearFetchProductsUnderCart":
+    case "clearFetchAddressInfo":
       return {
         isLoaded: false,
         data: [],
@@ -32,4 +32,4 @@ const productsUnderCart = (state = productsUnderCartState, action) => {
   }
 };
 
-export default productsUnderCart;
+export default addressInfoReducer;

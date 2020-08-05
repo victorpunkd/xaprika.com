@@ -24,6 +24,10 @@ const Checkout = () => {
     history.push(`/AddressManagement`);
   };
 
+  const handlePaymentOptionChange = () => {
+    // todo need to implement when net pyment will come
+  };
+
   const handlePlaceOrder = () => {
     if (
       finalCheckoutCalculationReducer.data[
@@ -65,14 +69,14 @@ const Checkout = () => {
             <div className="priceBreakup">
               {finalCheckoutCalculationReducer.data.map((element, index) =>
                 finalCheckoutCalculationReducer.data.length - 1 !== index ? (
-                  <div className="w3-row">
+                  <div key={index} className="w3-row">
                     <div className="s8 w3-col priceType">{element.header}</div>
                     <div className="s4 w3-col priceAmount">
                       {element.totalPrice} INR
                     </div>
                   </div>
                 ) : (
-                  <div className="w3-row totalAmountContainer">
+                  <div key={index} className="w3-row totalAmountContainer">
                     <div className="s8 w3-col totalType">{element.header}</div>
                     <div className="s4 w3-col totalAmount">
                       {element.totalPrice} INR
@@ -109,7 +113,7 @@ const Checkout = () => {
                   <span className="radioButtonName">Cash on Delivery</span>
                   <input
                     type="radio"
-                    onChange=""
+                    onChange={handlePaymentOptionChange}
                     checked="checked"
                     name="radio"
                   />
@@ -122,7 +126,7 @@ const Checkout = () => {
               style={{ marginTop: "10%" }}
               onClick={handlePlaceOrder}
             >
-              Make Payment
+              Place Order
             </button>
           </div>
         )

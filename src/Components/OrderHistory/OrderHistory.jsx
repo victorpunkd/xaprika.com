@@ -1,34 +1,54 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import "./OrderHistory.css";
 import CurrentPageNameHeader from "../CurrentPageNameHeader/CurrentPageNameHeader";
+import OrderInfoCard from "../OrderInfoCard/OrderInfoCard";
+import Loader from "../Loader/Loader";
+import Error from "../Error/Error";
+import NoDataFound from "../NoDataFound/NoDataFound";
+import { fetchOrdersInfo } from "../../Actions/FetchOrdersInfo";
+import { clearFetchOrdersInfo } from "../../Actions/FetchOrdersInfo";
 
 const OrderHistory = () => {
+  const { ordersInfoReducer } = useSelector((state) => state);
+  const dispatched = useDispatch();
+  const history = useHistory();
+
+  useEffect(() => {
+    if (localStorage.getItem("userPhoneNo") === null) {
+      history.pushState("/");
+      return;
+    }
+    dispatched(clearFetchOrdersInfo());
+    dispatched(fetchOrdersInfo(localStorage.getItem("userPhoneNo")));
+  }, [dispatched, history]);
+
   return (
     <div className="orderHistoryContainer">
       <CurrentPageNameHeader categoryName="Order History" />
-      <div className="orderHistoryBody">
-        <div className="orderHistoryCard w3-card">
-          <div className="w3-row orderInfoItem">
-            <div className="s6 w3-col infoType">Order ID -</div>
-            <div className="s6 w3-col actualInfo">100001</div>
+      {ordersInfoReducer.isLoaded ? (
+        ordersInfoReducer.error ? (
+          <Error errorMessage={ordersInfoReducer.errorMessage} />
+        ) : ordersInfoReducer.data.length ? (
+          <div className="orderHistoryBody">
+            {console.log(ordersInfoReducer.data)}
+            {ordersInfoReducer.data.map((data) => (
+              <OrderInfoCard
+                key={data.order_Id}
+                orderId={data.order_Id}
+                amount={data.total_amount}
+                orderDate={data.order_receive_date}
+                orderStatus={data.order_status}
+              />
+            ))}
           </div>
-          <div className="w3-row orderInfoItem">
-            <div className="s6 w3-col infoType">Amount -</div>
-            <div className="s6 w3-col actualInfo">460 INR</div>
-          </div>
-          <div className="w3-row orderInfoItem">
-            <div className="s6 w3-col infoType">Order Date -</div>
-            <div className="s6 w3-col actualInfo">05/05/2020</div>
-          </div>
-          <div className="w3-row orderInfoItem">
-            <div className="s6 w3-col infoType">Order Status -</div>
-            <div className="s6 w3-col actualInfo">Completed</div>
-          </div>
-          <button className="primaryButton w3-block" style={{ marginTop: 15 }}>
-            Show Details
-          </button>
-        </div>
-      </div>
+        ) : (
+          <NoDataFound />
+        )
+      ) : (
+        <Loader />
+      )}
     </div>
   );
 };

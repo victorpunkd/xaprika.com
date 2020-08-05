@@ -18,3 +18,9 @@ export const fetchProductsUnderCart = (productIds) => (dispatch) => {
       }
     );
 };
+
+export const clearFetchProductsUnderCart = () => {
+  return {
+    type: "clearFetchProductsUnderCart",
+  };
+};

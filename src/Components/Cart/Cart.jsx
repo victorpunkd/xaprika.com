@@ -5,11 +5,13 @@ import { Link } from "react-router-dom";
 import CurrentPageNameHeader from "../CurrentPageNameHeader/CurrentPageNameHeader";
 import ProductList from "../ProductList/ProductList";
 import { fetchProductsUnderCart } from "../../Actions/FetchProductsUnderCart";
+import { clearFetchProductsUnderCart } from "../../Actions/FetchProductsUnderCart";
 
 const Cart = () => {
   const dispatched = useDispatch();
   const { productsUnderCart, cartData } = useSelector((state) => state);
   useEffect(() => {
+    dispatched(clearFetchProductsUnderCart());
     if (!cartData.length) {
       dispatched(fetchProductsUnderCart([0, 0]));
     }

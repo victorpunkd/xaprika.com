@@ -5,6 +5,8 @@ const cartData = (state = [], action) => {
     case "removeProductFromCart":
       const index = state.findIndex((item) => item === action.payLoad);
       return state.filter((_, i) => i !== index);
+    case "clearCart":
+      return [];
     default:
       return state;
   }

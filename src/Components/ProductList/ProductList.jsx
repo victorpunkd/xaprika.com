@@ -22,7 +22,7 @@ const ProductList = (props) => {
                 <ProductCard
                   name={data.product_name}
                   brand={data.product_brand}
-                  price={data.product_mrp}
+                  price={data.product_sale_price}
                   picture={data.product_image}
                   id={data.product_id}
                 />

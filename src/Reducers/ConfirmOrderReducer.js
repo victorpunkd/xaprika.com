@@ -1,26 +1,27 @@
-let productsUnderCartState = {
+let confirmOrder = {
   isLoaded: false,
   data: [],
   error: false,
   errorMessage: [],
 };
-const productsUnderCart = (state = productsUnderCartState, action) => {
+
+const confirmOrderReducer = (state = confirmOrder, action) => {
   switch (action.type) {
-    case "fetchProductsUnderCart":
+    case "confirmOrder":
       return {
         isLoaded: true,
         data: action.payLoad,
         error: false,
         errorMessage: [],
       };
-    case "fetchProductsUnderCartError":
+    case "confirmOrderError":
       return {
         isLoaded: true,
         data: [],
         error: true,
         errorMessage: action.payLoad,
       };
-    case "clearFetchProductsUnderCart":
+    case "clearConfirmOrder":
       return {
         isLoaded: false,
         data: [],
@@ -32,4 +33,4 @@ const productsUnderCart = (state = productsUnderCartState, action) => {
   }
 };
 
-export default productsUnderCart;
+export default confirmOrderReducer;
