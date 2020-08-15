@@ -9,7 +9,6 @@ const ProductList = (props) => {
   return (
     <div className="productListContainer">
       <div className="w3-row">
-        {console.log(props.products)}
         {props.products.isLoaded ? (
           props.products.error ? (
             <Error errorMessage={props.products.errorMessage} />

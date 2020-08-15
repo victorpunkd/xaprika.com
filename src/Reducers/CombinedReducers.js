@@ -20,6 +20,10 @@ import deliveryAddressReducer from "./DeliveryAddressReducer";
 import confirmOrderReducer from "./ConfirmOrderReducer";
 import ordersInfoReducer from "./OrdersInfoReducer";
 import addressInfoReducer from "./AddressInfoReducer";
+import addAdressReducer from "./AddAddressReducer";
+import deleteAdressReducer from "./DeleteAddressReducer";
+import makeAddressDefaultReducer from "./MakeAddressDefaultReducer";
+import updateAddressReducer from "./UpdateAddressReducer";
 
 export default combineReducers({
   activePage,
@@ -43,4 +47,8 @@ export default combineReducers({
   confirmOrderReducer,
   ordersInfoReducer,
   addressInfoReducer,
+  addAdressReducer,
+  deleteAdressReducer,
+  makeAddressDefaultReducer,
+  updateAddressReducer,
 });

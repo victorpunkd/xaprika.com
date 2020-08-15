@@ -43,3 +43,9 @@ export const fetchProductDataUnderSecondaryCategory = (
       }
     );
 };
+
+export const clearProductData = () => {
+  return {
+    type: "clearProuctData",
+  };
+};

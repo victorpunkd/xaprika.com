@@ -15,6 +15,8 @@ export class TextBoxComponent extends Component {
     this.setState({ text: event.target.value });
   };
 
+  // todo component di update should be implemented
+
   handleOnBlur = () => {
     this.setState({ text: this.state.text.trim() });
     if (this.state.text.trim() !== "") {

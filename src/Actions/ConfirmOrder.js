@@ -16,9 +16,6 @@ export const confirmOrderAction = (
   recieversPhoneNo,
   cartData
 ) => (dispatch) => {
-  console.log(
-    `${getApiEndpoint()}/api/confirmOrder/${phoneNo}/${itemCount}/${totalAmount}/${discountAmount}/${deliveryCharges}/${otherCharges}/${deliveryAddress}/${area}/${city}/${pinCode}/${state}/${landmark}/${recieversPhoneNo}/${cartData}`
-  );
   fetch(
     `${getApiEndpoint()}/api/confirmOrder/${phoneNo}/${itemCount}/${totalAmount}/${discountAmount}/${deliveryCharges}/${otherCharges}/${deliveryAddress}/${area}/${city}/${pinCode}/${state}/${landmark}/${recieversPhoneNo}/${[
       ...cartData,

@@ -7,14 +7,16 @@ import { TextBoxComponent } from "../TextBoxComponent/TextBoxComponent";
 import { showAlertMessage } from "../../Actions/AlertMessageAction";
 import { checkOTP } from "../../Actions/CheckOTP";
 import { clearcheckOTP } from "../../Actions/CheckOTP";
-import { insertUserAction } from "../../Actions/InsertUser";
-import { clearInsertUserAction } from "../../Actions/InsertUser";
+import {
+  insertUserAction,
+  clearInsertUserAction,
+} from "../../Actions/InsertUser";
 import Loader from "../Loader/Loader";
 
 const UserRegister = ({ match }) => {
-  const phoneNoRegex = /^\d{10}$/;
-  const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  const nameRegex = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/;
+  const phoneNoRegex = /^\d{10}$/; // only supports 10 digit number
+  const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/; // Perfect for email format ok tested
+  const nameRegex = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/; // takes only alphabets but need to limit the characters
   const history = useHistory();
   const dispatched = useDispatch();
   const { isOTPMatching, isInsertUserSuccessfullReducer } = useSelector(
@@ -55,7 +57,6 @@ const UserRegister = ({ match }) => {
       isInsertUserSuccessfullReducer.isLoaded &&
       !isInsertUserSuccessfullReducer.error
     ) {
-      console.log(isInsertUserSuccessfullReducer);
       if (isInsertUserSuccessfullReducer.data.code === 1) {
         localStorage.setItem("userPhoneNo", match.params.phoneNo);
         if (sessionStorage.getItem("loginFromCheckout") !== null) {
@@ -68,12 +69,6 @@ const UserRegister = ({ match }) => {
           showAlertMessage(isInsertUserSuccessfullReducer.data.message)
         );
       }
-    } else {
-      console.log(
-        isInsertUserSuccessfullReducer.error
-          ? isInsertUserSuccessfullReducer.errorMessage
-          : isInsertUserSuccessfullReducer
-      );
     }
   }, [
     isInsertUserSuccessfullReducer,
@@ -154,7 +149,7 @@ const UserRegister = ({ match }) => {
             <div className="textBoxContainer">
               <TextBoxComponent
                 value=""
-                regex={nameRegex}
+                regex={nameRegex} // ! this regex needs to be changed cant take % or other special characters which is not supported by api endpoint
                 name="password"
                 label="Password"
                 disabled={false}

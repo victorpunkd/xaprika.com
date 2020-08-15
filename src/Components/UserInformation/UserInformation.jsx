@@ -5,7 +5,12 @@ import CurrentPageNameHeader from "../CurrentPageNameHeader/CurrentPageNameHeade
 import { TextBoxComponent } from "../TextBoxComponent/TextBoxComponent";
 
 const UserInformation = () => {
-  useEffect(() => {}, []);
+  useEffect(() => {
+    if (localStorage.getItem("userPhoneNo") === null) {
+      return <Redirect push to="/" />;
+    }
+  }, []);
+
   const handleTextBoxCompoenetOnBlur = (name, text) => {
     console.log(name, text);
   };
@@ -14,9 +19,6 @@ const UserInformation = () => {
   const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   const nameRegex = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/;
 
-  if (localStorage.getItem("userPhoneNo") === null) {
-    return <Redirect push to="/" />;
-  }
   return (
     <div className="userInformationContainer">
       <CurrentPageNameHeader categoryName="Manage Account" />
@@ -59,7 +61,7 @@ const UserInformation = () => {
 
         <div className="textBoxContainer">
           <TextBoxComponent
-            value="vctr34554"
+            value="zzzzzzzz"
             regex={nameRegex}
             name="password"
             label="Password"

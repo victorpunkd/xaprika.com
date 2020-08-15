@@ -6,12 +6,16 @@ import Loader from "../Loader/Loader";
 import NoDataFound from "../NoDataFound/NoDataFound";
 import CategoryCard from "../CategoryCard/CategoryCard";
 import { fetchSecondaryCategoryData } from "../../Actions/FetchSecondaryCategoryData";
+import { clearSecondaryCategoryData } from "../../Actions/FetchSecondaryCategoryData";
 
 const SubCategoryList = (props) => {
   const dispatched = useDispatch();
   const { subCategoryData } = useSelector((state) => state);
   useEffect(() => {
     dispatched(fetchSecondaryCategoryData(props.categoryLink));
+    return function cleanup() {
+      dispatched(clearSecondaryCategoryData());
+    };
   }, [props.categoryLink, dispatched]);
 
   return (

@@ -75,7 +75,6 @@ const OrderConfirmed = () => {
           <Error errorMessage={confirmOrderReducer.errorMessage} />
         ) : (
           <div className="orderConfirmedData">
-            {console.log(confirmOrderReducer.data)}
             <img
               src="https://xaprika-file-storage.s3.us-east-2.amazonaws.com/staticImages/alertImages/order_confirmed.jpg"
               alt="xaprika order confirmed"

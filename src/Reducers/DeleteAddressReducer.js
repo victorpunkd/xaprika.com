@@ -1,26 +1,27 @@
-let productDataState = {
+let deleteAddressData = {
   isLoaded: false,
   data: [],
   error: false,
   errorMessage: [],
 };
-const productData = (state = productDataState, action) => {
+
+const deleteAdressReducer = (state = deleteAddressData, action) => {
   switch (action.type) {
-    case "fetchProductData":
+    case "deleteAddress":
       return {
         isLoaded: true,
         data: action.payLoad,
         error: false,
         errorMessage: [],
       };
-    case "fetchProductDataError":
+    case "deleteAddressError":
       return {
         isLoaded: true,
         data: [],
         error: true,
         errorMessage: action.payLoad,
       };
-    case "clearProuctData":
+    case "clearDeleteAddress":
       return {
         isLoaded: false,
         data: [],
@@ -32,4 +33,4 @@ const productData = (state = productDataState, action) => {
   }
 };
 
-export default productData;
+export default deleteAdressReducer;

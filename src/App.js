@@ -12,6 +12,8 @@ import UserLogin from "./Components/UserLogin/UserLogin";
 import PasswordOrOTP from "./Components/PasswordOrOTP/PasswordOrOTP";
 import UserRegister from "./Components/UserRegister/UserRegister";
 import AddressManagement from "./Components/AddressManagement/AddressManagement";
+import AddressForm from "./Components/AddressForm/AddressForm";
+import EditAddressForm from "./Components/EditAddressForm/EditAddressForm";
 import OrderHistory from "./Components/OrderHistory/OrderHistory";
 import Home from "./Components/Home/Home";
 import ProductsUnderPrimaryCategory from "./Components/ProductsUnderPrimaryCategory/ProductsUnderPrimaryCategory";
@@ -69,6 +71,11 @@ const App = () => {
               />
               <Route path="/UserInformation" component={UserInformation} />
               <Route path="/AddressManagement" component={AddressManagement} />
+              <Route path="/Add-Address" component={AddressForm} />
+              <Route
+                path="/Edit-Address/:tag_name"
+                component={EditAddressForm}
+              />
               <Route path="/OrderHistory" component={OrderHistory} />
             </Switch>
           </div>

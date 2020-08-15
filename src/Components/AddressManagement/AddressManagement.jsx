@@ -7,27 +7,38 @@ import AddressCard from "../AddressCard/AddressCard";
 import Loader from "../Loader/Loader";
 import Error from "../Error/Error";
 import NoDataFound from "../NoDataFound/NoDataFound";
-import { fetchAddressInfoAction } from "../../Actions/FetchAddressInfo";
-import { clearFetchAddressInfoAction } from "../../Actions/FetchAddressInfo";
+import {
+  fetchAddressInfoAction,
+  clearFetchAddressInfoAction,
+} from "../../Actions/FetchAddressInfo";
 
 const AddressManagement = () => {
   const history = useHistory();
   const dispatched = useDispatch();
   const { addressInfoReducer } = useSelector((state) => state);
+
+  const addAddressClick = () => {
+    history.push("/Add-Address");
+  };
+
   useEffect(() => {
     if (localStorage.getItem("userPhoneNo") === null) {
       history.pushState("/");
       return;
     }
-    dispatched(clearFetchAddressInfoAction());
     dispatched(fetchAddressInfoAction(localStorage.getItem("userPhoneNo")));
+    return function cleanup() {
+      dispatched(clearFetchAddressInfoAction());
+    };
   }, [history, dispatched]);
 
   return (
     <div className="addressManagementContainer ">
       <CurrentPageNameHeader categoryName="Manage Address" />
       <div className="manageAddressBody">
-        <button className="w3-block primaryButton">Add Address</button>
+        <button className="w3-block primaryButton" onClick={addAddressClick}>
+          Add Address
+        </button>
         {addressInfoReducer.isLoaded ? (
           addressInfoReducer.error ? (
             <Error errorMessage={addressInfoReducer.errorMessage} />

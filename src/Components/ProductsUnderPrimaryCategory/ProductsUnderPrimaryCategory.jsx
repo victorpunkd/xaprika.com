@@ -5,12 +5,16 @@ import CurrentPageNameHeader from "../CurrentPageNameHeader/CurrentPageNameHeade
 import SubCategoryList from "../SubCategoryLists/SubCategoryList";
 import ProductList from "../ProductList/ProductList";
 import { fetchProductData } from "../../Actions/FetchProductData";
+import { clearProductData } from "../../Actions/FetchProductData";
 
 const ProductsUnderPrimaryCategory = ({ match }) => {
   const dispatched = useDispatch();
   const { productData } = useSelector((state) => state);
   useEffect(() => {
     dispatched(fetchProductData(match.params.categoryLink));
+    return function cleanup() {
+      dispatched(clearProductData());
+    };
   }, [match.params.categoryLink, dispatched]);
   return (
     <div className="productsUnderCategoryContainer">

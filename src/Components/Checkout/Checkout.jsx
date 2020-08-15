@@ -57,7 +57,6 @@ const Checkout = () => {
   }, [dispatched, cartData, history]);
   return (
     <div className="checkoutContainer">
-      {console.log(finalCheckoutCalculationReducer)}
       <CurrentPageNameHeader categoryName="Checkout" />
       {finalCheckoutCalculationReducer.isLoaded &&
       deliveryAddressReducer.isLoaded ? (
@@ -104,7 +103,7 @@ const Checkout = () => {
                 )}
               </div>
               <button className="linkButton" onClick={handleChangeAddressClick}>
-                Change Address
+                Add/Change Address
               </button>
             </div>
             <div className="paymentOption">
