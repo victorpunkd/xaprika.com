@@ -41,11 +41,17 @@ const ProductCard = (props) => {
         <div className="s6 w3-col productInfo">
           <div className="productBrand">{props.brand}</div>
           <div className="productName">{props.name}</div>
-          <div className="productPrice">Price RS : {props.price}</div>
+          <div className="productQuantity">
+            {props.productQuantity}{" "}
+            <span className="productQuantityUnit">
+              {props.productQuantityUnit}
+            </span>
+          </div>
+          <div className="productPrice">Rs. {props.price}</div>
         </div>
         <div className="s3 w3-col productControls">
           <div className="totalPrice">
-            {getDuplicateCount(cartData, props.id) * props.price}
+            Rs. {getDuplicateCount(cartData, props.id) * props.price}
           </div>
           <div className="controlButtons w3-row">
             <button

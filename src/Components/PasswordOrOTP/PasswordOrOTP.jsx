@@ -113,7 +113,7 @@ const PasswordOROTP = ({ match }) => {
           history.push(`/`);
         }
       } else {
-        dispatched(showAlertMessage("Password is not matching"));
+        dispatched(showAlertMessage("Wrong Password"));
       }
     }
   }, [checkPasswordReducer, dispatched, history, match.params.phoneNo]);

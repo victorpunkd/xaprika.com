@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import "./App.css";
 import { hideSideBar } from "./Actions/SideBarVisibleAction";
 import { hideUserOptionSideBar } from "./Actions/UserOptionSideBarVisibleAction";
+import CategoryPage from "./Components/CategoryPage/CategoryPage";
 import NavBar from "./Components/NavBar/NavBar";
 import SideBar from "./Components/SideBar/SideBar";
 import UserOptionSideBar from "./Components/UserOptionsSideBar/UserOptionSidebar";
@@ -60,6 +61,7 @@ const App = () => {
                 path="/Products-SubCategory/:primaryCategoryLink/:categoryLink"
                 component={ProductsUnderSubCategory}
               />
+              <Route path="/Categories" component={CategoryPage} />
               <Route path="/Cart" component={Cart} />
               <Route path="/Checkout" component={Checkout} />
               <Route path="/Confirm-Order" component={OrderConfirmed} />

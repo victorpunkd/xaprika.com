@@ -17,6 +17,7 @@ const UserRegister = ({ match }) => {
   const phoneNoRegex = /^\d{10}$/; // only supports 10 digit number
   const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/; // Perfect for email format ok tested
   const nameRegex = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/; // takes only alphabets but need to limit the characters
+  const passwordRegex = /^[a-zA-Z0-9!@#$^&*]{6,16}$/; // has to be 6 - 16 characters long, can take alphabets numbers and !@#$^&*
   const history = useHistory();
   const dispatched = useDispatch();
   const { isOTPMatching, isInsertUserSuccessfullReducer } = useSelector(
@@ -149,7 +150,7 @@ const UserRegister = ({ match }) => {
             <div className="textBoxContainer">
               <TextBoxComponent
                 value=""
-                regex={nameRegex} // ! this regex needs to be changed cant take % or other special characters which is not supported by api endpoint
+                regex={passwordRegex} // ! this regex needs to be changed cant take % or other special characters which is not supported by api endpoint
                 name="password"
                 label="Password"
                 disabled={false}

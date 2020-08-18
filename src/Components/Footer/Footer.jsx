@@ -20,12 +20,14 @@ const Footer = () => {
             dispatched(hideUserOptionSideBar());
           }}
         >
-          <div className="s4 w3-col footerItemSection">
-            <div className="footerItemIcon">
-              <i className="fa fa-list-alt" aria-hidden="true"></i>
+          <Link to="/Categories">
+            <div className="s4 w3-col footerItemSection">
+              <div className="footerItemIcon">
+                <i className="fa fa-list-alt" aria-hidden="true"></i>
+              </div>
+              <div className="footerItemText">Categories</div>
             </div>
-            <div className="footerItemText">Categories</div>
-          </div>
+          </Link>
           <Link to="/">
             <div className="s4 w3-col footerItemSection">
               <div className="footerItemIcon">

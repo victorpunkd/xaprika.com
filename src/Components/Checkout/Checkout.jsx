@@ -25,7 +25,7 @@ const Checkout = () => {
   };
 
   const handlePaymentOptionChange = () => {
-    // todo need to implement when net pyment will come
+    // todo need to implement when online payment will come
   };
 
   const handlePlaceOrder = () => {
@@ -71,14 +71,14 @@ const Checkout = () => {
                   <div key={index} className="w3-row">
                     <div className="s8 w3-col priceType">{element.header}</div>
                     <div className="s4 w3-col priceAmount">
-                      {element.totalPrice} INR
+                      Rs. {element.totalPrice}
                     </div>
                   </div>
                 ) : (
                   <div key={index} className="w3-row totalAmountContainer">
                     <div className="s8 w3-col totalType">{element.header}</div>
                     <div className="s4 w3-col totalAmount">
-                      {element.totalPrice} INR
+                      Rs. {element.totalPrice}
                     </div>
                   </div>
                 )

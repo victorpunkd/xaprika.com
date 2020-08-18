@@ -23,6 +23,8 @@ const ProductList = (props) => {
                   brand={data.product_brand}
                   price={data.product_sale_price}
                   picture={data.product_image}
+                  productQuantity={data.product_quantity}
+                  productQuantityUnit={data.product_quantity_unit}
                   id={data.product_id}
                 />
               </div>

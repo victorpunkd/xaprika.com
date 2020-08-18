@@ -52,7 +52,7 @@ const Cart = () => {
           <div className="totalAmountText">
             Total Amount -{" "}
             <span className="cartAmount">
-              {getTotalAmount(productsUnderCart)}
+              Rs. {getTotalAmount(productsUnderCart)}
             </span>
           </div>
         </div>

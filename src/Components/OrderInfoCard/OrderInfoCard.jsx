@@ -13,7 +13,7 @@ const OrderInfoCard = (props) => {
       </div>
       <div className="w3-row orderInfoItem">
         <div className="s6 w3-col infoType">Amount -</div>
-        <div className="s6 w3-col actualInfo">{props.amount} INR</div>
+        <div className="s6 w3-col actualInfo">Rs. {props.amount}</div>
       </div>
       <div className="w3-row orderInfoItem">
         <div className="s6 w3-col infoType">Order Date -</div>

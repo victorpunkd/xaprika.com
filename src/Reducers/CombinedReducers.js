@@ -24,6 +24,8 @@ import addAdressReducer from "./AddAddressReducer";
 import deleteAdressReducer from "./DeleteAddressReducer";
 import makeAddressDefaultReducer from "./MakeAddressDefaultReducer";
 import updateAddressReducer from "./UpdateAddressReducer";
+import userInformationReducer from "./UserInformationReducer";
+import updateUserInformationReducer from "./UpdateUserInformationReducer";
 
 export default combineReducers({
   activePage,
@@ -51,4 +53,6 @@ export default combineReducers({
   deleteAdressReducer,
   makeAddressDefaultReducer,
   updateAddressReducer,
+  userInformationReducer,
+  updateUserInformationReducer,
 });
