@@ -23,7 +23,7 @@ const SearchResult = ({ match }) => {
 
   return (
     <div className="searchResultContainer">
-      <CurrentPageNameHeader categoryName="Cart" />
+      <CurrentPageNameHeader categoryName="Search Products" />
       <div>
         <div className="searchBox">
           <SearchBoxComponent />
