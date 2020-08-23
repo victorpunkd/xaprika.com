@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import "./NavBar.css";
-import logo from "../../Assets/tm.png";
 import { toggleSideBarVisibility } from "../../Actions/SideBarVisibleAction";
 import { hideSideBar } from "../../Actions/SideBarVisibleAction";
 import { toggleUserOptionSideBarVisibility } from "../../Actions/UserOptionSideBarVisibleAction";
@@ -31,7 +30,11 @@ const NavBar = () => {
             ></i>
           </div>
           <div className="s4 w3-col w3-third logoSection navBarItem">
-            <img src={logo} alt="xaprika-logo-png" className="logoImage" />
+            <img
+              src="https://xaprika-file-storage.s3.us-east-2.amazonaws.com/staticImages/websiteAssets/tm.png"
+              alt="xaprika-logo-png"
+              className="logoImage"
+            />
           </div>
           <div className="s4 w3-col w3-third userIconSection navBarItem">
             {localStorage.getItem("userPhoneNo") === null ? (

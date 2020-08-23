@@ -4,8 +4,10 @@ import "./Cart.css";
 import { Link } from "react-router-dom";
 import CurrentPageNameHeader from "../CurrentPageNameHeader/CurrentPageNameHeader";
 import ProductList from "../ProductList/ProductList";
-import { fetchProductsUnderCart } from "../../Actions/FetchProductsUnderCart";
-import { clearFetchProductsUnderCart } from "../../Actions/FetchProductsUnderCart";
+import {
+  fetchProductsUnderCart,
+  clearFetchProductsUnderCart,
+} from "../../Actions/FetchProductsUnderCart";
 
 const Cart = () => {
   const dispatched = useDispatch();
@@ -17,6 +19,7 @@ const Cart = () => {
     }
     dispatched(fetchProductsUnderCart(cartData));
   }, [cartData, dispatched]);
+
   let getTotalAmount = (productsUnderCart) => {
     let totalAmount = 0;
     if (

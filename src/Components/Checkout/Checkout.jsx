@@ -5,6 +5,7 @@ import "./Checkout.css";
 import Error from "../Error/Error";
 import Loader from "../Loader/Loader";
 import CurrentPageNameHeader from "../CurrentPageNameHeader/CurrentPageNameHeader";
+import { showAlertMessage } from "../../Actions/AlertMessageAction";
 import { fetchFinalCheckoutCalculationAction } from "../../Actions/FetchFinalCheckoutCalculation";
 import { clearfetchFinalCheckoutCalculationAction } from "../../Actions/FetchFinalCheckoutCalculation";
 import { fetchDeliveryAddressAction } from "../../Actions/FetchDeliveryAddress";
@@ -37,6 +38,8 @@ const Checkout = () => {
     ) {
       // todo create order
       history.push(`/Confirm-Order`); // todo send order id as param
+    } else if (!deliveryAddressReducer.data.length) {
+      dispatched(showAlertMessage("Please add an address to continue"));
     }
   };
 

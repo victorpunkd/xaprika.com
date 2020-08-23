@@ -6,19 +6,20 @@ import { TextBoxComponent } from "../TextBoxComponent/TextBoxComponent";
 import CurrentPageNameHeader from "../CurrentPageNameHeader/CurrentPageNameHeader";
 import Loader from "../Loader/Loader";
 import Error from "../Error/Error";
-import { checkIfPhoneNoExist } from "../../Actions/CheckIfPhoneNoExist";
-import { clearCheckPhoneNoExistData } from "../../Actions/CheckIfPhoneNoExist";
+import {
+  checkIfPhoneNoExist,
+  clearCheckPhoneNoExistData,
+} from "../../Actions/CheckIfPhoneNoExist";
 import { showAlertMessage } from "../../Actions/AlertMessageAction";
-import { sendOTP } from "../../Actions/SendOTP";
-import { clearSendOTP } from "../../Actions/SendOTP";
-import { checkOTP } from "../../Actions/CheckOTP";
-import { clearcheckOTP } from "../../Actions/CheckOTP";
-import { checkPasswordAction } from "../../Actions/CheckPassword";
-import { clearCheckPasswordAction } from "../../Actions/CheckPassword";
+import { sendOTP, clearSendOTP } from "../../Actions/SendOTP";
+import { checkOTP, clearcheckOTP } from "../../Actions/CheckOTP";
+import {
+  checkPasswordAction,
+  clearCheckPasswordAction,
+} from "../../Actions/CheckPassword";
+import { passwordRegex, OTPRegex } from "../../CommonControls/Regex";
 
 const PasswordOROTP = ({ match }) => {
-  const OTPRegex = /^\d{4}$/;
-  const passwordRegex = /(.*?)/;
   const OTPSendGapTime = 45;
   const history = useHistory();
   const dispatched = useDispatch();
@@ -151,6 +152,10 @@ const PasswordOROTP = ({ match }) => {
     }
   };
 
+  const handleForgetPasswordClick = () => {
+    history.push(`/ForgetPassword/${match.params.phoneNo}`);
+  };
+
   return (
     <div className="passwordOROTPContainer">
       <CurrentPageNameHeader categoryName="User Login" />
@@ -159,7 +164,7 @@ const PasswordOROTP = ({ match }) => {
           isPhoneNoExist.error ? (
             <Error errorMessage={isPhoneNoExist.errorMessage} />
           ) : (
-            <div>
+            <>
               <div>
                 <TextBoxComponent
                   value={match.params.phoneNo}
@@ -184,7 +189,7 @@ const PasswordOROTP = ({ match }) => {
                   />
                   <span
                     className="linkButton"
-                    onClick={() => alert("Feature coming soon")}
+                    onClick={handleForgetPasswordClick}
                   >
                     Forgot Password?
                   </span>
@@ -230,7 +235,7 @@ const PasswordOROTP = ({ match }) => {
                   Submit
                 </button>
               </div>
-            </div>
+            </>
           )
         ) : (
           <Loader />

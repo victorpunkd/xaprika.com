@@ -1,26 +1,26 @@
 import { getApiEndpoint } from "../CommonControls/apiEndpoint";
 
-export const fetchProductsUnderCart = (productIds) => (dispatch) => {
+export const fetchSelectiveProductsById = (productIds) => (dispatch) => {
   fetch(`${getApiEndpoint()}/api/getProductsByaGroupOfIds/${[...productIds]}`)
     .then((res) => res.json())
     .then(
       (posts) => {
         dispatch({
-          type: "fetchProductsUnderCart",
+          type: "selectiveProducts",
           payLoad: posts,
         });
       },
       (error) => {
         dispatch({
-          type: "fetchProductsUnderCartError",
+          type: "selectiveProductsError",
           payLoad: error,
         });
       }
     );
 };
 
-export const clearFetchProductsUnderCart = () => {
+export const clearfetchSelectiveProductsById = () => {
   return {
-    type: "clearFetchProductsUnderCart",
+    type: "clearSelectiveProducts",
   };
 };

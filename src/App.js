@@ -11,6 +11,7 @@ import UserOptionSideBar from "./Components/UserOptionsSideBar/UserOptionSidebar
 import UserInformation from "./Components/UserInformation/UserInformation";
 import UserLogin from "./Components/UserLogin/UserLogin";
 import PasswordOrOTP from "./Components/PasswordOrOTP/PasswordOrOTP";
+import ForgetPassword from "./Components/ForgetPassword/ForgetPassword";
 import UserRegister from "./Components/UserRegister/UserRegister";
 import AddressManagement from "./Components/AddressManagement/AddressManagement";
 import AddressForm from "./Components/AddressForm/AddressForm";
@@ -19,6 +20,7 @@ import OrderHistory from "./Components/OrderHistory/OrderHistory";
 import Home from "./Components/Home/Home";
 import ProductsUnderPrimaryCategory from "./Components/ProductsUnderPrimaryCategory/ProductsUnderPrimaryCategory";
 import ProductsUnderSubCategory from "./Components/ProductsUnderSubCategory/ProductsUnderSubCategory";
+import SearchResult from "./Components/SearchResult/SearchResult";
 import Cart from "./Components/Cart/Cart";
 import Checkout from "./Components/Checkout/Checkout";
 import OrderConfirmed from "./Components/OrderConfirmed/OrderConfirmed";
@@ -58,6 +60,10 @@ const App = () => {
                 component={ProductsUnderPrimaryCategory}
               />
               <Route
+                path="/Search-Result/:productIds"
+                component={SearchResult}
+              />
+              <Route
                 path="/Products-SubCategory/:primaryCategoryLink/:categoryLink"
                 component={ProductsUnderSubCategory}
               />
@@ -67,6 +73,10 @@ const App = () => {
               <Route path="/Confirm-Order" component={OrderConfirmed} />
               <Route path="/UserLogin" component={UserLogin} />
               <Route path="/Password-OTP/:phoneNo" component={PasswordOrOTP} />
+              <Route
+                path="/ForgetPassword/:phoneNo"
+                component={ForgetPassword}
+              />
               <Route
                 path="/User-Registration/:phoneNo/:otp"
                 component={UserRegister}

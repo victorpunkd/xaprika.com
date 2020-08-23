@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import "./UserRegister.css";
 import CurrentPageNameHeader from "../CurrentPageNameHeader/CurrentPageNameHeader";
+import Loader from "../Loader/Loader";
 import { TextBoxComponent } from "../TextBoxComponent/TextBoxComponent";
 import { showAlertMessage } from "../../Actions/AlertMessageAction";
 import { checkOTP } from "../../Actions/CheckOTP";
@@ -11,13 +12,14 @@ import {
   insertUserAction,
   clearInsertUserAction,
 } from "../../Actions/InsertUser";
-import Loader from "../Loader/Loader";
+import {
+  phoneNoRegex,
+  emailRegex,
+  nameRegex,
+  passwordRegex,
+} from "../../CommonControls/Regex";
 
 const UserRegister = ({ match }) => {
-  const phoneNoRegex = /^\d{10}$/; // only supports 10 digit number
-  const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/; // Perfect for email format ok tested
-  const nameRegex = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/; // takes only alphabets but need to limit the characters
-  const passwordRegex = /^[a-zA-Z0-9!@#$^&*]{6,16}$/; // has to be 6 - 16 characters long, can take alphabets numbers and !@#$^&*
   const history = useHistory();
   const dispatched = useDispatch();
   const { isOTPMatching, isInsertUserSuccessfullReducer } = useSelector(

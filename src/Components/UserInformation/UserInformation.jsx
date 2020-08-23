@@ -16,6 +16,12 @@ import {
   updateUserInfoAction,
   clearUpdateUserInfoAction,
 } from "../../Actions/UpdateUserInformation";
+import {
+  phoneNoRegex,
+  emailRegex,
+  nameRegex,
+  passwordRegex,
+} from "../../CommonControls/Regex";
 
 const UserInformation = () => {
   const { userInformationReducer, updateUserInformationReducer } = useSelector(
@@ -27,10 +33,6 @@ const UserInformation = () => {
   const [nameState, setNameState] = useState("");
   const [passwordState, setPasswordState] = useState("examplePassword");
   const [userDataState, setUserDataState] = useState([]);
-  const phoneNoRegex = /^\d{10}$/;
-  const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  const nameRegex = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/;
-  const passwordRegex = /^[a-zA-Z0-9!@#$^&*]{6,16}$/; // has to be 6 - 16 characters long, can take alphabets numbers and !@#$^&*
 
   const checkIfUserInfoIsUpdated = useCallback(() => {
     if (
@@ -40,6 +42,7 @@ const UserInformation = () => {
       if (updateUserInformationReducer.data) {
         if (updateUserInformationReducer.data.code === 1) {
           dispatched(showAlertMessage("Data Updated"));
+          dispatched(clearUpdateUserInfoAction());
         } else {
           dispatched(
             showAlertMessage(updateUserInformationReducer.data.message)
@@ -83,7 +86,15 @@ const UserInformation = () => {
     if (name === "name") {
       setNameState(text);
     } else if (name === "password") {
-      setPasswordState(text);
+      console.log(text);
+      if (text !== "") setPasswordState(text);
+      else {
+        dispatched(
+          showAlertMessage(
+            "Alphabets, Numbers and ! @ # $ ^ & are allowed, should be between 6-16 characters long"
+          )
+        );
+      }
     }
   };
 

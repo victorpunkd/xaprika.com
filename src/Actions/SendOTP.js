@@ -1,4 +1,4 @@
-import { getApiEndpoint } from "../apiEndpoint";
+import { getApiEndpoint } from "../CommonControls/apiEndpoint";
 
 export const sendOTP = (phoneNo) => (dispatch) => {
   fetch(`${getApiEndpoint()}/api/sendOTP/${phoneNo}`)

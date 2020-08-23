@@ -26,6 +26,8 @@ import makeAddressDefaultReducer from "./MakeAddressDefaultReducer";
 import updateAddressReducer from "./UpdateAddressReducer";
 import userInformationReducer from "./UserInformationReducer";
 import updateUserInformationReducer from "./UpdateUserInformationReducer";
+import productsListForSearch from "./ProductListForSearchReducer";
+import selectiveProductsReducer from "./SelectiveProductsReducer";
 
 export default combineReducers({
   activePage,
@@ -55,4 +57,6 @@ export default combineReducers({
   updateAddressReducer,
   userInformationReducer,
   updateUserInformationReducer,
+  productsListForSearch,
+  selectiveProductsReducer,
 });

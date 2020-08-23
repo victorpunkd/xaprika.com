@@ -1,4 +1,4 @@
-import { getApiEndpoint } from "../apiEndpoint";
+import { getApiEndpoint } from "../CommonControls/apiEndpoint";
 
 export const fetchAddressInfoAction = (phoneNo) => (dispatch) => {
   fetch(`${getApiEndpoint()}/api/getAllAddressofAnUser/${phoneNo}`)

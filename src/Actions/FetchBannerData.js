@@ -1,4 +1,4 @@
-import { getApiEndpoint } from "../apiEndpoint";
+import { getApiEndpoint } from "../CommonControls/apiEndpoint";
 
 export const fetchBannerData = () => (dispatch) => {
   fetch(`${getApiEndpoint()}/api/getActiveBanners`)

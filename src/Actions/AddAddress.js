@@ -1,4 +1,4 @@
-import { getApiEndpoint } from "../apiEndpoint";
+import { getApiEndpoint } from "../CommonControls/apiEndpoint";
 
 export const addAddressAction = (
   phoneNo,
@@ -11,7 +11,11 @@ export const addAddressAction = (
   tagname
 ) => (dispatch) => {
   fetch(
-    `${getApiEndpoint()}/api/insertNewAddress/${phoneNo}/${address}/${area}/${landmark}/${city}/${pincode}/${state}/${tagname}`
+    `${getApiEndpoint()}/api/insertNewAddress/${phoneNo}/${encodeURIComponent(
+      address
+    )}/${encodeURIComponent(area)}/${encodeURIComponent(
+      landmark
+    )}/${city}/${pincode}/${state}/${encodeURIComponent(tagname)}`
   )
     .then((res) => res.json())
     .then(

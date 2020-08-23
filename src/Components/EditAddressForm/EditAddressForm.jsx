@@ -16,9 +16,9 @@ import {
   updateAddressAction,
   clearUpdateAddressAction,
 } from "../../Actions/UpdateAddress";
+import { addressLine1Regex } from "../../CommonControls/Regex";
 
 const EditAddressForm = ({ match }) => {
-  const addressLine1 = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/; // todo only supports unlimited alphabets need to put a length check and add special characters
   const history = useHistory();
   const { addressInfoReducer, updateAddressReducer } = useSelector(
     (state) => state
@@ -150,7 +150,7 @@ const EditAddressForm = ({ match }) => {
               <div className="textBoxContainer">
                 <TextBoxComponent
                   value={tagNameAddressFilterState[0].address_line_1}
-                  regex={addressLine1}
+                  regex={addressLine1Regex}
                   name="address"
                   label="Address"
                   disabled={false}
@@ -161,7 +161,7 @@ const EditAddressForm = ({ match }) => {
               <div className="textBoxContainer">
                 <TextBoxComponent
                   value={tagNameAddressFilterState[0].area}
-                  regex={addressLine1}
+                  regex={addressLine1Regex}
                   name="area"
                   label="Area"
                   disabled={false}
@@ -172,7 +172,7 @@ const EditAddressForm = ({ match }) => {
               <div className="textBoxContainer">
                 <TextBoxComponent
                   value={tagNameAddressFilterState[0].landmark}
-                  regex={addressLine1}
+                  regex={addressLine1Regex}
                   name="landmark"
                   label="Landmark"
                   disabled={false}
@@ -183,7 +183,7 @@ const EditAddressForm = ({ match }) => {
               <div className="textBoxContainer">
                 <TextBoxComponent
                   value="Siliguri"
-                  regex={addressLine1}
+                  regex={addressLine1Regex}
                   name="city"
                   label="City"
                   disabled={true}
@@ -194,7 +194,7 @@ const EditAddressForm = ({ match }) => {
               <div className="textBoxContainer">
                 <TextBoxComponent
                   value={tagNameAddressFilterState[0].tag_name}
-                  regex={addressLine1}
+                  regex={addressLine1Regex}
                   name="tagname"
                   label="Address Type (Home, Office etc)"
                   disabled={false}

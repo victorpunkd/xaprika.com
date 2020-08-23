@@ -1,10 +1,12 @@
-import { getApiEndpoint } from "../apiEndpoint";
+import { getApiEndpoint } from "../CommonControls/apiEndpoint";
 
 export const updateUserInfoAction = (phoneNo, mailId, name, password) => (
   dispatch
 ) => {
   fetch(
-    `${getApiEndpoint()}/api/updateUserInformation/${phoneNo}/${mailId}/${name}/${password}`
+    `${getApiEndpoint()}/api/updateUserInformation/${phoneNo}/${mailId}/${encodeURIComponent(
+      name
+    )}/${encodeURIComponent(password)}`
   )
     .then((res) => res.json())
     .then(

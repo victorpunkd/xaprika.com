@@ -39,6 +39,11 @@
   cursor: pointer;
 }
 
+.primaryButton:focus {
+  outline: none;
+  box-shadow: none;
+}
+
 .primaryButtonSmall {
   border: none;
   background-color: #1d32c4;

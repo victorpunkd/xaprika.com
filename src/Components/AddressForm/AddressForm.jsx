@@ -9,9 +9,9 @@ import {
   addAddressAction,
   clearAddAddressAction,
 } from "../../Actions/AddAddress";
+import { addressLine1Regex } from "../../CommonControls/Regex";
 
 const AddressForm = () => {
-  const addressLine1 = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/; // todo only supports unlimited alphabets need to put a length check and add special characters
   const history = useHistory();
   const { addAdressReducer } = useSelector((state) => state);
   const dispatched = useDispatch();
@@ -96,7 +96,7 @@ const AddressForm = () => {
           <div className="textBoxContainer">
             <TextBoxComponent
               value=""
-              regex={addressLine1}
+              regex={addressLine1Regex}
               name="address"
               label="Address"
               disabled={false}
@@ -107,7 +107,7 @@ const AddressForm = () => {
           <div className="textBoxContainer">
             <TextBoxComponent
               value=""
-              regex={addressLine1}
+              regex={addressLine1Regex}
               name="area"
               label="Area"
               disabled={false}
@@ -118,7 +118,7 @@ const AddressForm = () => {
           <div className="textBoxContainer">
             <TextBoxComponent
               value=""
-              regex={addressLine1}
+              regex={addressLine1Regex}
               name="landmark"
               label="Landmark"
               disabled={false}
@@ -129,7 +129,7 @@ const AddressForm = () => {
           <div className="textBoxContainer">
             <TextBoxComponent
               value="Siliguri"
-              regex={addressLine1}
+              regex={addressLine1Regex}
               name="city"
               label="City"
               disabled={true}
@@ -140,7 +140,7 @@ const AddressForm = () => {
           <div className="textBoxContainer">
             <TextBoxComponent
               value=""
-              regex={addressLine1}
+              regex={addressLine1Regex}
               name="tagname"
               label="Address Type (Home, Office etc)"
               disabled={false}

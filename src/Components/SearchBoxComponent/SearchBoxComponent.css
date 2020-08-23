@@ -1,5 +1,6 @@
 .serchBoxContainer {
   width: 100%;
+  position: relative;
 }
 
 .searchBoxCard {
@@ -26,4 +27,35 @@
 
 .searchInput:focus {
   outline: none;
+}
+
+.searchSuggestions {
+  background-color: white;
+  position: absolute;
+  width: 100%;
+  z-index: 20;
+  top: 42px;
+  border-radius: 20px;
+  text-align: left;
+  color: #4c586e;
+  max-height: 200px;
+  overflow-y: scroll;
+}
+
+.searchFilteredItems {
+  font-family: "Nunito", sans-serif;
+  white-space: nowrap;
+  width: 100%;
+  overflow: hidden;
+  o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
+
+.searchFilteredItems:hover {
+  cursor: pointer;
+  background-color: gainsboro;
+}
+
+.SearchFilterProductName {
+  padding: 5px 10px;
 }

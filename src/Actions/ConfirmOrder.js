@@ -1,4 +1,4 @@
-import { getApiEndpoint } from "../apiEndpoint";
+import { getApiEndpoint } from "../CommonControls/apiEndpoint";
 
 export const confirmOrderAction = (
   phoneNo,
@@ -17,9 +17,13 @@ export const confirmOrderAction = (
   cartData
 ) => (dispatch) => {
   fetch(
-    `${getApiEndpoint()}/api/confirmOrder/${phoneNo}/${itemCount}/${totalAmount}/${discountAmount}/${deliveryCharges}/${otherCharges}/${deliveryAddress}/${area}/${city}/${pinCode}/${state}/${landmark}/${recieversPhoneNo}/${[
-      ...cartData,
-    ]}`
+    `${getApiEndpoint()}/api/confirmOrder/${phoneNo}/${itemCount}/${totalAmount}/${discountAmount}/${deliveryCharges}/${otherCharges}/${encodeURIComponent(
+      deliveryAddress
+    )}/${encodeURIComponent(
+      area
+    )}/${city}/${pinCode}/${state}/${encodeURIComponent(
+      landmark
+    )}/${recieversPhoneNo}/${[...cartData]}`
   )
     .then((res) => res.json())
     .then(

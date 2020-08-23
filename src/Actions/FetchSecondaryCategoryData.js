@@ -1,4 +1,4 @@
-import { getApiEndpoint } from "../apiEndpoint";
+import { getApiEndpoint } from "../CommonControls/apiEndpoint";
 
 export const fetchSecondaryCategoryData = (categoryLink) => (dispatch) => {
   fetch(`${getApiEndpoint()}/api/getAllSecondaryCategoryData/${categoryLink}`)

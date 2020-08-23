@@ -1,7 +1,11 @@
-import { getApiEndpoint } from "../apiEndpoint";
+import { getApiEndpoint } from "../CommonControls/apiEndpoint";
 
 export const checkPasswordAction = (phoneNo, password) => (dispatch) => {
-  fetch(`${getApiEndpoint()}/api/checkCredentials/${phoneNo}/${password}`)
+  fetch(
+    `${getApiEndpoint()}/api/checkCredentials/${phoneNo}/${encodeURIComponent(
+      password
+    )}`
+  )
     .then((res) => res.json())
     .then(
       (posts) => {

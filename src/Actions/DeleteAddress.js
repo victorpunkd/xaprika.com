@@ -1,7 +1,11 @@
-import { getApiEndpoint } from "../apiEndpoint";
+import { getApiEndpoint } from "../CommonControls/apiEndpoint";
 
 export const deleteAddressAction = (phoneNo, tagName) => (dispatch) => {
-  fetch(`${getApiEndpoint()}/api/deleteAddress/${phoneNo}/${tagName}`)
+  fetch(
+    `${getApiEndpoint()}/api/deleteAddress/${phoneNo}/${encodeURIComponent(
+      tagName
+    )}`
+  )
     .then((res) => res.json())
     .then(
       (posts) => {

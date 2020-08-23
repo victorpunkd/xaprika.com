@@ -1,4 +1,4 @@
-import { getApiEndpoint } from "../apiEndpoint";
+import { getApiEndpoint } from "../CommonControls/apiEndpoint";
 
 export const fetchUserInfoAction = (phoneNo) => (dispatch) => {
   fetch(`${getApiEndpoint()}/api/getUserInformation/${phoneNo}`)

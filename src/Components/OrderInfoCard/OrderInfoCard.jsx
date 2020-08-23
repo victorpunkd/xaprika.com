@@ -2,9 +2,9 @@ import React from "react";
 import "./OrderInfoCard.css";
 
 const OrderInfoCard = (props) => {
-  const handleOrderShowDetailsClick = () => {
-    alert("Feature coming soon");
-  };
+  // const handleOrderShowDetailsClick = () => {
+  //   alert("Feature coming soon");
+  // };
   return (
     <div className="orderHistoryCard w3-card">
       <div className="w3-row orderInfoItem">
@@ -23,13 +23,13 @@ const OrderInfoCard = (props) => {
         <div className="s6 w3-col infoType">Order Status -</div>
         <div className="s6 w3-col actualInfo">{props.orderStatus}</div>
       </div>
-      <button
+      {/*<button
         className="primaryButton w3-block"
         onClick={handleOrderShowDetailsClick}
         style={{ marginTop: 15 }}
       >
         Show Details
-      </button>
+      </button>*/}
     </div>
   );
 };

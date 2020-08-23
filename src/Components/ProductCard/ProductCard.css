@@ -96,3 +96,8 @@
   padding: 0 10;
   /* border: none; */
 }
+
+.addSubtractButton:focus {
+  outline: none;
+  box-shadow: none;
+}
