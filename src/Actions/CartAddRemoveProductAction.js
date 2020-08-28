@@ -12,9 +12,8 @@ export const removeProductFromCart = (productId) => {
   };
 };
 
-export const clearCart = (productId) => {
+export const clearCart = () => {
   return {
     type: "clearCart",
-    payLoad: productId,
   };
 };

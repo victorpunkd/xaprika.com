@@ -16,7 +16,13 @@ const AlertMessage = () => {
 
   useEffect(() => {
     clearTimeout(closeAlertTimeOut);
-    closeAlertMessageAfterSomeTime(parseInt(alertMessage.message.length / 10));
+    closeAlertMessageAfterSomeTime(
+      parseInt(
+        alertMessage.message.length / 10 < 2
+          ? 2
+          : alertMessage.message.length / 10
+      )
+    );
     return function cleanUp() {
       clearTimeout(closeAlertTimeOut);
     };

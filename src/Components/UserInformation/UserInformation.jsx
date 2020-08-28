@@ -86,9 +86,8 @@ const UserInformation = () => {
     if (name === "name") {
       setNameState(text);
     } else if (name === "password") {
-      console.log(text);
-      if (text !== "") setPasswordState(text);
-      else {
+      setPasswordState(text);
+      if (text === "") {
         dispatched(
           showAlertMessage(
             "Alphabets, Numbers and ! @ # $ ^ & are allowed, should be between 6-16 characters long"
