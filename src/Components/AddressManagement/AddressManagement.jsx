@@ -23,7 +23,7 @@ const AddressManagement = () => {
 
   useEffect(() => {
     if (localStorage.getItem("userPhoneNo") === null) {
-      history.pushState("/");
+      history.push("/");
       return;
     }
     dispatched(fetchAddressInfoAction(localStorage.getItem("userPhoneNo")));

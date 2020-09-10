@@ -24,12 +24,16 @@ const UserLogin = () => {
   };
 
   useEffect(() => {
+    if (localStorage.getItem("userPhoneNo") !== null) {
+      history.push("/");
+      return;
+    }
     if (sessionStorage.getItem("loginFromCheckout") !== null) {
       dispatched(
         showAlertMessage("You need to login/signup to place an order")
       );
     }
-  }, [dispatched]);
+  }, [dispatched, history]);
 
   const phoneNoRegex = /^\d{10}$/;
   return (

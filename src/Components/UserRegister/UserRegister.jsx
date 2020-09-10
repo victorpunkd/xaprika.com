@@ -28,6 +28,7 @@ const UserRegister = ({ match }) => {
   const [emailIdState, setEmailIdState] = useState("");
   const [nameState, setNameState] = useState("");
   const [PasswordState, setPasswordState] = useState("");
+  const [isButtonSubmitting, setIsButtonSubimitting] = useState(false);
 
   const handleTextBoxCompoenetOnBlur = (name, text) => {
     if (name === "emailId") {
@@ -41,6 +42,7 @@ const UserRegister = ({ match }) => {
 
   const handleRegisterClick = () => {
     if (nameState && emailIdState && PasswordState) {
+      setIsButtonSubimitting(true);
       dispatched(clearInsertUserAction());
       dispatched(
         insertUserAction(
@@ -60,9 +62,11 @@ const UserRegister = ({ match }) => {
       isInsertUserSuccessfullReducer.isLoaded &&
       !isInsertUserSuccessfullReducer.error
     ) {
+      setIsButtonSubimitting(false);
       if (isInsertUserSuccessfullReducer.data.code === 1) {
         localStorage.setItem("userPhoneNo", match.params.phoneNo);
         if (sessionStorage.getItem("loginFromCheckout") !== null) {
+          sessionStorage.removeItem("loginFromCheckout");
           history.push(`/checkout`);
         } else {
           history.push(`/`);
@@ -152,7 +156,7 @@ const UserRegister = ({ match }) => {
             <div className="textBoxContainer">
               <TextBoxComponent
                 value=""
-                regex={passwordRegex} // ! this regex needs to be changed cant take % or other special characters which is not supported by api endpoint
+                regex={passwordRegex}
                 name="password"
                 label="Password"
                 disabled={false}
@@ -162,10 +166,13 @@ const UserRegister = ({ match }) => {
             </div>
             <div className="updateButtonContainer">
               <button
+                disabled={isButtonSubmitting}
                 onClick={handleRegisterClick}
-                className="primaryButton w3-block"
+                className={`primaryButton w3-block ${
+                  isButtonSubmitting && "disabledButton"
+                }`}
               >
-                Register
+                {isButtonSubmitting ? "Loading..." : "Register"}
               </button>
             </div>
           </>

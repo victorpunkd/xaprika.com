@@ -22,6 +22,7 @@ const AddressForm = () => {
   const pincodeState = "NA";
   const stateState = "West Bengal";
   const [tagnameState, setTagnameState] = useState("");
+  const [isButtonSubmitting, setIsButtonSubimitting] = useState(false);
 
   const handleTextBoxCompoenetOnBlur = (name, text) => {
     if (name === "address") {
@@ -37,11 +38,17 @@ const AddressForm = () => {
 
   const checkIfAddressInserted = useCallback(() => {
     if (addAdressReducer.isLoaded) {
+      setIsButtonSubimitting(false);
       if (!addAdressReducer.error) {
         if (addAdressReducer.data.code === 0) {
           dispatched(showAlertMessage(addAdressReducer.data.message));
         } else {
-          history.push("/AddressManagement");
+          if (sessionStorage.getItem("changeAddressFromCheckout") === null) {
+            history.push("/AddressManagement");
+          } else {
+            sessionStorage.removeItem("changeAddressFromCheckout");
+            history.push("/Checkout");
+          }
         }
       }
     }
@@ -60,6 +67,7 @@ const AddressForm = () => {
       pincodeState &&
       tagnameState
     ) {
+      setIsButtonSubimitting(true);
       dispatched(clearAddAddressAction());
       dispatched(
         addAddressAction(
@@ -80,7 +88,7 @@ const AddressForm = () => {
 
   useEffect(() => {
     if (localStorage.getItem("userPhoneNo") === null) {
-      history.pushState("/");
+      history.push("/");
       return;
     }
     return function cleanup() {
@@ -150,10 +158,13 @@ const AddressForm = () => {
           </div>
           <div className="updateButtonContainer">
             <button
+              disabled={isButtonSubmitting}
               onClick={handleAddAddressOnClick}
-              className="primaryButton w3-block"
+              className={`primaryButton w3-block ${
+                isButtonSubmitting && "disabledButton"
+              }`}
             >
-              Add Address
+              {isButtonSubmitting ? "Loading..." : "Add Address"}
             </button>
           </div>
         </>

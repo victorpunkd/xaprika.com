@@ -1,0 +1,30 @@
+.contactUsContainer {
+  width: 100%;
+  /* height: 100%; */
+  height: 70vh;
+  position: relative;
+}
+
+.contactUsBody {
+  margin: 0;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+}
+
+.contactItems {
+  text-align: center;
+}
+
+.contactUsInfo {
+  margin-top: 10px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: #4c586e;
+}
+
+.iconColor {
+  color: #148ea4;
+}

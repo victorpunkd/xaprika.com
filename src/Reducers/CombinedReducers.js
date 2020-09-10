@@ -28,6 +28,7 @@ import userInformationReducer from "./UserInformationReducer";
 import updateUserInformationReducer from "./UpdateUserInformationReducer";
 import productsListForSearch from "./ProductListForSearchReducer";
 import selectiveProductsReducer from "./SelectiveProductsReducer";
+import expectedDeliveryDateReducer from "./ExpectedDeliveryDateReducer";
 
 export default combineReducers({
   activePage,
@@ -59,4 +60,5 @@ export default combineReducers({
   updateUserInformationReducer,
   productsListForSearch,
   selectiveProductsReducer,
+  expectedDeliveryDateReducer,
 });

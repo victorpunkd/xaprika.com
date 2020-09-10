@@ -61,4 +61,20 @@
   overflow: hidden;
   o-text-overflow: ellipsis;
   text-overflow: ellipsis;
+  text-decoration: none;
+}
+
+.staticSideBarElemenets {
+  width: 100%;
+  position: absolute;
+  bottom: 100px;
+}
+
+.staticSideBarElemenetItem {
+  margin-top: 5px;
+  width: 100%;
+  padding-left: 20px;
+  color: rgb(88, 88, 88);
+  font-size: 15px;
+  cursor: pointer;
 }

@@ -26,6 +26,9 @@ import Checkout from "./Components/Checkout/Checkout";
 import OrderConfirmed from "./Components/OrderConfirmed/OrderConfirmed";
 import Footer from "./Components/Footer/Footer";
 import AlertMessage from "./Components/AlertMessage/AlertMessage";
+import ContactUs from "./Components/ContactUs/ContactUs";
+import AboutUs from "./Components/AboutUs/AboutUs";
+import Error404Page from "./Components/Error404Page/Error404Page";
 
 const App = () => {
   const {
@@ -89,6 +92,9 @@ const App = () => {
                 component={EditAddressForm}
               />
               <Route path="/OrderHistory" component={OrderHistory} />
+              <Route path="/ContactUs" component={ContactUs} />
+              <Route path="/AboutUs" component={AboutUs} />
+              <Route path="*" exact={true} component={Error404Page} />
             </Switch>
           </div>
           <Footer />

@@ -158,3 +158,29 @@
 }
 
 /*Checkbox Style End*/
+
+.expectedDeliveryDate {
+  margin-top: 10%;
+}
+
+.deliveryMessage {
+  font-family: "Nunito", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.deliveryText {
+  color: gray;
+}
+
+.deliveryDate {
+  font-weight: 600;
+  color: #148ea4;
+}
+
+.specialMessage {
+  font-family: "Nunito", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: #801336;
+}

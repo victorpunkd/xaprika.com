@@ -75,6 +75,7 @@ const SideBar = () => {
                       ) : subCategoryData.data.length ? (
                         subCategoryData.data.map((data) => (
                           <Link
+                            style={{ textDecoration: "none" }}
                             key={data.sec_category_id}
                             to={`/Products-SubCategory/${currentPrimaryCategoryLink}/${data.sec_category_link}`}
                           >
@@ -101,6 +102,18 @@ const SideBar = () => {
               <Loader />
             </div>
           )}
+          <div className="staticSideBarElemenets">
+            <div className="staticSideBarElemenetItem w3-row">
+              <Link style={{ textDecoration: "none" }} to={`/ContactUs`}>
+                <div className="primaryCategoryNameInSideBar">Contact Us</div>
+              </Link>
+            </div>
+            <div className="staticSideBarElemenetItem w3-row">
+              <Link style={{ textDecoration: "none" }} to={`/AboutUs`}>
+                <div className="primaryCategoryNameInSideBar">About Us</div>
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </div>

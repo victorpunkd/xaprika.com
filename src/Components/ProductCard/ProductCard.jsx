@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "./ProductCard.css";
+import { showAlertMessage } from "../../Actions/AlertMessageAction";
 import {
   addProductToCart,
   removeProductFromCart,
@@ -21,6 +22,12 @@ const ProductCard = (props) => {
   const dispatched = useDispatch();
 
   const handleProductAddClick = () => {
+    if (getDuplicateCount(cartData, props.id) > 9) {
+      dispatched(
+        showAlertMessage("You can add a maximum of 10 units per ptoduct")
+      );
+      return;
+    }
     dispatched(addProductToCart(props.id));
   };
 

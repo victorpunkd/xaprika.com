@@ -32,6 +32,10 @@ const AddressCard = (props) => {
             fetchAddressInfoAction(localStorage.getItem("userPhoneNo"))
           );
           dispatched(clearMakeAddressDefaultAction());
+          if (sessionStorage.getItem("changeAddressFromCheckout") !== null) {
+            sessionStorage.removeItem("changeAddressFromCheckout");
+            history.push("/Checkout");
+          }
         } else {
           dispatched(
             showAlertMessage(
@@ -41,7 +45,7 @@ const AddressCard = (props) => {
         }
       }
     }
-  }, [makeAddressDefaultReducer, dispatched]);
+  }, [makeAddressDefaultReducer, dispatched, history]);
 
   useEffect(() => {
     checkDefaultAddressStatus();

@@ -17,7 +17,7 @@ const OrderHistory = () => {
 
   useEffect(() => {
     if (localStorage.getItem("userPhoneNo") === null) {
-      history.pushState("/");
+      history.push("/");
       return;
     }
     dispatched(clearFetchOrdersInfo());

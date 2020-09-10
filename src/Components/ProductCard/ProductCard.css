@@ -69,16 +69,15 @@
 
 .productPrice {
   font-weight: 800;
-  font-weight: 20px;
 }
 
 .productControls {
   text-align: right;
-  margin-top: 5px;
+  margin-top: 15px;
 }
 
 .totalPrice {
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 800;
 }
 

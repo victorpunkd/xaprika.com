@@ -34,6 +34,7 @@ const EditAddressForm = ({ match }) => {
   const pincodeState = "NA";
   const stateState = "West Bengal";
   const [tagnameState, setTagnameState] = useState("");
+  const [isButtonSubmitting, setIsButtonSubimitting] = useState(false);
 
   const handleTextBoxCompoenetOnBlur = (name, text) => {
     if (name === "address") {
@@ -49,6 +50,7 @@ const EditAddressForm = ({ match }) => {
 
   const checkIfAddressUpdated = useCallback(() => {
     if (updateAddressReducer.isLoaded && !updateAddressReducer.error) {
+      setIsButtonSubimitting(false);
       if (updateAddressReducer.data) {
         if (updateAddressReducer.data.code === 1) {
           history.push("/AddressManagement");
@@ -106,6 +108,7 @@ const EditAddressForm = ({ match }) => {
       pincodeState &&
       tagnameState
     ) {
+      setIsButtonSubimitting(true);
       dispatched(clearUpdateAddressAction());
       dispatched(
         updateAddressAction(
@@ -127,7 +130,7 @@ const EditAddressForm = ({ match }) => {
 
   useEffect(() => {
     if (localStorage.getItem("userPhoneNo") === null) {
-      history.pushState("/");
+      history.push("/");
       return;
     }
     dispatched(clearFetchAddressInfoAction());
@@ -204,10 +207,13 @@ const EditAddressForm = ({ match }) => {
               </div>
               <div className="updateButtonContainer">
                 <button
+                  disabled={isButtonSubmitting}
                   onClick={handleUpdateAddressClick}
-                  className="primaryButton w3-block"
+                  className={`primaryButton w3-block ${
+                    isButtonSubmitting && "disabledButton"
+                  }`}
                 >
-                  Update Address
+                  {isButtonSubmitting ? "Loading..." : "Update Address"}
                 </button>
               </div>
             </>

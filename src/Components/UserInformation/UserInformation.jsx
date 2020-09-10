@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Redirect } from "react-router";
+import { useHistory } from "react-router-dom";
 import "./UserInformation.css";
 import CurrentPageNameHeader from "../CurrentPageNameHeader/CurrentPageNameHeader";
 import Loader from "../Loader/Loader";
@@ -27,18 +27,21 @@ const UserInformation = () => {
   const { userInformationReducer, updateUserInformationReducer } = useSelector(
     (state) => state
   );
+  const history = useHistory();
   const dispatched = useDispatch();
   const phoneNoState = localStorage.getItem("userPhoneNo");
   const [mailIdState, setMailIdState] = useState("");
   const [nameState, setNameState] = useState("");
   const [passwordState, setPasswordState] = useState("examplePassword");
   const [userDataState, setUserDataState] = useState([]);
+  const [isButtonSubmitting, setIsButtonSubimitting] = useState(false);
 
   const checkIfUserInfoIsUpdated = useCallback(() => {
     if (
       updateUserInformationReducer.isLoaded &&
       !updateUserInformationReducer.error
     ) {
+      setIsButtonSubimitting(false);
       if (updateUserInformationReducer.data) {
         if (updateUserInformationReducer.data.code === 1) {
           dispatched(showAlertMessage("Data Updated"));
@@ -72,7 +75,7 @@ const UserInformation = () => {
 
   useEffect(() => {
     if (localStorage.getItem("userPhoneNo") === null) {
-      return <Redirect push to="/" />;
+      history.push("/");
     }
     dispatched(clearFetchUserInfoAction());
     dispatched(fetchUserInfoAction(localStorage.getItem("userPhoneNo")));
@@ -80,7 +83,7 @@ const UserInformation = () => {
       dispatched(clearFetchUserInfoAction());
       dispatched(clearUpdateUserInfoAction());
     };
-  }, [dispatched]);
+  }, [dispatched, history]);
 
   const handleTextBoxCompoenetOnBlur = (name, text) => {
     if (name === "name") {
@@ -99,6 +102,7 @@ const UserInformation = () => {
 
   const handleUpdateInfoClick = () => {
     if (phoneNoState && mailIdState && nameState && passwordState) {
+      setIsButtonSubimitting(true);
       dispatched(clearUpdateUserInfoAction());
       dispatched(
         updateUserInfoAction(
@@ -118,7 +122,7 @@ const UserInformation = () => {
       <CurrentPageNameHeader categoryName="Manage Account" />
       <div className="userInformationForm">
         {userInformationReducer.isLoaded ? (
-          userInformationReducer.Error ? (
+          userInformationReducer.error || updateUserInformationReducer.error ? (
             <Error errorMessage={userInformationReducer.errorMessage} />
           ) : userDataState.length ? (
             <>
@@ -171,10 +175,13 @@ const UserInformation = () => {
               </div>
               <div className="updateButtonContainer">
                 <button
+                  disabled={isButtonSubmitting}
                   onClick={handleUpdateInfoClick}
-                  className="primaryButton w3-block"
+                  className={`primaryButton w3-block ${
+                    isButtonSubmitting && "disabledButton"
+                  }`}
                 >
-                  Update Information
+                  {isButtonSubmitting ? "Loading..." : "Update Information"}
                 </button>
               </div>
             </>

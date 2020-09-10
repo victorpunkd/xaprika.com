@@ -33,9 +33,14 @@ const PasswordOROTP = ({ match }) => {
   const [isSendOTPButtonActive, makeSendOTPButtonActive] = useState(true);
   const [password, setPassword] = useState("");
   const [otp, setotp] = useState("");
+  const [isButtonSubmitting, setIsButtonSubimitting] = useState(false);
 
   // main use effect
   useEffect(() => {
+    if (localStorage.getItem("userPhoneNo") !== null) {
+      history.push("/");
+      return;
+    }
     dispatched(clearCheckPhoneNoExistData());
     dispatched(checkIfPhoneNoExist(match.params.phoneNo));
     return function cleanup() {
@@ -44,7 +49,7 @@ const PasswordOROTP = ({ match }) => {
       dispatched(clearcheckOTP());
       dispatched(clearCheckPhoneNoExistData());
     };
-  }, [match.params.phoneNo, dispatched]);
+  }, [match.params.phoneNo, dispatched, history]);
 
   const startAndEndTimer = useCallback(() => {
     setTimer(OTPSendGapTime);
@@ -85,10 +90,12 @@ const PasswordOROTP = ({ match }) => {
 
   const checkIfOTPisCorrect = useCallback(() => {
     if (isOTPMatching.isLoaded && !isOTPMatching.error) {
+      setIsButtonSubimitting(false);
       if (isOTPMatching.data[0].code === 1) {
         history.push(`/User-Registration/${match.params.phoneNo}/${otp}`);
       } else {
         dispatched(showAlertMessage("OTP is not matching"));
+        dispatched(clearcheckOTP());
       }
     } else if (isOTPMatching.isLoaded && isOTPMatching.error) {
       dispatched(showAlertMessage("We faced an issue please try again later"));
@@ -106,9 +113,11 @@ const PasswordOROTP = ({ match }) => {
 
   const checkIfPasswordisCorrect = useCallback(() => {
     if (checkPasswordReducer.isLoaded && !checkPasswordReducer.error) {
+      setIsButtonSubimitting(false);
       if (checkPasswordReducer.data.length) {
         localStorage.setItem("userPhoneNo", match.params.phoneNo);
         if (sessionStorage.getItem("loginFromCheckout") !== null) {
+          sessionStorage.removeItem("loginFromCheckout");
           history.push(`/checkout`);
         } else {
           history.push(`/`);
@@ -131,12 +140,14 @@ const PasswordOROTP = ({ match }) => {
   const handleSubmit = () => {
     if (isPhoneNoExist.data.length) {
       if (password) {
+        setIsButtonSubimitting(true);
         validatePassword();
       } else {
         dispatched(showAlertMessage("Please enter a valid password"));
       }
     } else {
       if (otp) {
+        setIsButtonSubimitting(true);
         validateOTP();
       } else {
         dispatched(showAlertMessage("Please enter a valid OTP"));
@@ -229,10 +240,13 @@ const PasswordOROTP = ({ match }) => {
               )}
               <div className="submitButtonContainer">
                 <button
+                  disabled={isButtonSubmitting}
                   onClick={handleSubmit}
-                  className={`primaryButton w3-block`}
+                  className={`primaryButton w3-block ${
+                    isButtonSubmitting && "disabledButton"
+                  }`}
                 >
-                  Submit
+                  {isButtonSubmitting ? "Loading..." : "Submit"}
                 </button>
               </div>
             </>

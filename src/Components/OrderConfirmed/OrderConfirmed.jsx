@@ -69,7 +69,7 @@ const OrderConfirmed = () => {
 
   return (
     <div className="orderConfirmedContainer">
-      <CurrentPageNameHeader categoryName="Order Confirm" />
+      <CurrentPageNameHeader categoryName="Order Confirmation" />
       {confirmOrderReducer.isLoaded ? (
         confirmOrderReducer.error || confirmOrderReducer.data.code === 0 ? (
           <Error errorMessage={confirmOrderReducer.errorMessage} />

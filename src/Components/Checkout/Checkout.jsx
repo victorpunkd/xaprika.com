@@ -6,16 +6,25 @@ import Error from "../Error/Error";
 import Loader from "../Loader/Loader";
 import CurrentPageNameHeader from "../CurrentPageNameHeader/CurrentPageNameHeader";
 import { showAlertMessage } from "../../Actions/AlertMessageAction";
-import { fetchFinalCheckoutCalculationAction } from "../../Actions/FetchFinalCheckoutCalculation";
-import { clearfetchFinalCheckoutCalculationAction } from "../../Actions/FetchFinalCheckoutCalculation";
-import { fetchDeliveryAddressAction } from "../../Actions/FetchDeliveryAddress";
-import { clearFetchDeliveryAddressAction } from "../../Actions/FetchDeliveryAddress";
+import {
+  fetchFinalCheckoutCalculationAction,
+  clearfetchFinalCheckoutCalculationAction,
+} from "../../Actions/FetchFinalCheckoutCalculation";
+import {
+  fetchDeliveryAddressAction,
+  clearFetchDeliveryAddressAction,
+} from "../../Actions/FetchDeliveryAddress";
+import {
+  fetchExpectedDeliveryDateAction,
+  clearFetchExpectedDeliveryDateAction,
+} from "../../Actions/FetchExpectedDeliveryDate";
 
 const Checkout = () => {
   const {
     finalCheckoutCalculationReducer,
     cartData,
     deliveryAddressReducer,
+    expectedDeliveryDateReducer,
   } = useSelector((state) => state);
   const history = useHistory();
   const dispatched = useDispatch();
@@ -57,6 +66,8 @@ const Checkout = () => {
     dispatched(fetchFinalCheckoutCalculationAction(cartData));
     dispatched(clearFetchDeliveryAddressAction());
     dispatched(fetchDeliveryAddressAction(localStorage.getItem("userPhoneNo")));
+    dispatched(clearFetchExpectedDeliveryDateAction());
+    dispatched(fetchExpectedDeliveryDateAction());
   }, [dispatched, cartData, history]);
   return (
     <div className="checkoutContainer">
@@ -122,6 +133,23 @@ const Checkout = () => {
                   <span className="checkmark"></span>
                 </label>
               </div>
+            </div>
+            <div className="expectedDeliveryDate">
+              {expectedDeliveryDateReducer.isLoaded ? (
+                <div className="deliveryMessage">
+                  <span className="deliveryText">
+                    You order will be delivered by -{" "}
+                  </span>
+                  <span className="deliveryDate">
+                    {expectedDeliveryDateReducer.data[0].expectedDeliveryDate}
+                  </span>
+                  <div className="specialMessage">
+                    *{expectedDeliveryDateReducer.data[0].message}
+                  </div>
+                </div>
+              ) : (
+                <Loader />
+              )}
             </div>
             <button
               className="primaryButton w3-block"
