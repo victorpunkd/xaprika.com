@@ -1,4 +1,4 @@
-let endpoint = "http://3.128.33.13:8080";
+let endpoint = "https://api.xaprika.com";
 
 //http://3.128.33.13:8080        *Test Environment
 //http://localhost:8080          *Local Environment
