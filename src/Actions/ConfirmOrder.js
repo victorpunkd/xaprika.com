@@ -14,8 +14,10 @@ export const confirmOrderAction = (
   state,
   landmark,
   recieversPhoneNo,
-  cartData
+  cartData,
+  appliedCouponCode
 ) => (dispatch) => {
+  let couponCode = appliedCouponCode.length ? appliedCouponCode : "Null";
   fetch(
     `${getApiEndpoint()}/api/confirmOrder/${phoneNo}/${itemCount}/${totalAmount}/${discountAmount}/${deliveryCharges}/${otherCharges}/${encodeURIComponent(
       deliveryAddress
@@ -23,7 +25,7 @@ export const confirmOrderAction = (
       area
     )}/${city}/${pinCode}/${state}/${encodeURIComponent(
       landmark
-    )}/${recieversPhoneNo}/${[...cartData]}`
+    )}/${recieversPhoneNo}/${[...cartData]}/${couponCode}`
   )
     .then((res) => res.json())
     .then(

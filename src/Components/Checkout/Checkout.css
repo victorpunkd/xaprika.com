@@ -54,6 +54,17 @@
   border-top: 1px solid gray;
 }
 
+.couponSection {
+  margin-top: 10%;
+  text-align: center;
+}
+
+.appliedCouponCode {
+  color: #049372;
+  font-size: 15px;
+  font-family: "Nunito", sans-serif;
+}
+
 .deliveryAddressCard {
   margin-top: 10%;
   width: 100%;
@@ -182,5 +193,5 @@
   font-family: "Nunito", sans-serif;
   font-size: 12px;
   font-weight: 400;
-  color: #801336;
+  color: #c0392b;
 }

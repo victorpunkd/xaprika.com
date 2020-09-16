@@ -10,6 +10,9 @@ import { clearConfirmOrderAction } from "../../Actions/ConfirmOrder";
 import { clearFetchDeliveryAddressAction } from "../../Actions/FetchDeliveryAddress";
 import { clearFetchProductsUnderCart } from "../../Actions/FetchProductsUnderCart";
 import { clearCart } from "../../Actions/CartAddRemoveProductAction";
+import { clearAppliedCouponCodeAction } from "../../Actions/ApplyClearCouponCode";
+import { clearFetchCouponInformationAction } from "../../Actions/FetchCouponInformation";
+import { clearfetchFinalCheckoutCalculationAction } from "../../Actions/FetchFinalCheckoutCalculation";
 
 const OrderConfirmed = () => {
   const {
@@ -17,6 +20,7 @@ const OrderConfirmed = () => {
     cartData,
     deliveryAddressReducer,
     confirmOrderReducer,
+    appliedCouponCodeReducer,
   } = useSelector((state) => state);
   const dispatched = useDispatch();
   const history = useHistory();
@@ -38,7 +42,11 @@ const OrderConfirmed = () => {
         finalCheckoutCalculationReducer.data[
           finalCheckoutCalculationReducer.data.length - 1
         ].totalPrice,
-        0,
+        appliedCouponCodeReducer.length
+          ? finalCheckoutCalculationReducer.data[
+              finalCheckoutCalculationReducer.data.length - 3
+            ].totalPrice
+          : 0,
         finalCheckoutCalculationReducer.data[
           finalCheckoutCalculationReducer.data.length - 2
         ].totalPrice,
@@ -50,7 +58,8 @@ const OrderConfirmed = () => {
         deliveryAddressReducer.data[0].state,
         deliveryAddressReducer.data[0].landmark,
         localStorage.getItem("userPhoneNo"),
-        cartData
+        cartData,
+        appliedCouponCodeReducer
       )
     );
     return function cleanup() {
@@ -58,6 +67,9 @@ const OrderConfirmed = () => {
       dispatched(clearFetchDeliveryAddressAction());
       dispatched(clearFetchProductsUnderCart());
       dispatched(clearCart());
+      dispatched(clearfetchFinalCheckoutCalculationAction());
+      dispatched(clearAppliedCouponCodeAction());
+      dispatched(clearFetchCouponInformationAction());
     };
   }, [
     dispatched,
@@ -65,6 +77,7 @@ const OrderConfirmed = () => {
     deliveryAddressReducer,
     finalCheckoutCalculationReducer,
     history,
+    appliedCouponCodeReducer,
   ]);
 
   return (

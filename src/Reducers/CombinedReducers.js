@@ -29,7 +29,9 @@ import updateUserInformationReducer from "./UpdateUserInformationReducer";
 import productsListForSearch from "./ProductListForSearchReducer";
 import selectiveProductsReducer from "./SelectiveProductsReducer";
 import expectedDeliveryDateReducer from "./ExpectedDeliveryDateReducer";
-
+import couponValidationReducer from "./CouponValidationReducer";
+import isApplyCoupoModalVisibleReducer from "./ShowHideApplyCouponModalReducer";
+import appliedCouponCodeReducer from "./AppliedCouponCode";
 export default combineReducers({
   activePage,
   isUerOptionSideBarVisible,
@@ -61,4 +63,7 @@ export default combineReducers({
   productsListForSearch,
   selectiveProductsReducer,
   expectedDeliveryDateReducer,
+  couponValidationReducer,
+  isApplyCoupoModalVisibleReducer,
+  appliedCouponCodeReducer,
 });

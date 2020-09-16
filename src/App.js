@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import ReactGA from "react-ga";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import "./App.css";
@@ -26,6 +27,7 @@ import Checkout from "./Components/Checkout/Checkout";
 import OrderConfirmed from "./Components/OrderConfirmed/OrderConfirmed";
 import Footer from "./Components/Footer/Footer";
 import AlertMessage from "./Components/AlertMessage/AlertMessage";
+import ApplyCouponModal from "./Components/ApplyCouponModal/ApplyCouponModal";
 import ContactUs from "./Components/ContactUs/ContactUs";
 import AboutUs from "./Components/AboutUs/AboutUs";
 import Error404Page from "./Components/Error404Page/Error404Page";
@@ -35,13 +37,25 @@ const App = () => {
     isSideBarVisible,
     isUerOptionSideBarVisible,
     alertMessage,
+    isApplyCoupoModalVisibleReducer,
   } = useSelector((state) => state);
   const dispatched = useDispatch();
+
+  const initializeReactGA = () => {
+    ReactGA.initialize("UA-176266477-1");
+    ReactGA.pageview("/");
+  };
+
+  useEffect(() => {
+    initializeReactGA();
+  });
+
   return (
     <Router>
       <div className="App">
         <div className="appContainer">
           {alertMessage.isVisible && <AlertMessage />}
+          {isApplyCoupoModalVisibleReducer && <ApplyCouponModal />}
           <NavBar />
           {isSideBarVisible && <SideBar />}
           {isUerOptionSideBarVisible && <UserOptionSideBar />}

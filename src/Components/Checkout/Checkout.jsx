@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import "./Checkout.css";
@@ -6,6 +6,7 @@ import Error from "../Error/Error";
 import Loader from "../Loader/Loader";
 import CurrentPageNameHeader from "../CurrentPageNameHeader/CurrentPageNameHeader";
 import { showAlertMessage } from "../../Actions/AlertMessageAction";
+import { showApplyCouponModalAction } from "../../Actions/ShowHideApplyCouponModal";
 import {
   fetchFinalCheckoutCalculationAction,
   clearfetchFinalCheckoutCalculationAction,
@@ -18,6 +19,8 @@ import {
   fetchExpectedDeliveryDateAction,
   clearFetchExpectedDeliveryDateAction,
 } from "../../Actions/FetchExpectedDeliveryDate";
+import { clearAppliedCouponCodeAction } from "../../Actions/ApplyClearCouponCode";
+import { clearFetchCouponInformationAction } from "../../Actions/FetchCouponInformation";
 
 const Checkout = () => {
   const {
@@ -25,13 +28,26 @@ const Checkout = () => {
     cartData,
     deliveryAddressReducer,
     expectedDeliveryDateReducer,
+    couponValidationReducer,
+    appliedCouponCodeReducer,
   } = useSelector((state) => state);
   const history = useHistory();
   const dispatched = useDispatch();
+  const [isCouponApplied, setIsCouponApplied] = useState(false);
 
   const handleChangeAddressClick = () => {
     sessionStorage.setItem("changeAddressFromCheckout", true);
     history.push(`/AddressManagement`);
+  };
+
+  const handleHaveCouponClick = () => {
+    dispatched(showApplyCouponModalAction());
+  };
+
+  const handleRemoveAppliedCouponClick = () => {
+    dispatched(clearAppliedCouponCodeAction());
+    dispatched(clearFetchCouponInformationAction());
+    setIsCouponApplied(false);
   };
 
   const handlePaymentOptionChange = () => {
@@ -63,12 +79,32 @@ const Checkout = () => {
       return;
     }
     dispatched(clearfetchFinalCheckoutCalculationAction());
-    dispatched(fetchFinalCheckoutCalculationAction(cartData));
+    dispatched(
+      fetchFinalCheckoutCalculationAction(cartData, appliedCouponCodeReducer)
+    );
     dispatched(clearFetchDeliveryAddressAction());
     dispatched(fetchDeliveryAddressAction(localStorage.getItem("userPhoneNo")));
     dispatched(clearFetchExpectedDeliveryDateAction());
     dispatched(fetchExpectedDeliveryDateAction());
-  }, [dispatched, cartData, history]);
+  }, [dispatched, cartData, history, appliedCouponCodeReducer]);
+
+  const checkIfTheCouponIsvalid = useCallback(() => {
+    if (couponValidationReducer.isLoaded && !couponValidationReducer.error) {
+      if (couponValidationReducer.data.length) {
+        if (couponValidationReducer.data[0].code === 1) {
+          // coupon is valid
+          setIsCouponApplied(true);
+        } else {
+          // coupon is not valid
+        }
+      }
+    }
+  }, [couponValidationReducer]);
+
+  useEffect(() => {
+    checkIfTheCouponIsvalid();
+  }, [checkIfTheCouponIsvalid]);
+
   return (
     <div className="checkoutContainer">
       <CurrentPageNameHeader categoryName="Checkout" />
@@ -96,6 +132,36 @@ const Checkout = () => {
                     </div>
                   </div>
                 )
+              )}
+            </div>
+
+            <div className="couponSection">
+              {isCouponApplied ? (
+                <span className="appliedCouponCode">
+                  {couponValidationReducer.isLoaded &&
+                  !couponValidationReducer.error &&
+                  couponValidationReducer.data.length &&
+                  couponValidationReducer.data[0].code === 1 &&
+                  appliedCouponCodeReducer.length ? (
+                    <span>
+                      Coupon <b>{appliedCouponCodeReducer.toUpperCase()}</b> is
+                      applied{" "}
+                      <span>
+                        <i
+                          className="fa fa-times-circle w3-text-red"
+                          onClick={handleRemoveAppliedCouponClick}
+                          style={{ fontSize: 18 }}
+                        ></i>
+                      </span>
+                    </span>
+                  ) : (
+                    "Something Went Wrong"
+                  )}
+                </span>
+              ) : (
+                <button className="linkButton" onClick={handleHaveCouponClick}>
+                  Have a Coupon?
+                </button>
               )}
             </div>
 

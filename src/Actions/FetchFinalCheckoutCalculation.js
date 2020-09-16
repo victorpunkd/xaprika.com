@@ -1,9 +1,15 @@
 import { getApiEndpoint } from "../CommonControls/apiEndpoint";
 
-export const fetchFinalCheckoutCalculationAction = (productIds) => (
-  dispatch
-) => {
-  fetch(`${getApiEndpoint()}/api/finalPriceCalculation/${[...productIds]}`)
+export const fetchFinalCheckoutCalculationAction = (
+  productIds,
+  appliedCouponCode
+) => (dispatch) => {
+  let couponCode = appliedCouponCode.length ? appliedCouponCode : "Null";
+  fetch(
+    `${getApiEndpoint()}/api/finalPriceCalculation/${[
+      ...productIds,
+    ]}/${couponCode}`
+  )
     .then((res) => res.json())
     .then(
       (posts) => {

@@ -5,3 +5,4 @@ export const nameRegex = /^[a-zA-Z !@#$^&*()\-+{}|:"<>?_=[\];,.//]{3,50}$/;
 export const passwordRegex = /^[a-zA-Z0-9!@#$^&*()\-+{}|:"<>?_=[\];,.//]{6,16}$/; // has to be 6 - 16 characters long, can take alphabets numbers and !@#$^&*
 export const OTPRegex = /^\d{4}$/;
 export const addressLine1Regex = /^[a-zA-Z0-9 !@#$^&*()\-+{}|:"<>?_=[\];,.//]{3,50}$/; // not supported special characters - ' \ %
+export const couponCodeRegex = /^[a-zA-Z0-9]{3,50}$/; // no special characters, only alphanumeric, minimum 3 maximum 50
