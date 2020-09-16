@@ -45,6 +45,7 @@ const ApplyCouponModal = () => {
           dispatched(hideApplyCouponModalAction());
         } else {
           setCouponErrorMessage(couponValidationReducer.data[0].message);
+          dispatched(clearFetchCouponInformationAction());
         }
       }
     }
@@ -53,6 +54,8 @@ const ApplyCouponModal = () => {
   useEffect(() => {
     checkIfTheCouponIsvalid();
   }, [checkIfTheCouponIsvalid]);
+
+  useEffect(() => {});
 
   const handleCancelClick = () => {
     dispatched(hideApplyCouponModalAction());
