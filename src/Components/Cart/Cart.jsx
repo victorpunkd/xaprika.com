@@ -47,7 +47,7 @@ const Cart = () => {
   return (
     <div className="cartContainer w3-animate-opacity">
       <CurrentPageNameHeader categoryName="Cart" />
-      <div>
+      <div className="productsListInCart">
         <ProductList products={productsUnderCart} />
       </div>
       <div className="cartFooter w3-card w3-row">

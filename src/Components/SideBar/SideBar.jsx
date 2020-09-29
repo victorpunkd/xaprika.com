@@ -105,12 +105,16 @@ const SideBar = () => {
           <div className="staticSideBarElemenets">
             <div className="staticSideBarElemenetItem w3-row">
               <Link style={{ textDecoration: "none" }} to={`/ContactUs`}>
-                <div className="primaryCategoryNameInSideBar">Contact Us</div>
+                <div className="primaryCategoryNameInSideBar">
+                  <i class="fa fa-phone" aria-hidden="true"></i> Contact Us
+                </div>
               </Link>
             </div>
             <div className="staticSideBarElemenetItem w3-row">
               <Link style={{ textDecoration: "none" }} to={`/AboutUs`}>
-                <div className="primaryCategoryNameInSideBar">About Us</div>
+                <div className="primaryCategoryNameInSideBar">
+                  <i class="fa fa-info-circle"></i> About Us
+                </div>
               </Link>
             </div>
           </div>

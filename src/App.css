@@ -2,7 +2,17 @@
   text-align: center;
   height: 100vh;
   max-height: 100vh;
-  min-height: 100vh; /*ToDo min height where keyboard on mobile screen qont break the design*/
+  /*min-height: 100vh;*/ /*ToDo min height where keyboard on mobile screen qont break the design*/
+  min-height: 670px;
+  overflow-y: scroll;
+}
+
+* {
+  -webkit-overflow-scrolling: touch;
+}
+
+* {
+  -webkit-border-radius: 0px;
 }
 
 .appContainer {
@@ -18,7 +28,7 @@
   padding-right: 5%;
   max-height: 85vh;
   height: 85vh;
-  overflow: scroll;
+  overflow-y: scroll;
   padding-bottom: 10vh;
   transition: opacity 0.3s;
 }
@@ -66,7 +76,7 @@
 .secondaryButton {
   border: 1px solid gray;
   background-color: white;
-  color: gray;
+  color: #1d32c4;
   font-family: "Nunito", sans-serif;
   font-size: 12px;
   padding: 5px 5px;

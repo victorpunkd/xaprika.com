@@ -3,6 +3,10 @@
   height: 100%;
 }
 
+.productsListInCart {
+  padding-bottom: 120px;
+}
+
 .cartFooter {
   position: fixed;
   bottom: 90px;

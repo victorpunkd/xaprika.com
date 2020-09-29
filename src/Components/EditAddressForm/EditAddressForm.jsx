@@ -142,9 +142,9 @@ const EditAddressForm = ({ match }) => {
   }, [dispatched, history]);
 
   return (
-    <div className="addressFormContainer">
+    <div className="editAddressFormContainer">
       <CurrentPageNameHeader categoryName="Edit Address" />
-      <div className="addressFormBody">
+      <div className="editAddressFormBody">
         {addressInfoReducer.isLoaded ? (
           addressInfoReducer.error ? (
             <Error errorMessage={addressInfoReducer.errorMessage} />

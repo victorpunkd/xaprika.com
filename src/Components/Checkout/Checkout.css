@@ -1,15 +1,20 @@
 .checkoutContainer {
   width: 100%;
-  height: 70vh;
-  position: relative;
+  height: 100%;
+  /* min-height: 600px;
+  overflow-y: scroll; */
+  /* position: relative; */
 }
 
 .checkoutData {
-  margin: 0;
+  /* margin: 0;
   position: relative;
   top: 50%;
   transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
+  -ms-transform: translateY(-50%); */
+  padding-right: 1px;
+  padding-left: 1px;
+  margin-top: 5px;
 }
 
 .priceBreakup {
@@ -55,7 +60,7 @@
 }
 
 .couponSection {
-  margin-top: 10%;
+  margin-top: 20px;
   text-align: center;
 }
 
@@ -66,7 +71,7 @@
 }
 
 .deliveryAddressCard {
-  margin-top: 10%;
+  margin-top: 20px;
   width: 100%;
   border-radius: 20px;
   background-color: white;
@@ -89,7 +94,7 @@
 }
 
 .paymentOption {
-  margin-top: 10%;
+  margin-top: 20px;
 }
 
 .paymentTypeRadioButtons {
@@ -171,7 +176,7 @@
 /*Checkbox Style End*/
 
 .expectedDeliveryDate {
-  margin-top: 10%;
+  margin-top: 20px;
 }
 
 .deliveryMessage {
@@ -194,4 +199,78 @@
   font-size: 12px;
   font-weight: 400;
   color: #c0392b;
+}
+
+.placeOrderButton {
+  margin-top: 20px;
+}
+
+@media screen and (max-height: 600px) {
+  .checkoutContainer {
+    width: 100%;
+    height: 70vh;
+    /* min-height: 600px; */
+    overflow-y: scroll;
+    /* position: relative; */
+  }
+}
+
+@media screen and (max-height: 690px) {
+  .checkoutContainer {
+    width: 100%;
+    height: 75vh;
+    /* min-height: 600px; */
+    overflow-y: scroll;
+    /* position: relative; */
+  }
+
+  .checkoutData {
+    margin-top: 0%;
+    padding-bottom: 50px;
+  }
+
+  .priceBreakup {
+    margin-top: 5%;
+  }
+
+  .couponSection {
+    margin-top: 5%;
+  }
+
+  .deliveryAddressCard {
+    margin-top: 5%;
+  }
+
+  .paymentOption {
+    margin-top: 5%;
+  }
+
+  .expectedDeliveryDate {
+    margin-top: 5%;
+  }
+
+  .placeOrderButton {
+    margin-top: 5%;
+  }
+}
+
+@media screen and (min-height: 700px) {
+  .checkoutContainer {
+    width: 100%;
+    height: 70vh;
+    /* min-height: 600px;
+    overflow-y: scroll; */
+    position: relative;
+  }
+
+  .checkoutData {
+    margin: 0;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    padding-right: 1px;
+    padding-left: 1px;
+    margin-top: 5px;
+  }
 }

@@ -88,7 +88,7 @@ const SearchBoxComponent = () => {
             <div className="s1 w3-col searchIconSection">
               <i className="fa fa-search" aria-hidden="true"></i>
             </div>
-            <div className="s10 w3-col searchInputBoxSection w3-green">
+            <div className="s10 w3-col searchInputBoxSection">
               <input
                 type="text"
                 value={searchInputTextValueState}
@@ -142,7 +142,7 @@ const SearchBoxComponent = () => {
               ) : (
                 <div className="searchFilteredItems">
                   <div className="SearchFilterProductName">
-                    Nothing Found With {searchInputTextValueState}
+                    Nothing Found With <b>{searchInputTextValueState}</b>
                   </div>
                 </div>
               )}

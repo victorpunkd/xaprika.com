@@ -175,7 +175,6 @@ const Checkout = () => {
                     {deliveryAddressReducer.data[0].area},{" "}
                     {deliveryAddressReducer.data[0].landmark},{" "}
                     {deliveryAddressReducer.data[0].city},{" "}
-                    {deliveryAddressReducer.data[0].pin_code},{" "}
                     {deliveryAddressReducer.data[0].state}
                   </span>
                 ) : (
@@ -218,8 +217,7 @@ const Checkout = () => {
               )}
             </div>
             <button
-              className="primaryButton w3-block"
-              style={{ marginTop: "10%" }}
+              className="primaryButton w3-block placeOrderButton"
               onClick={handlePlaceOrder}
             >
               Place Order

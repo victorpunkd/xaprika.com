@@ -28,4 +28,5 @@
 
 .primaryCategories {
   margin-top: 5%;
+  padding-bottom: 100px; /* bit extra space at the bottom of the page after primary category cards for large screen and in chrome but perfect for firefox */
 }
