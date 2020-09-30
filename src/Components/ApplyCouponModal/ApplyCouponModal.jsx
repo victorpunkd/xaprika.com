@@ -18,7 +18,10 @@ const ApplyCouponModal = () => {
   const [coupon, setCoupon] = useState("");
   const [couponErrorMessage, setCouponErrorMessage] = useState("");
   const [isButtonSubmitting, setIsButtonSubimitting] = useState(false);
-  const { couponValidationReducer } = useSelector((state) => state);
+  const {
+    couponValidationReducer,
+    finalCheckoutCalculationReducer,
+  } = useSelector((state) => state);
   const handleTextBoxCompoenetOnBlur = (name, text) => {
     if (name === "couponCode") {
       setCoupon(text);
@@ -26,9 +29,17 @@ const ApplyCouponModal = () => {
   };
 
   const handleApplyClick = () => {
+    let totalProductAmount =
+      finalCheckoutCalculationReducer.data[
+        finalCheckoutCalculationReducer.data.length - 1
+      ].totalPrice;
+    if (!totalProductAmount > 0) {
+      setCouponErrorMessage("Something went wrong, please try again");
+      return;
+    }
     if (coupon) {
       dispatched(clearFetchCouponInformationAction());
-      dispatched(fetchCouponInformationAction(coupon));
+      dispatched(fetchCouponInformationAction(coupon, totalProductAmount));
       setIsButtonSubimitting(true);
     } else {
       setCouponErrorMessage("The coupon is invalid");

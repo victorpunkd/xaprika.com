@@ -31,7 +31,8 @@ const Cart = () => {
     productsUnderCart.data.forEach(
       (data) =>
         (totalAmount +=
-          data.product_mrp * getDuplicateCount(cartData, data.product_id))
+          data.product_sale_price *
+          getDuplicateCount(cartData, data.product_id))
     );
     return totalAmount;
   };

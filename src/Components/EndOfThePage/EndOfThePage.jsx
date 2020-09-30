@@ -4,7 +4,7 @@ import "./EndOfThePage.css";
 const EndOfThePage = () => {
   return (
     <div className="endOfThePageContainer">
-      <div className="endOfThePageContent">Thats All!</div>
+      <div className="endOfThePageContent">That's All!</div>
     </div>
   );
 };

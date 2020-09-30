@@ -1,7 +1,11 @@
 import { getApiEndpoint } from "../CommonControls/apiEndpoint";
 
-export const fetchCouponInformationAction = (coupon) => (dispatch) => {
-  fetch(`${getApiEndpoint()}/api/getCouponDetails/${coupon}`)
+export const fetchCouponInformationAction = (coupon, totalProductValue) => (
+  dispatch
+) => {
+  fetch(
+    `${getApiEndpoint()}/api/getCouponDetails/${coupon}/${totalProductValue}`
+  )
     .then((res) => res.json())
     .then(
       (posts) => {
