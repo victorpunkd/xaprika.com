@@ -212,7 +212,7 @@ const Checkout = () => {
               {expectedDeliveryDateReducer.isLoaded ? (
                 <div className="deliveryMessage">
                   <span className="deliveryText">
-                    You order will be delivered latest by{" "}
+                    Your order will be delivered latest by{" "}
                   </span>
                   <span className="deliveryDate">
                     {expectedDeliveryDateReducer.data[0].expectedDeliveryDate}

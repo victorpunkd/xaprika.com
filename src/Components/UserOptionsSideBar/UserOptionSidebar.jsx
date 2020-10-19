@@ -3,11 +3,13 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import "./UserOptionSidebar.css";
 import { hideUserOptionSideBar } from "../../Actions/UserOptionSideBarVisibleAction";
+import { showAlertMessage } from "../../Actions/AlertMessageAction";
 
 const UserOptionSideBar = () => {
   const dispatched = useDispatch();
   const handleLogOutClicked = () => {
     localStorage.removeItem("userPhoneNo");
+    dispatched(showAlertMessage("You have successfully logged out"));
   };
   return (
     <div className="userOptionSideBarContainer w3-animate-opacity">
