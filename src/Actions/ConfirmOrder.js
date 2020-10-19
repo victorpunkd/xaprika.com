@@ -17,7 +17,7 @@ export const confirmOrderAction = (
   cartData,
   appliedCouponCode
 ) => (dispatch) => {
-  let couponCode = appliedCouponCode.length ? appliedCouponCode : "Null";
+  let couponCode = appliedCouponCode ? appliedCouponCode : "Null";
   fetch(
     `${getApiEndpoint()}/api/confirmOrder/${phoneNo}/${itemCount}/${totalAmount}/${discountAmount}/${deliveryCharges}/${otherCharges}/${encodeURIComponent(
       deliveryAddress

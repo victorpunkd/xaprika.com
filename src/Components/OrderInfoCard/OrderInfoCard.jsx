@@ -1,9 +1,11 @@
 import React from "react";
+//import { useHistory } from "react-router-dom";
 import "./OrderInfoCard.css";
 
 const OrderInfoCard = (props) => {
+  //const history = useHistory();
   // const handleOrderShowDetailsClick = () => {
-  //   alert("Feature coming soon");
+  //   history.push(`/OrderDetails/${props.orderId}`);
   // };
   return (
     <div className="orderHistoryCard w3-card">

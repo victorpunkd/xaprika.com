@@ -4,7 +4,7 @@ export const fetchFinalCheckoutCalculationAction = (
   productIds,
   appliedCouponCode
 ) => (dispatch) => {
-  let couponCode = appliedCouponCode.length ? appliedCouponCode : "Null";
+  let couponCode = appliedCouponCode ? appliedCouponCode : "Null";
   fetch(
     `${getApiEndpoint()}/api/finalPriceCalculation/${[
       ...productIds,

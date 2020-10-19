@@ -1,7 +1,8 @@
-export const applyCouponCodeAction = (couponCode) => {
+export const applyCouponCodeAction = (couponCode, couponDescription) => {
   return {
     type: "applyCouponCode",
-    payLoad: couponCode,
+    payLoadcouponCode: couponCode,
+    payLoadcouponDescription: couponDescription,
   };
 };
 

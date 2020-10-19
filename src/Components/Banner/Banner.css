@@ -7,6 +7,7 @@
 .bannerConatiner {
   width: 100%;
   border-radius: 20px;
+  height: 177px;
 }
 
 .bannerImage {
@@ -14,4 +15,10 @@
   height: 180px; */
   width: 100%;
   border-radius: 20px;
+}
+
+@media screen and (max-width: 600px) {
+  .bannerConatiner {
+    height: 50vw;
+  }
 }

@@ -80,7 +80,10 @@ const Checkout = () => {
     }
     dispatched(clearfetchFinalCheckoutCalculationAction());
     dispatched(
-      fetchFinalCheckoutCalculationAction(cartData, appliedCouponCodeReducer)
+      fetchFinalCheckoutCalculationAction(
+        cartData,
+        appliedCouponCodeReducer.coupon
+      )
     );
     dispatched(clearFetchDeliveryAddressAction());
     dispatched(fetchDeliveryAddressAction(localStorage.getItem("userPhoneNo")));
@@ -142,18 +145,24 @@ const Checkout = () => {
                   !couponValidationReducer.error &&
                   couponValidationReducer.data.length &&
                   couponValidationReducer.data[0].code === 1 &&
-                  appliedCouponCodeReducer.length ? (
-                    <span>
-                      Coupon <b>{appliedCouponCodeReducer.toUpperCase()}</b> is
-                      applied{" "}
+                  appliedCouponCodeReducer ? (
+                    <>
                       <span>
-                        <i
-                          className="fa fa-times-circle w3-text-red"
-                          onClick={handleRemoveAppliedCouponClick}
-                          style={{ fontSize: 18 }}
-                        ></i>
+                        Coupon{" "}
+                        <b>{appliedCouponCodeReducer.coupon.toUpperCase()}</b>{" "}
+                        applied{" "}
+                        <span>
+                          <i
+                            className="fa fa-times-circle w3-text-red"
+                            onClick={handleRemoveAppliedCouponClick}
+                            style={{ fontSize: 18 }}
+                          ></i>
+                        </span>
                       </span>
-                    </span>
+                      <div className="appliedCouponDescription">
+                        {appliedCouponCodeReducer.description}
+                      </div>
+                    </>
                   ) : (
                     "Something Went Wrong"
                   )}
@@ -203,7 +212,7 @@ const Checkout = () => {
               {expectedDeliveryDateReducer.isLoaded ? (
                 <div className="deliveryMessage">
                   <span className="deliveryText">
-                    You order will be delivered by -{" "}
+                    You order will be delivered latest by{" "}
                   </span>
                   <span className="deliveryDate">
                     {expectedDeliveryDateReducer.data[0].expectedDeliveryDate}

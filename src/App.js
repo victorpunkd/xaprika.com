@@ -18,6 +18,7 @@ import AddressManagement from "./Components/AddressManagement/AddressManagement"
 import AddressForm from "./Components/AddressForm/AddressForm";
 import EditAddressForm from "./Components/EditAddressForm/EditAddressForm";
 import OrderHistory from "./Components/OrderHistory/OrderHistory";
+import OrderDetails from "./Components/OrderDetails/OrderDetails";
 import Home from "./Components/Home/Home";
 import ProductsUnderPrimaryCategory from "./Components/ProductsUnderPrimaryCategory/ProductsUnderPrimaryCategory";
 import ProductsUnderSubCategory from "./Components/ProductsUnderSubCategory/ProductsUnderSubCategory";
@@ -106,6 +107,7 @@ const App = () => {
                 component={EditAddressForm}
               />
               <Route path="/OrderHistory" component={OrderHistory} />
+              <Route path="/OrderDetails/:odrerNo" component={OrderDetails} />
               <Route path="/ContactUs" component={ContactUs} />
               <Route path="/AboutUs" component={AboutUs} />
               <Route path="*" exact={true} component={Error404Page} />

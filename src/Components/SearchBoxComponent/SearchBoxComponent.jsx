@@ -134,14 +134,19 @@ const SearchBoxComponent = () => {
                     }
                     key={data.product_id}
                   >
-                    <div className="SearchFilterProductName">
-                      {data.product_name}
+                    <div className="SearchFilterProductInfo w3-row">
+                      <div className="productNameinSearchFilter w3-col s9">
+                        {data.product_name}
+                      </div>{" "}
+                      <div className="w3-col s2 productQuantityinSearchFilter">
+                        {data.product_quantity} {data.product_quantity_unit}
+                      </div>
                     </div>
                   </div>
                 ))
               ) : (
                 <div className="searchFilteredItems">
-                  <div className="SearchFilterProductName">
+                  <div className="SearchFilterProductInfo">
                     Nothing Found With <b>{searchInputTextValueState}</b>
                   </div>
                 </div>

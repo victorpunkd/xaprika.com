@@ -1,7 +1,15 @@
-const appliedCouponCodeReducer = (state = "", action) => {
+let appliedCouponInfo = {
+  coupon: "",
+  description: "",
+};
+
+const appliedCouponCodeReducer = (state = appliedCouponInfo, action) => {
   switch (action.type) {
     case "applyCouponCode":
-      return action.payLoad;
+      return {
+        coupon: action.payLoadcouponCode,
+        description: action.payLoadcouponDescription,
+      };
     case "clearCouponCode":
       return "";
     default:

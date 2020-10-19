@@ -38,12 +38,13 @@
   border-radius: 20px;
   text-align: left;
   color: #4c586e;
-  max-height: 200px;
+  max-height: 220px;
   overflow-y: scroll;
 }
 
 .searchFilteredItems {
   font-family: "Nunito", sans-serif;
+  font-size: 13px;
   white-space: nowrap;
   width: 100%;
   overflow: hidden;
@@ -56,6 +57,19 @@
   background-color: gainsboro;
 }
 
-.SearchFilterProductName {
+.SearchFilterProductInfo {
   padding: 5px 10px;
+}
+
+.productNameinSearchFilter {
+  white-space: nowrap;
+  overflow: hidden;
+  o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
+
+.productQuantityinSearchFilter {
+  text-align: right;
+  float: right;
+  font-weight: 600;
 }

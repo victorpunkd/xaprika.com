@@ -7,6 +7,7 @@ import OrderInfoCard from "../OrderInfoCard/OrderInfoCard";
 import Loader from "../Loader/Loader";
 import Error from "../Error/Error";
 import NoDataFound from "../NoDataFound/NoDataFound";
+import EndOfThePage from "../EndOfThePage/EndOfThePage";
 import { fetchOrdersInfo } from "../../Actions/FetchOrdersInfo";
 import { clearFetchOrdersInfo } from "../../Actions/FetchOrdersInfo";
 
@@ -41,6 +42,7 @@ const OrderHistory = () => {
                 orderStatus={data.order_status}
               />
             ))}
+            <EndOfThePage />
           </div>
         ) : (
           <NoDataFound />

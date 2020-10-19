@@ -70,6 +70,12 @@
   font-family: "Nunito", sans-serif;
 }
 
+.appliedCouponDescription {
+  color: #148ea4;
+  font-size: 12px;
+  font-family: "Nunito", sans-serif;
+}
+
 .deliveryAddressCard {
   margin-top: 20px;
   width: 100%;

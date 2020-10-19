@@ -42,7 +42,7 @@ const OrderConfirmed = () => {
         finalCheckoutCalculationReducer.data[
           finalCheckoutCalculationReducer.data.length - 1
         ].totalPrice,
-        appliedCouponCodeReducer.length
+        appliedCouponCodeReducer
           ? finalCheckoutCalculationReducer.data[
               finalCheckoutCalculationReducer.data.length - 3
             ].totalPrice
@@ -59,7 +59,7 @@ const OrderConfirmed = () => {
         deliveryAddressReducer.data[0].landmark,
         localStorage.getItem("userPhoneNo"),
         cartData,
-        appliedCouponCodeReducer
+        appliedCouponCodeReducer.coupon
       )
     );
     return function cleanup() {

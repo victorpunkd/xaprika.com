@@ -52,7 +52,7 @@ const ApplyCouponModal = () => {
       if (couponValidationReducer.data.length) {
         if (couponValidationReducer.data[0].code === 1) {
           dispatched(clearAppliedCouponCodeAction());
-          dispatched(applyCouponCodeAction(coupon));
+          dispatched(applyCouponCodeAction(coupon,couponValidationReducer.data[0].couponDescription));
           dispatched(hideApplyCouponModalAction());
         } else {
           setCouponErrorMessage(couponValidationReducer.data[0].message);
