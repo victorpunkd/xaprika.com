@@ -19,6 +19,7 @@ const ApplyCouponModal = () => {
   const [couponErrorMessage, setCouponErrorMessage] = useState("");
   const [isButtonSubmitting, setIsButtonSubimitting] = useState(false);
   const {
+    cartData,
     couponValidationReducer,
     finalCheckoutCalculationReducer,
   } = useSelector((state) => state);
@@ -39,7 +40,9 @@ const ApplyCouponModal = () => {
     }
     if (coupon) {
       dispatched(clearFetchCouponInformationAction());
-      dispatched(fetchCouponInformationAction(coupon, totalProductAmount));
+      dispatched(
+        fetchCouponInformationAction(coupon, totalProductAmount, cartData)
+      );
       setIsButtonSubimitting(true);
     } else {
       setCouponErrorMessage("The coupon is invalid");
@@ -52,7 +55,12 @@ const ApplyCouponModal = () => {
       if (couponValidationReducer.data.length) {
         if (couponValidationReducer.data[0].code === 1) {
           dispatched(clearAppliedCouponCodeAction());
-          dispatched(applyCouponCodeAction(coupon,couponValidationReducer.data[0].couponDescription));
+          dispatched(
+            applyCouponCodeAction(
+              coupon,
+              couponValidationReducer.data[0].couponDescription
+            )
+          );
           dispatched(hideApplyCouponModalAction());
         } else {
           setCouponErrorMessage(couponValidationReducer.data[0].message);
