@@ -1,0 +1,17 @@
+.xaprikaSpecialsCompanyContainer {
+  width: 100%;
+  height: 100%;
+}
+
+.companyBrandingImages {
+  margin-top: 20px;
+}
+
+.instructionsImage {
+  margin-top: 20px;
+}
+
+.xapSpecialsCompanyProducts {
+  margin-top: 20px;
+  border-top: 1px solid gray;
+}

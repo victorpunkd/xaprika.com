@@ -2,6 +2,7 @@ import React from "react";
 import "./Home.css";
 import SearchBoxComponent from "../SearchBoxComponent/SearchBoxComponent";
 import Banner from "../Banner/Banner";
+import BannerNonSliding from "../BannerNonSliding/BannerNonSliding";
 import PrimaryCategories from "../PrimaryCategories/PrimaryCategories";
 
 const Home = () => {
@@ -21,6 +22,17 @@ const Home = () => {
       </div>
       <div className="banner">
         <Banner />
+      </div>
+      <div className="banner">
+        <BannerNonSliding
+          key={1}
+          image={
+            "https://xaprika-file-storage.s3.us-east-2.amazonaws.com/staticImages/saleBanner/xap_special_posterr-banner.jpg"
+          }
+          name="xap_special_poster"
+          link={`/xaprika-specials`}
+          clickable={true}
+        />
       </div>
       <div className="primaryCategories">
         <PrimaryCategories />

@@ -1,0 +1,25 @@
+/* .loadingBanner {
+  width: 100%;
+  border-radius: 20px;
+  border: 1px solid gray;
+} */
+
+.nonSlidingBannerConatiner {
+  width: 100%;
+  border-radius: 20px;
+}
+
+.nonSlidingBannerImageConatiner {
+  cursor: pointer;
+}
+
+.nonSlidingBannerImage {
+  width: 100%;
+  border-radius: 20px;
+}
+
+@media screen and (max-width: 600px) {
+  .bannerConatiner {
+    height: 50vw;
+  }
+}

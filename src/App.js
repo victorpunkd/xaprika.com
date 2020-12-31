@@ -23,6 +23,8 @@ import Home from "./Components/Home/Home";
 import ProductsUnderPrimaryCategory from "./Components/ProductsUnderPrimaryCategory/ProductsUnderPrimaryCategory";
 import ProductsUnderSubCategory from "./Components/ProductsUnderSubCategory/ProductsUnderSubCategory";
 import SearchResult from "./Components/SearchResult/SearchResult";
+import XaprikaSpecials from "./Components/XaprikaSpecials/XaprikaSpecials";
+import XaprikaSpecialsCompany from "./Components/XaprikaSpecialsCompany/XaprikaSpecialsCompany";
 import Cart from "./Components/Cart/Cart";
 import Checkout from "./Components/Checkout/Checkout";
 import OrderConfirmed from "./Components/OrderConfirmed/OrderConfirmed";
@@ -80,6 +82,11 @@ const App = () => {
               <Route
                 path="/Search-Result/:productIds"
                 component={SearchResult}
+              />
+              <Route path="/Xaprika-Specials" component={XaprikaSpecials} />
+              <Route
+                path="/Xaprika-Specials-Company/:companyName"
+                component={XaprikaSpecialsCompany}
               />
               <Route
                 path="/Products-SubCategory/:primaryCategoryLink/:categoryLink"

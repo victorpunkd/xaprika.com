@@ -32,6 +32,10 @@ import expectedDeliveryDateReducer from "./ExpectedDeliveryDateReducer";
 import couponValidationReducer from "./CouponValidationReducer";
 import isApplyCoupoModalVisibleReducer from "./ShowHideApplyCouponModalReducer";
 import appliedCouponCodeReducer from "./AppliedCouponCode";
+import xapSpecialsCompanyInfoReducer from "./XapSpecialsCompanyInfoReducers";
+import xapSpecialsCompanyBrandingReducer from "./XapSpecialsCompanyBrandingReducers";
+import xapSpecialsCompanyProductsReducer from "./XapSpecialsCompanyProductsReducers";
+import groupOfProductsReducer from "./GroupOfProductsReducer";
 export default combineReducers({
   activePage,
   isUerOptionSideBarVisible,
@@ -66,4 +70,8 @@ export default combineReducers({
   couponValidationReducer,
   isApplyCoupoModalVisibleReducer,
   appliedCouponCodeReducer,
+  xapSpecialsCompanyInfoReducer,
+  xapSpecialsCompanyBrandingReducer,
+  xapSpecialsCompanyProductsReducer,
+  groupOfProductsReducer,
 });
