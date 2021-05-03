@@ -2,7 +2,7 @@ import React from "react";
 import "./Home.css";
 import SearchBoxComponent from "../SearchBoxComponent/SearchBoxComponent";
 import Banner from "../Banner/Banner";
-import BannerNonSliding from "../BannerNonSliding/BannerNonSliding";
+//import BannerNonSliding from "../BannerNonSliding/BannerNonSliding";
 import PrimaryCategories from "../PrimaryCategories/PrimaryCategories";
 
 const Home = () => {
@@ -23,7 +23,7 @@ const Home = () => {
       <div className="banner">
         <Banner />
       </div>
-      <div className="banner">
+      {/*<div className="banner">
         <BannerNonSliding
           key={1}
           image={
@@ -33,7 +33,7 @@ const Home = () => {
           link={`/xaprika-specials`}
           clickable={true}
         />
-      </div>
+        </div>*/}
       <div className="primaryCategories">
         <PrimaryCategories />
       </div>
