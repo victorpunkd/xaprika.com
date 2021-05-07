@@ -6,11 +6,12 @@ import Error from "../Error/Error";
 import { fetchBannerData } from "../../Actions/FetchBannerData";
 import NoDataFound from "../NoDataFound/NoDataFound";
 
+let interval;
+
 const Banner = () => {
   const dispatched = useDispatch();
   const { bannerData } = useSelector((state) => state);
   const [currentBannerImageState, setCurrentBannerImageState] = useState(0);
-  let interval;
 
   const startRollingImages = useCallback(() => {
     interval = setInterval(() => {
