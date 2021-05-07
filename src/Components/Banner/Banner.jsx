@@ -10,9 +10,10 @@ const Banner = () => {
   const dispatched = useDispatch();
   const { bannerData } = useSelector((state) => state);
   const [currentBannerImageState, setCurrentBannerImageState] = useState(0);
+  let interval;
 
   const startRollingImages = useCallback(() => {
-    setInterval(() => {
+    interval = setInterval(() => {
       setCurrentBannerImageState((currentBannerImageState) =>
         currentBannerImageState === bannerData.data.length - 1
           ? 0
@@ -29,6 +30,9 @@ const Banner = () => {
 
   useEffect(() => {
     changeBannerOnInterval();
+    return function cleanup() {
+      clearInterval(interval);
+    };
   }, [changeBannerOnInterval]);
 
   useEffect(() => {

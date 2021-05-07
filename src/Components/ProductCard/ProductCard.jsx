@@ -22,6 +22,7 @@ const ProductCard = (props) => {
   const dispatched = useDispatch();
 
   const handleProductAddClick = () => {
+    if (!props.inStock) return;
     if (getDuplicateCount(cartData, props.id) > 9) {
       dispatched(
         showAlertMessage("You can add a maximum of 10 units per ptoduct")
@@ -32,6 +33,7 @@ const ProductCard = (props) => {
   };
 
   const handleProductRemoveClick = () => {
+    if (!props.inStock) return;
     dispatched(removeProductFromCart(props.id));
   };
 
@@ -39,6 +41,9 @@ const ProductCard = (props) => {
     <div className="productCardContainer w3-card w3-row">
       <div className="productInfoContainer">
         <div className="s3 w3-col productImageContainer">
+          {!props.inStock && (
+            <div className="outOfStockContainer">Out of stock</div>
+          )}
           <img
             src={props.picture}
             alt={`xaprika-product-${props.name}`}
@@ -56,7 +61,11 @@ const ProductCard = (props) => {
           </div>
           <div className="productPrice">Rs. {props.price}</div>
         </div>
-        <div className="s3 w3-col productControls">
+        <div
+          className={`s3 w3-col productControls ${
+            !props.inStock && "outOfStockControl"
+          }`}
+        >
           <div className="totalPrice">
             Rs. {getDuplicateCount(cartData, props.id) * props.price}
           </div>
