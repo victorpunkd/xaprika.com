@@ -15,8 +15,17 @@ const ContactUs = () => {
       <div className="contactUsBody">
         <div className="contactItems">
           <div className="contactUsInfo">
-            <i className="fa fa-whatsapp iconColor" aria-hidden="true"></i>{" "}
-            98835 09323
+            <a
+              href="https://wa.me/919883509323"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i className="fa fa-whatsapp iconColor" aria-hidden="true"></i>{" "}
+              98835 09323
+            </a>
+            <div className="clickMessage">
+              Click here to contact us. We are happy to help
+            </div>
           </div>
           <div className="contactUsInfo">
             <i className="fa fa-envelope iconColor" aria-hidden="true"></i>{" "}

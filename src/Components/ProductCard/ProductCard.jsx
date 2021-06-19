@@ -5,6 +5,7 @@ import { showAlertMessage } from "../../Actions/AlertMessageAction";
 import {
   addProductToCart,
   removeProductFromCart,
+  removeAllTheOccurencesOfAProductFromCart,
 } from "../../Actions/CartAddRemoveProductAction";
 
 const ProductCard = (props) => {
@@ -37,6 +38,10 @@ const ProductCard = (props) => {
     dispatched(removeProductFromCart(props.id));
   };
 
+  const handleDeleteProductFromCart = () => {
+    dispatched(removeAllTheOccurencesOfAProductFromCart(props.id));
+  };
+
   return (
     <div className="productCardContainer w3-card w3-row">
       <div className="productInfoContainer">
@@ -59,7 +64,13 @@ const ProductCard = (props) => {
               {props.productQuantityUnit}
             </span>
           </div>
-          <div className="productPrice">Rs. {props.price}</div>
+          <div className="productPrice">
+            {props.currentActivePage === "orderDetails"
+              ? props.selling_price + " X " + props.product_count
+              : !props.inStock
+              ? ""
+              : "Rs. " + props.price}
+          </div>
         </div>
         <div
           className={`s3 w3-col productControls ${
@@ -67,29 +78,51 @@ const ProductCard = (props) => {
           }`}
         >
           <div className="totalPrice">
-            Rs. {getDuplicateCount(cartData, props.id) * props.price}
+            {props.currentActivePage === "orderDetails"
+              ? props.consolidated_price
+              : !props.inStock
+              ? ""
+              : "Rs. " + getDuplicateCount(cartData, props.id) * props.price}
           </div>
-          <div className="controlButtons w3-row">
-            <button
-              onClick={handleProductRemoveClick}
-              className="addSubtractButton s4 w3-col"
-            >
-              -
-            </button>
-            <div
-              className="s4 w3-col"
-              style={{ textAlign: "center", color: "#148ea4" }}
-            >
-              {getDuplicateCount(cartData, props.id)}
+          {props.currentActivePage !== "orderDetails" && (
+            <div className="controlButtons w3-row">
+              <button
+                onClick={handleProductRemoveClick}
+                className="addSubtractButton s4 w3-col"
+              >
+                -
+              </button>
+              <div
+                className="s4 w3-col"
+                style={{ textAlign: "center", color: "#148ea4" }}
+              >
+                {getDuplicateCount(cartData, props.id)}
+              </div>
+              <button
+                onClick={handleProductAddClick}
+                className="addSubtractButton s4 w3-col"
+              >
+                +
+              </button>
             </div>
-            <button
-              onClick={handleProductAddClick}
-              className="addSubtractButton s4 w3-col"
-            >
-              +
-            </button>
-          </div>
+          )}
         </div>
+        {props.currentActivePage === "cart" && (
+          <div>
+            <i
+              className="fa fa-trash"
+              style={{
+                color: "#c72c41",
+                fontSize: 20,
+                marginLeft: 49,
+                marginTop: 5,
+                cursor: "pointer",
+              }}
+              onClick={handleDeleteProductFromCart}
+              aria-hidden="true"
+            ></i>
+          </div>
+        )}
       </div>
     </div>
   );

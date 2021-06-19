@@ -7,3 +7,15 @@
   width: 150px;
   height: 184px;
 }
+
+.genericText {
+  font: "Nunito", sans-serif;
+  color: gray;
+}
+
+.clickHereButton {
+  text-decoration: underline;
+  color: #148ea4;
+  font-weight: 800;
+  cursor: pointer;
+}

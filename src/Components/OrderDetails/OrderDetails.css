@@ -6,3 +6,24 @@
 .orderDetailsBody {
   padding-bottom: 120px;
 }
+
+.basicOrderDetails {
+  text-align: left;
+  margin-top: 2px;
+}
+
+.orderDetailHeader {
+  font-size: 15px;
+  color: #1d32c4;
+  font-weight: 800;
+}
+
+.orderDetail {
+  color: gray !important ;
+  font-weight: normal;
+}
+
+.productsInOrder {
+  margin-top: 15px;
+  border-top: 1px solid gray;
+}

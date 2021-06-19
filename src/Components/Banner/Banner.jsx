@@ -2,7 +2,7 @@ import React, { useEffect, useCallback, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "./Banner.css";
 import Loader from "../Loader/Loader";
-import Error from "../Error/Error";
+//import Error from "../Error/Error";
 import { fetchBannerData } from "../../Actions/FetchBannerData";
 import NoDataFound from "../NoDataFound/NoDataFound";
 
@@ -20,7 +20,7 @@ const Banner = () => {
           ? 0
           : currentBannerImageState + 1
       );
-    }, 4000);
+    }, 8000);
   }, [bannerData.data.length]);
 
   const changeBannerOnInterval = useCallback(() => {
@@ -51,7 +51,7 @@ const Banner = () => {
       <div className="bannerConatiner w3-card w3-animate-zoom">
         <div>
           {bannerData.error ? (
-            <Error errorMessage={bannerData.errorMessage} />
+            <div>Something Went Wrong!</div>
           ) : bannerData.data.length ? (
             <img
               key={bannerData.data[currentBannerImageState].banner_id}

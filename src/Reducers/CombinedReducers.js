@@ -36,6 +36,8 @@ import xapSpecialsCompanyInfoReducer from "./XapSpecialsCompanyInfoReducers";
 import xapSpecialsCompanyBrandingReducer from "./XapSpecialsCompanyBrandingReducers";
 import xapSpecialsCompanyProductsReducer from "./XapSpecialsCompanyProductsReducers";
 import groupOfProductsReducer from "./GroupOfProductsReducer";
+import cancelOrderReducer from "./CancelOrderReducer";
+import orderDetailsReducer from "./OrderDetailsReducer";
 export default combineReducers({
   activePage,
   isUerOptionSideBarVisible,
@@ -74,4 +76,6 @@ export default combineReducers({
   xapSpecialsCompanyBrandingReducer,
   xapSpecialsCompanyProductsReducer,
   groupOfProductsReducer,
+  cancelOrderReducer,
+  orderDetailsReducer,
 });

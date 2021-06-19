@@ -33,7 +33,7 @@ const OrderHistory = () => {
           <Error errorMessage={ordersInfoReducer.errorMessage} />
         ) : ordersInfoReducer.data.length ? (
           <div className="orderHistoryBody">
-            {ordersInfoReducer.data.map((data) => (
+            {ordersInfoReducer.data.reverse().map((data) => (
               <OrderInfoCard
                 key={data.order_Id}
                 orderId={data.order_Id}

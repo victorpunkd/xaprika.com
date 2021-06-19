@@ -21,7 +21,7 @@ const Footer = () => {
           }}
         >
           <Link to="/Categories">
-            <div className="s4 w3-col footerItemSection">
+            <div className="s3 w3-col footerItemSection">
               <div className="footerItemIcon">
                 <i className="fa fa-list-alt" aria-hidden="true"></i>
               </div>
@@ -29,15 +29,23 @@ const Footer = () => {
             </div>
           </Link>
           <Link to="/">
-            <div className="s4 w3-col footerItemSection">
+            <div className="s3 w3-col footerItemSection">
               <div className="footerItemIcon">
                 <i className="fa fa-home" aria-hidden="true"></i>
               </div>
               <div className="footerItemText">Home</div>
             </div>
           </Link>
+          <Link to="/ContactUs">
+            <div className="s3 w3-col footerItemSection">
+              <div className="footerItemIcon">
+                <i className="fa fa-phone" aria-hidden="true"></i>
+              </div>
+              <div className="footerItemText">Contact</div>
+            </div>
+          </Link>
           <Link to="/Cart">
-            <div className="s4 w3-col footerItemSection">
+            <div className="s3 w3-col footerItemSection">
               <div className="footerItemIcon">
                 <i className="fa fa-shopping-cart" aria-hidden="true"></i>
               </div>

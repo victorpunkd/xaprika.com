@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import ReactGA from "react-ga";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -34,6 +34,7 @@ import ApplyCouponModal from "./Components/ApplyCouponModal/ApplyCouponModal";
 import ContactUs from "./Components/ContactUs/ContactUs";
 import AboutUs from "./Components/AboutUs/AboutUs";
 import Error404Page from "./Components/Error404Page/Error404Page";
+import { addProductArrayToCart } from "./Actions/CartAddRemoveProductAction";
 
 const App = () => {
   const {
@@ -48,6 +49,16 @@ const App = () => {
     ReactGA.initialize("UA-176266477-1");
     ReactGA.pageview("/");
   };
+
+  const loadCartFromLocalStorage = useCallback(() => {
+    if (localStorage.getItem("cart")) {
+      dispatched(addProductArrayToCart(localStorage.getItem("cart")));
+    }
+  }, [dispatched]);
+
+  useEffect(() => {
+    loadCartFromLocalStorage();
+  }, [loadCartFromLocalStorage]);
 
   useEffect(() => {
     initializeReactGA();

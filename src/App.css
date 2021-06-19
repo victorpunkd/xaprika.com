@@ -73,6 +73,12 @@
   cursor: not-allowed;
 }
 
+.disabledSecondaryButton {
+  /* background-color: gray; */
+  color: gray !important;
+  cursor: not-allowed;
+}
+
 .secondaryButton {
   border: 1px solid gray;
   background-color: white;

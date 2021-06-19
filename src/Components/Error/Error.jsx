@@ -1,7 +1,14 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import "./Error.css";
 
-const Error = (props) => {
+const Error = () => {
+  const history = useHistory();
+
+  const handleContactUsClick = () => {
+    history.push(`/ContactUs`);
+  };
+
   return (
     <div className="errorContainer">
       <div>
@@ -10,6 +17,13 @@ const Error = (props) => {
           className="errorImage"
           alt="xaprika error"
         />
+      </div>
+      <div className="genericText">Facing an issue?</div>
+      <div className="genericText">
+        <span className="clickHereButton" onClick={handleContactUsClick}>
+          Click here
+        </span>{" "}
+        to contact us we are here to help
       </div>
     </div>
   );

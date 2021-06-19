@@ -34,6 +34,8 @@ const Checkout = () => {
   const history = useHistory();
   const dispatched = useDispatch();
   const [isCouponApplied, setIsCouponApplied] = useState(false);
+  const [isExpressDeliverySelectedState, setIsExpressDeliverySelectedState] =
+    useState(false);
 
   const handleChangeAddressClick = () => {
     sessionStorage.setItem("changeAddressFromCheckout", true);
@@ -52,6 +54,10 @@ const Checkout = () => {
 
   const handlePaymentOptionChange = () => {
     // todo need to implement when online payment will come
+  };
+
+  const handleDeliveryTypeToggleChange = () => {
+    setIsExpressDeliverySelectedState(!isExpressDeliverySelectedState);
   };
 
   const handlePlaceOrder = () => {
@@ -82,14 +88,21 @@ const Checkout = () => {
     dispatched(
       fetchFinalCheckoutCalculationAction(
         cartData,
-        appliedCouponCodeReducer.coupon
+        appliedCouponCodeReducer.coupon,
+        isExpressDeliverySelectedState
       )
     );
     dispatched(clearFetchDeliveryAddressAction());
     dispatched(fetchDeliveryAddressAction(localStorage.getItem("userPhoneNo")));
     dispatched(clearFetchExpectedDeliveryDateAction());
-    dispatched(fetchExpectedDeliveryDateAction());
-  }, [dispatched, cartData, history, appliedCouponCodeReducer]);
+    dispatched(fetchExpectedDeliveryDateAction(isExpressDeliverySelectedState));
+  }, [
+    dispatched,
+    cartData,
+    history,
+    appliedCouponCodeReducer,
+    isExpressDeliverySelectedState,
+  ]);
 
   const checkIfTheCouponIsvalid = useCallback(() => {
     if (couponValidationReducer.isLoaded && !couponValidationReducer.error) {
@@ -197,7 +210,7 @@ const Checkout = () => {
             <div className="paymentOption">
               <div className="paymentTypeRadioButtons">
                 <label className="container">
-                  <span className="radioButtonName">Cash on Delivery</span>
+                  <span className="radioButtonName">Pay on Delivery</span>
                   <input
                     type="radio"
                     onChange={handlePaymentOptionChange}
@@ -206,6 +219,38 @@ const Checkout = () => {
                   />
                   <span className="checkmark"></span>
                 </label>
+              </div>
+              <div
+                className={`expressDeliveryToggleButtonContainer w3-row w3-hide`}
+              >
+                <div
+                  className={`deliveryTypeText w3-col s5 ${
+                    isExpressDeliverySelectedState && "deliveryTypeTextDisabled"
+                  }
+                `}
+                >
+                  Normal Delivery
+                </div>
+                <div className=" w3-col s2">
+                  <label className="switch">
+                    <input
+                      type="checkbox"
+                      checked={isExpressDeliverySelectedState}
+                      onChange={handleDeliveryTypeToggleChange}
+                    />
+                    <span className="slider round"></span>
+                  </label>
+                </div>
+                <div
+                  className={`deliveryTypeText w3-col s5 ${
+                    isExpressDeliverySelectedState
+                      ? "deliveryTypeTextEnabled"
+                      : "deliveryTypeTextDisabled"
+                  }`}
+                  style={{ textAlign: "left" }}
+                >
+                  Express Delivery
+                </div>
               </div>
             </div>
             <div className="expectedDeliveryDate">

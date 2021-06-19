@@ -27,7 +27,7 @@ const AboutUs = () => {
             with an unique shopping experience that you are bound to fall in
             love with. So stop looking any further, and start Xapping!!
           </div>
-          <div className="version">Version - 1.6</div>
+          <div className="version">Version - 2.0</div>
         </div>
       </div>
     </div>

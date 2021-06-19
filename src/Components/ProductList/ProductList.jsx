@@ -28,7 +28,27 @@ const ProductList = (props) => {
                     productQuantity={data.product_quantity}
                     productQuantityUnit={data.product_quantity_unit}
                     id={data.product_id}
-                    inStock={data.in_stock}
+                    inStock={
+                      props.currentActivePage === "orderDetails"
+                        ? 1
+                        : data.in_stock
+                    }
+                    currentActivePage={props.currentActivePage}
+                    selling_price={
+                      props.currentActivePage === "orderDetails"
+                        ? data.selling_price
+                        : ""
+                    }
+                    consolidated_price={
+                      props.currentActivePage === "orderDetails"
+                        ? data.consolidated_price
+                        : ""
+                    }
+                    product_count={
+                      props.currentActivePage === "orderDetails"
+                        ? data.product_count
+                        : ""
+                    }
                   />
                 </div>
               ))}

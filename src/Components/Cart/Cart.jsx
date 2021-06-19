@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "./Cart.css";
 import { Link } from "react-router-dom";
@@ -12,6 +12,12 @@ import {
 const Cart = () => {
   const dispatched = useDispatch();
   const { productsUnderCart, cartData } = useSelector((state) => state);
+
+  const [
+    isOutOfStockProductInTheCartState,
+    setIsOutOfStockProductInTheCartState,
+  ] = useState(false);
+
   useEffect(() => {
     dispatched(clearFetchProductsUnderCart());
     if (!cartData.length) {
@@ -19,6 +25,18 @@ const Cart = () => {
     }
     dispatched(fetchProductsUnderCart(cartData));
   }, [cartData, dispatched]);
+
+  useEffect(() => {
+    if (productsUnderCart.data.length) {
+      productsUnderCart.data.forEach((element) => {
+        if (!element.in_stock) {
+          setIsOutOfStockProductInTheCartState(true);
+          return;
+        }
+        setIsOutOfStockProductInTheCartState(false);
+      });
+    }
+  }, [productsUnderCart]);
 
   let getTotalAmount = (productsUnderCart) => {
     let totalAmount = 0;
@@ -28,14 +46,17 @@ const Cart = () => {
       !productsUnderCart.data.length
     )
       return totalAmount;
-    productsUnderCart.data.forEach(
-      (data) =>
-        (totalAmount +=
+    productsUnderCart.data.forEach((data) => {
+      if (data.in_stock)
+        totalAmount +=
           data.product_sale_price *
-          getDuplicateCount(cartData, data.product_id))
-    );
+          getDuplicateCount(cartData, data.product_id);
+    });
+    // if (outOfStockFlag) setIsOutOfStockProductInTheCartState(true);
+    // else setIsOutOfStockProductInTheCartState(false);
     return totalAmount;
   };
+
   let getDuplicateCount = (array, element) => {
     let i = array.length;
     let totalCount = 0;
@@ -45,11 +66,18 @@ const Cart = () => {
     }
     return totalCount;
   };
+
   return (
     <div className="cartContainer w3-animate-opacity">
       <CurrentPageNameHeader categoryName="Cart" />
+      {isOutOfStockProductInTheCartState && (
+        <div className="outOfStockProductAlert">
+          You have out of stock items in your cart. Please remove those to place
+          an order
+        </div>
+      )}
       <div className="productsListInCart">
-        <ProductList products={productsUnderCart} />
+        <ProductList products={productsUnderCart} currentActivePage="cart" />
       </div>
       <div className="cartFooter w3-card w3-row">
         <div className="s9 w3-col totalAmountInCart">
@@ -63,9 +91,19 @@ const Cart = () => {
         <div className="s3 w3-col">
           <Link to="/Checkout">
             <button
-              disabled={getTotalAmount(productsUnderCart) <= 0 ? true : false}
+              disabled={
+                getTotalAmount(productsUnderCart) <= 0
+                  ? true
+                  : isOutOfStockProductInTheCartState
+                  ? true
+                  : false
+              }
               className={`primaryButton ${
-                getTotalAmount(productsUnderCart) <= 0 && "disabledButton"
+                getTotalAmount(productsUnderCart) <= 0
+                  ? "disabledButton"
+                  : isOutOfStockProductInTheCartState
+                  ? "disabledButton"
+                  : ""
               }`}
             >
               Checkout

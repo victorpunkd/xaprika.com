@@ -5,9 +5,23 @@ export const addProductToCart = (productId) => {
   };
 };
 
+export const addProductArrayToCart = (productIdArray) => {
+  return {
+    type: "addProductArrayToCart",
+    payLoad: productIdArray,
+  };
+};
+
 export const removeProductFromCart = (productId) => {
   return {
     type: "removeProductFromCart",
+    payLoad: productId,
+  };
+};
+
+export const removeAllTheOccurencesOfAProductFromCart = (productId) => {
+  return {
+    type: "removeAllTheOccurencesOfAProductFromCart",
     payLoad: productId,
   };
 };

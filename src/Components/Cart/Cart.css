@@ -3,6 +3,12 @@
   height: 100%;
 }
 
+.outOfStockProductAlert {
+  font-size: 12px;
+  font: "Nunito", sans-serif;
+  color: #c72c41;
+}
+
 .productsListInCart {
   padding-bottom: 120px;
 }

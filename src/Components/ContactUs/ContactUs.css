@@ -25,6 +25,11 @@
   color: #4c586e;
 }
 
+.clickMessage {
+  font-size: 10px;
+  font-weight: normal;
+}
+
 .iconColor {
   color: #148ea4;
 }

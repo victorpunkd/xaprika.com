@@ -116,7 +116,7 @@ const OrderConfirmed = () => {
                   INR
                 </span>
               </div>
-              <Link to="/OrderHistory">
+              <Link to={`/OrderDetails/${confirmOrderReducer.data.orderId}`}>
                 <button className="linkButton">Track Your Orders</button>
               </Link>
             </div>
